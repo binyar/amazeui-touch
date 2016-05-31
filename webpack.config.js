@@ -22,7 +22,7 @@ export default {
     },
     {
       'react-addons-css-transition-group': {
-        root: 'React.addons.CSSTransitionGroup',
+        root: ['React', 'addons', 'CSSTransitionGroup'],
         commonjs2: 'react-addons-css-transition-group',
         commonjs: 'react-addons-css-transition-group',
         amd: 'react-addons-css-transition-group'
