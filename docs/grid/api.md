@@ -16,6 +16,12 @@
 
 是否移除列默认的内边距（`padding`）。
 
+##### `wrap`
+
+> PropType: `enum('wrap', 'wrap-reverse')`
+
+网格容器 `flex-wrap` 属性，是否换行，默认为 `nowrap`。
+
 ##### `avg`
 
 > PropType: `number`

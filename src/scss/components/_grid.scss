@@ -29,6 +29,11 @@
   }
 }
 
+// Set grid container wrap.
+@mixin grid-wrap($wrap: nowrap) {
+  flex-wrap: $wrap;
+}
+
 // Set the alignment of cols within a grid.
 @mixin grid-align($align: left) {
   justify-content: map-get($grid-aligns, $align);
@@ -87,11 +92,17 @@
   }
 
   // collapse
-
   &.#{$grid-prefix}-collapse {
     .#{$col-prefix} {
       @include grid-collapse();
     }
+  }
+}
+
+// grid modifiers: flex container wrap
+@each $wrap in wrap, wrap-reverse {
+  .#{$grid-prefix}-#{$wrap} {
+    @include grid-wrap($wrap);
   }
 }
 

@@ -36,11 +36,38 @@ const GridExample = React.createClass({
         </Group>
 
         <Group
-          header="制定列所占比例"
+          header="指定列所占比例"
           footer="在 Col 上通过 cols 属性指定列所占比例（总数为 6）"
         >
           <Grid>
             <Col cols={4}>cols: 4</Col>
+            <Col cols={2}>cols: 2</Col>
+          </Grid>
+        </Group>
+
+        <Group
+          header={`换行：wrap="wrap"`}
+          footer="通过 Grid 的 wrap 属性设置列是否换行"
+        >
+          <Grid
+            wrap="wrap"
+          >
+            <Col cols={4}>cols: 4</Col>
+            <Col cols={2}>cols: 2</Col>
+            <Col cols={2}>cols: 2</Col>
+            <Col cols={4}>cols: 4</Col>
+          </Grid>
+        </Group>
+
+        <Group
+          header={`换行：wrap="wrap-reverse"`}
+          footer="没有反转时的顺序为 5-1-2"
+        >
+          <Grid
+            wrap="wrap-reverse"
+          >
+            <Col cols={5}>cols: 5</Col>
+            <Col cols={1}>cols: 1</Col>
             <Col cols={2}>cols: 2</Col>
           </Grid>
         </Group>

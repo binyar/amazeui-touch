@@ -1,4 +1,6 @@
-import React from 'react';
+import React, {
+  PropTypes,
+} from 'react';
 import classNames from 'classnames';
 import ClassNameMixin from './mixins/ClassNameMixin';
 
@@ -6,11 +8,12 @@ const Grid = React.createClass({
   mixins: [ClassNameMixin],
 
   propTypes: {
-    classPrefix: React.PropTypes.string.isRequired,
-    component: React.PropTypes.node.isRequired,
-    collapse: React.PropTypes.bool,
-    avg: React.PropTypes.number,
-    align: React.PropTypes.oneOf(['right', 'center', 'between', 'around']),
+    classPrefix: PropTypes.string.isRequired,
+    component: PropTypes.node.isRequired,
+    collapse: PropTypes.bool,
+    avg: PropTypes.number,
+    align: PropTypes.oneOf(['right', 'center', 'between', 'around']),
+    wrap: PropTypes.oneOf(['wrap', 'wrap-reverse']),
   },
 
   getDefaultProps() {
@@ -28,11 +31,15 @@ const Grid = React.createClass({
       className,
       avg,
       align,
+      wrap,
       ...props
     } = this.props;
 
     // .g-collapse
     classSet[this.prefixClass('collapse')] = collapse;
+    
+    // .g-wrap
+    classSet[this.prefixClass(wrap)] = wrap;
 
     if (avg) {
       classSet[this.prefixClass('avg-' + avg)] = true;
