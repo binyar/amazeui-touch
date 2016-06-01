@@ -1,5 +1,10 @@
 ## Change Log
 
+### v1.0.0-beta.3 (2016/06/01 15:40 +08:00)
+
+- `Fixed` [99369b5](https://github.com/amazeui/amazeui-touch/commit/99369b5e42ced90789813a26ae0f3c1e8eebaabe) 修复 CSSTransitionGroup 在全局模式时的引用错误
+- `New` [14045dc](https://github.com/amazeui/amazeui-touch/commit/14045dc04bbf5915ce1825048ecf1d76e18402c7) Grid 新增 `wrap` 属性，控制其是否换行（`flex-wrap` 属性）
+
 ### v1.0.0-beta.2 (2016/05/24 15:44 +08:00)
 
 - `Improved` [e1b0e29](https://github.com/amazeui/amazeui-touch/commit/e1b0e29ac65e2b9c6fc44f6567128af0361798f6) #50 解决 `context` 在 OffCanvas 和 Popover 中丢失问题
