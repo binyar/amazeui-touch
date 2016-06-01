@@ -1,6 +1,6 @@
-/** Amaze UI Touch v1.0.0-beta.2 | by Amaze UI Team
+/** Amaze UI Touch v1.0.0-beta.3 | by Amaze UI Team
   * (c) 2016 AllMobilize, Inc., Licensed under MIT
-  * 2016-05-24T15:41:38+0800
+  * 2016-06-01T15:39:45+0800
   */
   [class*="animation-"] {
   -webkit-transform: translateZ(0);
@@ -1151,6 +1151,16 @@ hr {
 
 .g.g-collapse .col {
   padding: 0;
+}
+
+.g-wrap {
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.g-wrap-reverse {
+  -ms-flex-wrap: wrap-reverse;
+      flex-wrap: wrap-reverse;
 }
 
 .g-left {

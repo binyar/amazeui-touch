@@ -59,23 +59,18 @@ npm install --save-dev amazeui-touch
 
 ### Hello World
 
-JavaScript:
+### HTML
 
-```jsx
-import React from 'react';
-import ReactDOM from 'react-dom';
-import {
-  Button,
-} from 'amazeui-touch';
+**CSS 文件**
 
-ReactDOM.render(<Button>Hello World</Button>, document.getElementById('root'));
-```
+打包的 CSS 文件 `amazeui.touch.css`、`amazeui.touch.min.css` 位于 `node_modules/amazeui-touch/dist` 下，可以通过以下两种方式引入：
 
-HTML：
+- 直接使用 `<link>` 标签在 HTML 中引入；
+- 如果使用支持 CSS 打包的构建工具（如 Webpack），可以直接在入口 JS 中 `import` 样式：
 
-**注意：**
-
-- `amazeui.touch.css`、`amazeui.touch.min.css` 位于 `node_modules/amazeui-touch/dist` 下。
+  ```javascript
+  import 'amazeui-touch/dist/amazeui.touch.min.css';
+  ```
 
 ```html
 <!DOCTYPE html>
@@ -89,13 +84,13 @@ HTML：
   <title>Amaze UI Touch</title>
   <meta name="renderer" content="webkit">
   <!-- No Baidu Siteapp-->
-  <meta http-equiv="Cache-Control" content="no-siteapp"/>
+  <meta http-equiv="Cache-Control" content="no-siteapp">
   <link rel="alternate icon" type="image/png" href="i/favicon.png">
   <link rel="apple-touch-icon-precomposed" href="i/app-icon72x72@2x.png">
-  <meta name="apple-mobile-web-app-title" content="AMUI React"/>
+  <meta name="apple-mobile-web-app-title" content="AMUI React">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <link rel="stylesheet" href="path/to/amazeui.touch.min.css"/>
+  <link rel="stylesheet" href="path/to/amazeui.touch.min.css">
 </head>
 <body>
   <div id="root">
@@ -105,6 +100,42 @@ HTML：
 </body>
 </html>
 ```
+
+#### JavaScript:
+
+```jsx
+import React from 'react';
+import ReactDOM from 'react-dom';
+import {
+  Button,
+} from 'amazeui-touch';
+
+ReactDOM.render(<Button>Hello World</Button>, document.getElementById('root'));
+```
+
+**全局方式引用**
+
+如果基于使用公共 CDN 或者维护方便等原因考虑，不想把 Amaze UI Touch 打包到项目文件中，可以以全局方式引用，即在 HTML 中引入 `amazeui.touch.min.js` 文件，然后以 **`AMUITouch`** 这个全局变量访问组件。
+
+如果使用 Webpack 构建，则可以在配置文件中做设置，比如下面的配置中，React 和 Amaze UI Touch 将以全局的方式调用，不会打包到你的项目中（即需要单独引入）。
+
+```javascript
+// ...
+externals: {
+  'react': 'React',
+  'react-dom': 'ReactDOM',
+  'amazeui-touch': 'AMUITouch',
+}
+// ...
+```
+
+需要注意的是，Amaze UI Touch 使用了 React CSS Transition Group add-on，引入 React 时需使用包含 add-ons 的版本 `react-with-addons.min.js`。
+
+```html
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.1.0/react-with-addons.min.js"></script>
+```
+
+### 进阶使用
 
 进阶使用可参见 kitchen-sink 源码。
 

@@ -1,6 +1,6 @@
-/** Amaze UI Touch v1.0.0-beta.2 | by Amaze UI Team
+/** Amaze UI Touch v1.0.0-beta.3 | by Amaze UI Team
   * (c) 2016 AllMobilize, Inc., Licensed under MIT
-  * 2016-05-24T15:41:38+0800
+  * 2016-06-01T15:39:45+0800
   */
   (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -10,7 +10,7 @@
 	else if(typeof exports === 'object')
 		exports["AMUITouch"] = factory(require("react"), require("react-addons-css-transition-group"), require("react-dom"));
 	else
-		root["AMUITouch"] = factory(root["React"], root["React.addons.CSSTransitionGroup"], root["ReactDOM"]);
+		root["AMUITouch"] = factory(root["React"], root["React"]["addons"]["CSSTransitionGroup"], root["ReactDOM"]);
 })(this, function(__WEBPACK_EXTERNAL_MODULE_2__, __WEBPACK_EXTERNAL_MODULE_3__, __WEBPACK_EXTERNAL_MODULE_26__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
@@ -327,7 +327,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	// @see http://jamesknelson.com/re-exporting-es6-modules/
 	// @see http://exploringjs.com/es6/ch_modules.html#sec_all-exporting-styles
 
-	var VERSION = exports.VERSION = '1.0.0-beta.2';
+	var VERSION = exports.VERSION = '1.0.0-beta.3';
 
 	// Layout
 
@@ -427,6 +427,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	var TRANSITION_TIMEOUT = 500;
 
 	var Container = _react2.default.createClass({
+	  displayName: 'Container',
+
 	  mixins: [_ClassNameMixin2.default],
 
 	  propTypes: {
@@ -723,14 +725,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
 	var Grid = _react2.default.createClass({
+	  displayName: 'Grid',
+
 	  mixins: [_ClassNameMixin2.default],
 
 	  propTypes: {
-	    classPrefix: _react2.default.PropTypes.string.isRequired,
-	    component: _react2.default.PropTypes.node.isRequired,
-	    collapse: _react2.default.PropTypes.bool,
-	    avg: _react2.default.PropTypes.number,
-	    align: _react2.default.PropTypes.oneOf(['right', 'center', 'between', 'around'])
+	    classPrefix: _react.PropTypes.string.isRequired,
+	    component: _react.PropTypes.node.isRequired,
+	    collapse: _react.PropTypes.bool,
+	    avg: _react.PropTypes.number,
+	    align: _react.PropTypes.oneOf(['right', 'center', 'between', 'around']),
+	    wrap: _react.PropTypes.oneOf(['wrap', 'wrap-reverse'])
 	  },
 
 	  getDefaultProps: function getDefaultProps() {
@@ -749,13 +754,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var className = _props.className;
 	    var avg = _props.avg;
 	    var align = _props.align;
+	    var wrap = _props.wrap;
 
-	    var props = _objectWithoutProperties(_props, ['component', 'collapse', 'className', 'avg', 'align']);
+	    var props = _objectWithoutProperties(_props, ['component', 'collapse', 'className', 'avg', 'align', 'wrap']);
 
 	    // .g-collapse
 
 
 	    classSet[this.prefixClass('collapse')] = collapse;
+
+	    // .g-wrap
+	    classSet[this.prefixClass(wrap)] = wrap;
 
 	    if (avg) {
 	      classSet[this.prefixClass('avg-' + avg)] = true;
@@ -806,6 +815,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
 	var Col = _react2.default.createClass({
+	  displayName: 'Col',
+
 	  mixins: [_ClassNameMixin2.default],
 
 	  propTypes: {
@@ -887,6 +898,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
 	var Group = _react2.default.createClass({
+	  displayName: 'Group',
+
 	  mixins: [_ClassNameMixin2.default],
 
 	  propTypes: {
@@ -977,6 +990,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var Accordion = _react2.default.createClass({
+	  displayName: 'Accordion',
+
 	  mixins: [_ClassNameMixin2.default],
 
 	  propTypes: {
@@ -1059,6 +1074,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 
 	Accordion.Item = _react2.default.createClass({
+	  displayName: 'Item',
+
 	  mixins: [_ClassNameMixin2.default, _CollapseMixin2.default],
 
 	  propTypes: {
@@ -1587,6 +1604,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
 	var Icon = _react2.default.createClass({
+	  displayName: 'Icon',
+
 	  mixins: [_ClassNameMixin2.default],
 
 	  propTypes: {
@@ -1661,6 +1680,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
 	var Badge = _react2.default.createClass({
+	  displayName: 'Badge',
+
 	  mixins: [_ClassNameMixin2.default],
 
 	  propTypes: {
@@ -1730,6 +1751,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
 	var Button = _react2.default.createClass({
+	  displayName: 'Button',
+
 	  mixins: [_ClassNameMixin2.default],
 
 	  propTypes: {
@@ -1839,6 +1862,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
 	var ButtonGroup = _react2.default.createClass({
+	  displayName: 'ButtonGroup',
+
 	  mixins: [_ClassNameMixin2.default],
 
 	  propTypes: {
@@ -1915,6 +1940,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var ButtonToolbar = _react2.default.createClass({
+	  displayName: 'ButtonToolbar',
+
 	  mixins: [_ClassNameMixin2.default],
 
 	  propTypes: {
@@ -1972,6 +1999,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
 	var Card = _react2.default.createClass({
+	  displayName: 'Card',
+
 	  mixins: [_ClassNameMixin2.default],
 
 	  propTypes: {
@@ -2032,6 +2061,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 
 	Card.Child = _react2.default.createClass({
+	  displayName: 'Child',
+
 	  mixins: [_ClassNameMixin2.default],
 
 	  propTypes: {
@@ -2117,6 +2148,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
 	var Field = _react2.default.createClass({
+	  displayName: 'Field',
+
 	  mixins: [_ClassNameMixin2.default],
 
 	  propTypes: {
@@ -2311,6 +2344,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
 	var List = _react2.default.createClass({
+	  displayName: 'List',
+
 	  mixins: [_ClassNameMixin2.default],
 
 	  propTypes: {
@@ -2341,6 +2376,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 
 	List.Item = _react2.default.createClass({
+	  displayName: 'Item',
+
 	  mixins: [_ClassNameMixin2.default],
 
 	  propTypes: {
@@ -2520,6 +2557,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
 	var Loader = _react2.default.createClass({
+	  displayName: 'Loader',
+
 	  mixins: [_ClassNameMixin2.default],
 
 	  propTypes: {
@@ -3169,6 +3208,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
 	var NavBar = _react2.default.createClass({
+	  displayName: 'NavBar',
+
 	  mixins: [_ClassNameMixin2.default],
 
 	  propTypes: {
@@ -3359,6 +3400,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	var TRANSITION_TIMEOUT = 250;
 
 	var Notification = _react2.default.createClass({
+	  displayName: 'Notification',
+
 	  mixins: [_ClassNameMixin2.default],
 
 	  propTypes: {
@@ -3433,6 +3476,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	var body = document.body;
 
 	var NotificationPortal = _react2.default.createClass({
+	  displayName: 'NotificationPortal',
+
 	  propTypes: {
 	    visible: _react2.default.PropTypes.bool.isRequired
 	  },
@@ -3509,6 +3554,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	                                                                                                                                                                                                                              */
 
 	var OffCanvas = _react2.default.createClass({
+	  displayName: 'OffCanvas',
+
 	  mixins: [_ClassNameMixin2.default, _BackdropMixin2.default],
 
 	  propTypes: {
@@ -3642,6 +3689,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var OffCanvasTrigger = _react2.default.createClass({
+	  displayName: 'OffCanvasTrigger',
+
 	  mixins: [_OverlayMixin2.default, _ClassNameMixin2.default],
 
 	  propTypes: {
@@ -3973,6 +4022,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
 	var Popover = _react2.default.createClass({
+	  displayName: 'Popover',
+
 	  mixins: [_ClassNameMixin2.default, _BackdropMixin2.default],
 
 	  propTypes: {
@@ -4089,6 +4140,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var PopoverTrigger = _react2.default.createClass({
+	  displayName: 'PopoverTrigger',
+
 	  mixins: [_OverlayMixin2.default],
 
 	  propTypes: {
@@ -4468,6 +4521,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
 	var Slider = _react2.default.createClass({
+	  displayName: 'Slider',
+
 	  mixins: [_ClassNameMixin2.default],
 
 	  propTypes: {
@@ -4760,6 +4815,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 
 	Slider.Item = _react2.default.createClass({
+	  displayName: 'Item',
+
 	  propTypes: {
 	    direction: _react2.default.PropTypes.oneOf(['prev', 'next']),
 	    onAnimateOutEnd: _react2.default.PropTypes.func,
@@ -4886,6 +4943,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	                                                                                                                                                                                                                              */
 
 	var Touchable = _react2.default.createClass({
+	  displayName: 'Touchable',
+
 	  mixins: [_TouchableMixin2.default],
 
 	  propTypes: {
@@ -5268,6 +5327,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
 	var Switch = _react2.default.createClass({
+	  displayName: 'Switch',
+
 	  mixins: [_ClassNameMixin2.default],
 
 	  propTypes: {
@@ -5357,6 +5418,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	// TODO: 默认的选中处理
 	var TabBar = _react2.default.createClass({
+	  displayName: 'TabBar',
+
 	  mixins: [_ClassNameMixin2.default],
 
 	  propTypes: {
@@ -5414,6 +5477,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	//   React-native 采用 require('path/to/icon') 的形式，
 	//   这里可能需要再添加一个属性
 	TabBar.Item = _react2.default.createClass({
+	  displayName: 'Item',
+
 	  mixins: [_ClassNameMixin2.default],
 
 	  propTypes: {
@@ -5534,6 +5599,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
 	var Tabs = _react2.default.createClass({
+	  displayName: 'Tabs',
+
 	  mixins: [_ClassNameMixin2.default],
 
 	  propTypes: {
@@ -5686,6 +5753,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 
 	Tabs.Item = _react2.default.createClass({
+	  displayName: 'Item',
+
 	  mixins: [_ClassNameMixin2.default],
 
 	  propTypes: {
@@ -5761,6 +5830,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
 	var View = _react2.default.createClass({
+	  displayName: 'View',
+
 	  mixins: [_ClassNameMixin2.default],
 
 	  propTypes: {

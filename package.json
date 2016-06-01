@@ -1,7 +1,7 @@
 {
   "name": "amazeui-touch",
   "title": "Amaze UI Touch",
-  "version": "1.0.0-beta.2",
+  "version": "1.0.0-beta.3",
   "description": "Web Components for Mobile UI based on React.js",
   "main": "lib/index.js",
   "scripts": {
@@ -65,9 +65,9 @@
     "marked": "^0.3.5",
     "markedify": "0.0.2",
     "merge-stream": "^1.0.0",
-    "react": "^15.0.1",
-    "react-addons-css-transition-group": "^15.0.1",
-    "react-dom": "^15.0.1",
+    "react": "^15.1.0",
+    "react-addons-css-transition-group": "^15.1.0",
+    "react-dom": "^15.1.0",
     "react-router": "^2.2.1",
     "run-sequence": "^1.1.5",
     "vinyl-buffer": "^1.0.0",
@@ -79,9 +79,9 @@
     "classnames": "^2.2.5"
   },
   "peerDependencies": {
-    "react": "^0.14.0 || ^15.0.0",
-    "react-dom": "^0.14.0 || ^15.0.0",
-    "react-addons-css-transition-group": "^0.14.0 || ^15.0.0"
+    "react": "^15.1.0",
+    "react-dom": "^15.1.0",
+    "react-addons-css-transition-group": "^15.1.0"
   },
   "babel": {
     "presets": [
