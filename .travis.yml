@@ -2,11 +2,10 @@ sudo: false
 
 language: node_js
 
+# see https://docs.travis-ci.com/user/languages/javascript-with-nodejs#Choosing-Node-versions-to-test-against
 node_js:
-#  - '0.10'
-#  - '0.12'
-  - '4.0'
-#  - node
+  - '4'
+  - 'node'
 
 env:
   global:
