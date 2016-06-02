@@ -38,79 +38,96 @@ function handleSwitch() {
 const mySwitch = <Switch onValueChange={handleSwitch} defaultChecked />;
 
 const FormExample = React.createClass({
+  handleSubmit(e) {
+    e.preventDefault();
+    console.log(this.refs.select.getValue());
+  },
+
   render() {
     return (
       <Container {...this.props}>
         <Group
           header="基本样式"
         >
-        <Field
-          label="Your Name"
-          placeholder="What's your name."
-        />
+          <Field
+            label="Your Name"
+            placeholder="What's your name."
+            defaultValue="hello"
+          />
 
-        <Field
-          label="Password"
-          placeholder="Yout password."
-          type="password"
-        />
+          <Field
+            label="Password"
+            placeholder="Yout password."
+            type="password"
+          />
 
-        <Field
-          label="Age"
-          placeholder="Your age."
-          type="number"
-        />
+          <Field
+            label="Age"
+            placeholder="Your age."
+            type="number"
+          />
 
-        <Field
-          type="select"
-          label="Select"
-        >
-          <option value="m">Male</option>
-          <option value="f">Female</option>
-        </Field>
+          <Field
+            type="select"
+            label="Select"
+            ref="select"
+            defaultValue="m"
+          >
+            <option value="m">Male</option>
+            <option value="f">Female</option>
+          </Field>
 
-        <Field
-          label="Range"
-          type="range"
-          defaultValue="10"
-        />
+          <Field
+            label="Range"
+            type="range"
+            defaultValue="10"
+          />
 
-        <Field
-          label="Commnet"
-          placeholder="Say something you whant."
-          type="textarea"
-        />
+          <Field
+            label="Commnet"
+            placeholder="Say something you whant."
+            type="textarea"
+          />
 
-        <Field
-          value="提交"
-          type="submit"
-          amStyle="secondary"
-          block
-        />
+          <Field
+            value="提交"
+            type="submit"
+            amStyle="secondary"
+            block
+            onClick={this.handleSubmit}
+          />
         </Group>
 
 
-        {/*
-         <h3>Range</h3>
-         <p>
-         <input type="range" />
-         </p>
+        {/*<h3>Range</h3>
+        <p>
+          <input type="range" />
+        </p>
 
-         <h3>Progress</h3>
-         <p>
-         <progress value="50" max="100" />
-         <progress max="100" />
-         <progress className="high" value="25" max="100" />
-         <progress className="medium" value="75" max="100" />
-         <progress className="low" value="60" max="100" />
-         </p>
+        <h3>Progress</h3>
+        <p>
+          <progress value="50" max="100" />
+          <progress max="100" />
+          <progress className="high" value="25" max="100" />
+          <progress className="medium" value="75" max="100" />
+          <progress className="low" value="60" max="100" />
+        </p>
 
-         <h3>Meter</h3>
-         <p>
-         <meter min="0" max="100" low="25" high="75" optimum="100" value="10"></meter>
-         <meter min="0" max="100" low="25" high="75" optimum="100" value="50"></meter>
-         <meter min="0" max="100" low="25" high="75" optimum="100" value="80"></meter>
-         </p>*/}
+        <h3>Meter</h3>
+        <p>
+          <meter
+            min="0"
+            max="100"
+            low="25"
+            high="75"
+            optimum="100"
+            value="10"
+          />
+          <meter min="0" max="100" low="25" high="75" optimum="100"
+                 value="50" />
+          <meter min="0" max="100" low="25" high="75" optimum="100"
+                 value="80" />
+        </p>*/}
 
         <Group
           header="Form Set"

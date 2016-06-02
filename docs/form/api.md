@@ -20,6 +20,40 @@
 - `'select'`
 - `'textarea'`
 
+##### 默认值：`defaultValue` / `defaultChecked`
+
+`<Field>` 组件默认值设置遵循 React 对 `<input>`、`textarea` 等[表单组件的处理方式](http://facebook.github.io/react/docs/forms.html)。
+
+- `defaultValue`: 适用于 `type` 为 `text`、`textarea` 等可输入类型及 `select` 的 `<Field>` 组件。
+
+  当 `type` 为 `select` 时：
+  - 若为**多选**（设置了 `multiple` 属性），则默认值应该传递一个数组；
+
+    ```jsx
+    <Field
+      type="select"
+      label="Multiple Select"
+      multiple
+      defaultValue={['x', 'y']}
+    >
+    {/*...*/}
+    </Field>
+    ```
+  - 若为**单选**，则传递字符串。
+
+    ```jsx
+    <Field
+      type="select"
+      label="Single Select"
+      defaultValue="x"
+    >
+    {/*...*/}
+    </Field>
+    ```
+
+  `getValue()` 的返回值类型也遵循上面的规则。
+- `defaultChecked`: 适用于 `type` 属性为 `radio`、`checkbox` 的 `<Field>` 组件。
+
 ##### `label`
 
 > PropType: `node`
