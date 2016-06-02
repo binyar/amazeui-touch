@@ -42,9 +42,10 @@ const Field = React.createClass({
 
   getSelectedOptions() {
     let values = [];
-    let options = this.getFieldDOMNode().getElementsByTagName('option');
+    // see http://www.w3schools.com/jsref/coll_select_options.asp
+    let options = this.getFieldDOMNode().options;
 
-    options.forEach(function(option) {
+    Array.from(options).forEach((option) => {
       if (option.selected) {
         let value = option.getAttribute('value') || option.innerHtml;
 
@@ -63,23 +64,48 @@ const Field = React.createClass({
     return this.props.type === 'file';
   },
 
+  // convert `value`/`defaultValue` to `checked`/`defaultChecked` when `type` is `radio`/checkbox``
+  convertValueToChecked() {
+    var checkedProps = {};
+
+    if (this.isCheckboxOrRadio()) {
+      const propsMap = {
+        checked: 'value',
+        defaultChecked: 'defaultValue',
+      };
+
+      Object.keys(propsMap).forEach((checked) => {
+        let value = propsMap[checked];
+
+        if (!this.props[checked] && this.props[value]) {
+          checkedProps[checked] = value;
+        }
+      });
+    }
+
+    return checkedProps;
+  },
+
   renderField() {
     let field = null;
     let fieldClassName = this.isCheckboxOrRadio() || this.isFile() ?
       '' : this.getClassSet();
     let classes = classNames(this.props.className, fieldClassName);
-    let props = {
+    let commonProps = {
       ref: 'field',
       key: 'formField',
-      className: classes
+      className: classes,
+    };
+    let assignedProps = {
+      ...this.props,
+      ...commonProps,
     };
 
     switch (this.props.type) {
       case 'select':
         field = (
           <select
-            {...this.props}
-            {...props}
+            {...assignedProps}
           >
             {this.props.children}
           </select>
@@ -88,8 +114,7 @@ const Field = React.createClass({
       case 'textarea':
         field = (
           <textarea
-            {...this.props}
-            {...props}
+            {...assignedProps}
           />
         );
         break;
@@ -101,7 +126,7 @@ const Field = React.createClass({
         } = this.props;
         field = (
           <Button
-            {...props}
+            {...commonProps}
             className={null}
             {...others}
             component="input"
@@ -111,8 +136,8 @@ const Field = React.createClass({
       default:
         field = (
           <input
-            {...this.props}
-            {...props}
+            {...assignedProps}
+            {...this.convertValueToChecked()}
           />
         );
     }
