@@ -99,6 +99,11 @@ input[type="range"] {
   &::-ms-fill-upper {
     background: $range-background;
   }
+
+  .field-container & {
+    margin-top: 0.5rem + $margin;
+    margin-bottom: $global-padding + $margin;
+  }
 }
 
 output {

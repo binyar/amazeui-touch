@@ -191,6 +191,8 @@ $form-fontsize: 1rem !default;
 $form-padding: 0.75rem 0.5rem !default;
 
 // Text fields
+// datetime has been removed from WHATWG HTML
+// @see https://github.com/whatwg/html/issues/336
 $text-field-selectors: 'input[type="text"],
                         input[type="password"],
                         input[type="date"],

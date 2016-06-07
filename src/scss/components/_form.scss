@@ -44,6 +44,15 @@
   }
 }
 
+input[type="date"],
+input[type="datetime"],
+input[type="datetime-local"] {
+  $padding-top: get-side($form-padding, top);
+  $padding-bottom: get-side($form-padding, bottom);
+  $height: $form-fontsize + $padding-top + $padding-bottom + rem-calc(2);
+  height: $height;
+}
+
 // Labels
 label {
   display: block;
