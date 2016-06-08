@@ -48,13 +48,6 @@ const docsPaths = {
   ksDist: 'www/kitchen-sink'
 };
 
-/*
-// move to package.json
-const babelOptions = {
-  optional: ['es7.objectRestSpread'],
-  plugins: ['object-assign'],
-};*/
-
 const autoprefixerOptions = {
   browsers: ['> 1%', 'last 2 versions', 'ie 10']
 };
