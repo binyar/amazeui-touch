@@ -1,4 +1,6 @@
-import React from 'react';
+import React, {
+  PropTypes,
+} from 'react';
 import classNames from 'classnames';
 import ClassNameMixin from './mixins/ClassNameMixin';
 
@@ -6,13 +8,13 @@ const Icon = React.createClass({
   mixins: [ClassNameMixin],
 
   propTypes: {
-    classPrefix: React.PropTypes.string.isRequired,
-    component: React.PropTypes.node.isRequired,
-    name: React.PropTypes.string.isRequired,
-    href: React.PropTypes.string,
-    // amStyle: React.PropTypes.string,
-    // button: React.PropTypes.bool,
-    // size: React.PropTypes.string,
+    classPrefix: PropTypes.string.isRequired,
+    component: PropTypes.node.isRequired,
+    name: PropTypes.string.isRequired,
+    href: PropTypes.string,
+    // amStyle: PropTypes.string,
+    // button: PropTypes.bool,
+    // size: PropTypes.string,
   },
 
   getDefaultProps() {

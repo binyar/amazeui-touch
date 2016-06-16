@@ -1,4 +1,6 @@
-import React from 'react';
+import React, {
+  PropTypes,
+} from 'react';
 import classNames from 'classnames';
 import ClassNameMixin from './mixins/ClassNameMixin';
 
@@ -6,8 +8,8 @@ const View = React.createClass({
   mixins: [ClassNameMixin],
 
   propTypes: {
-    classPrefix: React.PropTypes.string.isRequired,
-    component: React.PropTypes.node.isRequired,
+    classPrefix: PropTypes.string.isRequired,
+    component: PropTypes.node.isRequired,
   },
 
   getDefaultProps() {

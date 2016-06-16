@@ -1,4 +1,6 @@
-import React from 'react';
+import React, {
+  PropTypes,
+} from 'react';
 import classNames from 'classnames';
 import ClassNameMixin from './mixins/ClassNameMixin';
 
@@ -6,11 +8,11 @@ const Col = React.createClass({
   mixins: [ClassNameMixin],
 
   propTypes: {
-    classPrefix: React.PropTypes.string.isRequired,
-    component: React.PropTypes.node.isRequired,
-    cols: React.PropTypes.number,
-    offset: React.PropTypes.number,
-    shrink: React.PropTypes.bool,
+    classPrefix: PropTypes.string.isRequired,
+    component: PropTypes.node.isRequired,
+    cols: PropTypes.number,
+    offset: PropTypes.number,
+    shrink: PropTypes.bool,
   },
 
   getDefaultProps() {

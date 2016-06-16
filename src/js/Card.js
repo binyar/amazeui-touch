@@ -1,4 +1,6 @@
-import React from 'react';
+import React, {
+  PropTypes,
+} from 'react';
 import classNames from 'classnames';
 import ClassNameMixin from './mixins/ClassNameMixin';
 
@@ -6,10 +8,10 @@ const Card = React.createClass({
   mixins: [ClassNameMixin],
 
   propTypes: {
-    classPrefix: React.PropTypes.string.isRequired,
-    title: React.PropTypes.string,
-    header: React.PropTypes.node,
-    footer: React.PropTypes.node,
+    classPrefix: PropTypes.string.isRequired,
+    title: PropTypes.string,
+    header: PropTypes.node,
+    footer: PropTypes.node,
   },
 
   getDefaultProps() {
@@ -68,9 +70,9 @@ Card.Child = React.createClass({
   mixins: [ClassNameMixin],
 
   propTypes: {
-    classPrefix: React.PropTypes.string.isRequired,
-    role: React.PropTypes.oneOf(['header', 'footer']),
-    cover: React.PropTypes.string,
+    classPrefix: PropTypes.string.isRequired,
+    role: PropTypes.oneOf(['header', 'footer']),
+    cover: PropTypes.string,
   },
 
   getDefaultProps() {

@@ -1,4 +1,6 @@
-import React from 'react';
+import React, {
+  PropTypes,
+} from 'react';
 import classNames from 'classnames';
 import ClassNameMixin from './mixins/ClassNameMixin';
 import CollapseMixin from './mixins/CollapseMixin';
@@ -8,11 +10,11 @@ const Accordion = React.createClass({
   mixins: [ClassNameMixin],
 
   propTypes: {
-    classPrefix: React.PropTypes.string,
-    activeKey: React.PropTypes.any,
-    defaultActiveKey: React.PropTypes.any,
-    inset: React.PropTypes.bool,
-    onAction: React.PropTypes.func,
+    classPrefix: PropTypes.string,
+    activeKey: PropTypes.any,
+    defaultActiveKey: PropTypes.any,
+    inset: PropTypes.bool,
+    onAction: PropTypes.func,
   },
 
   getDefaultProps() {

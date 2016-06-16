@@ -1,4 +1,6 @@
-import React from 'react';
+import React, {
+  PropTypes,
+} from 'react';
 import classNames from 'classnames';
 import ClassNameMixin from './mixins/ClassNameMixin';
 import Icon from './Icon';
@@ -7,12 +9,12 @@ const NavBar = React.createClass({
   mixins: [ClassNameMixin],
 
   propTypes: {
-    classPrefix: React.PropTypes.string,
-    title: React.PropTypes.node,
-    leftNav: React.PropTypes.array,
-    rightNav: React.PropTypes.array,
-    titleOnLeft: React.PropTypes.bool,
-    onAction: React.PropTypes.func,
+    classPrefix: PropTypes.string,
+    title: PropTypes.node,
+    leftNav: PropTypes.array,
+    rightNav: PropTypes.array,
+    titleOnLeft: PropTypes.bool,
+    onAction: PropTypes.func,
   },
 
   getDefaultProps() {
@@ -114,7 +116,7 @@ const NavBar = React.createClass({
       Array.prototype[action].call(children, navIcon);
     }
     // navIcon && children.push(navIcon);
-    
+
     let renderChildren = () => {
       // #40
       // if `Component` is a clone type like OffCanvasTrigger,

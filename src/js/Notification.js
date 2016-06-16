@@ -1,4 +1,6 @@
-import React from 'react';
+import React, {
+  PropTypes,
+} from 'react';
 import ReactDOM, {
   unmountComponentAtNode,
   unstable_renderSubtreeIntoContainer as renderSubtreeIntoContainer
@@ -20,13 +22,13 @@ const Notification = React.createClass({
   mixins: [ClassNameMixin],
 
   propTypes: {
-    classPrefix: React.PropTypes.string.isRequired,
-    title: React.PropTypes.string,
-    amStyle: React.PropTypes.string,
-    closeBtn: React.PropTypes.bool,
-    animated: React.PropTypes.bool,
-    visible: React.PropTypes.bool,
-    onDismiss: React.PropTypes.func,
+    classPrefix: PropTypes.string.isRequired,
+    title: PropTypes.string,
+    amStyle: PropTypes.string,
+    closeBtn: PropTypes.bool,
+    animated: PropTypes.bool,
+    visible: PropTypes.bool,
+    onDismiss: PropTypes.func,
   },
 
   getDefaultProps() {
@@ -96,7 +98,7 @@ const body = document.body;
 
 const NotificationPortal = React.createClass({
   propTypes: {
-    visible: React.PropTypes.bool.isRequired,
+    visible: PropTypes.bool.isRequired,
   },
 
   getDefaultProps() {
@@ -110,13 +112,13 @@ const NotificationPortal = React.createClass({
       this.node = document.createElement('div');
       this.node.className = '__notification-portal';
       body.appendChild(this.node);
-      this.renderModal(this.props);
+      this.renderNotification(this.props);
     }
   },
 
   componentWillReceiveProps(nextProps) {
     if (!this.isStatic()) {
-      this.renderModal(nextProps);
+      this.renderNotification(nextProps);
     }
   },
 
@@ -131,7 +133,7 @@ const NotificationPortal = React.createClass({
     return this.props.static;
   },
 
-  renderModal(props) {
+  renderNotification(props) {
     this.portal = renderSubtreeIntoContainer(
       this,
       <Notification {...props} />,

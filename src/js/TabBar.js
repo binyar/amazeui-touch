@@ -19,7 +19,7 @@ let TabBar = React.createClass({
     return {
       classPrefix: 'tabbar',
       component: 'nav',
-      onAction: function() {}
+      onAction: () => {}
     };
   },
 
@@ -31,7 +31,7 @@ let TabBar = React.createClass({
       children,
       onAction,
       ...props
-      } = this.props;
+    } = this.props;
 
     return (
       <Component
@@ -43,7 +43,7 @@ let TabBar = React.createClass({
             eventKey,
             onClick,
             ...props
-            } = child.props;
+          } = child.props;
           let clickHandler = onClick || onAction;
           let key = eventKey || index;
           eventKey = eventKey || key;
@@ -98,7 +98,7 @@ TabBar.Item = React.createClass({
     let {
       badge,
       badgeStyle,
-      } = this.props;
+    } = this.props;
 
     return badge ? (
       <Badge
@@ -112,11 +112,11 @@ TabBar.Item = React.createClass({
   renderIcon() {
     let {
       icon,
-      } = this.props;
+    } = this.props;
 
     return icon ? (
       <Icon name={icon} key="tabbarIcon">
-        {this.renderBadge()}
+            {this.renderBadge()}
       </Icon>) : null
   },
 
@@ -124,7 +124,7 @@ TabBar.Item = React.createClass({
     let labelClassName = this.prefixClass('label');
     let {
       title,
-      } = this.props;
+    } = this.props;
 
     return title ? (
       <span
@@ -142,7 +142,7 @@ TabBar.Item = React.createClass({
       component: Component,
       className,
       ...props
-      } = this.props;
+    } = this.props;
     Component = this.props.href ? 'a' : Component;
     // TODO: how to display badge when icon not set?
 

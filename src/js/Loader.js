@@ -1,4 +1,6 @@
-import React from 'react';
+import React, {
+  PropTypes,
+} from 'react';
 import classNames from 'classnames';
 import ClassNameMixin from './mixins/ClassNameMixin';
 
@@ -6,10 +8,10 @@ const Loader = React.createClass({
   mixins: [ClassNameMixin],
 
   propTypes: {
-    classPrefix: React.PropTypes.string,
-    component: React.PropTypes.node,
-    amStyle: React.PropTypes.string,
-    rounded: React.PropTypes.bool,
+    classPrefix: PropTypes.string,
+    component: PropTypes.node,
+    amStyle: PropTypes.string,
+    rounded: PropTypes.bool,
   },
 
   getDefaultProps() {

@@ -1,4 +1,7 @@
-import React, {cloneElement} from 'react';
+import React, {
+  cloneElement,
+  PropTypes,
+} from 'react';
 import ReactDOM from 'react-dom';
 import TransitionEvents from './utils/TransitionEvents';
 import OverlayMixin from './mixins/OverlayMixin';
@@ -9,10 +12,10 @@ const PopoverTrigger = React.createClass({
   mixins: [OverlayMixin],
 
   propTypes: {
-    defaultPopoverActive: React.PropTypes.bool,
-    popover: React.PropTypes.node.isRequired,
-    onOpen: React.PropTypes.func,
-    onClosed: React.PropTypes.func,
+    defaultPopoverActive: PropTypes.bool,
+    popover: PropTypes.node.isRequired,
+    onOpen: PropTypes.func,
+    onClosed: PropTypes.func,
   },
 
   getDefaultProps() {

@@ -1,4 +1,6 @@
-import React from 'react';
+import React, {
+  PropTypes,
+} from 'react';
 import classNames from 'classnames';
 import ClassNameMixin from './mixins/ClassNameMixin';
 
@@ -6,18 +8,18 @@ const Button = React.createClass({
   mixins: [ClassNameMixin],
 
   propTypes: {
-    classPrefix: React.PropTypes.string.isRequired,
-    component: React.PropTypes.node,
-    href: React.PropTypes.string,
-    target: React.PropTypes.string,
-    amStyle: React.PropTypes.string,
-    amSize: React.PropTypes.string,
-    hollow: React.PropTypes.bool,
-    block: React.PropTypes.bool,
-    active: React.PropTypes.bool,
-    disabled: React.PropTypes.bool,
-    // radius: React.PropTypes.bool,
-    // rounded: React.PropTypes.bool,
+    classPrefix: PropTypes.string.isRequired,
+    component: PropTypes.node,
+    href: PropTypes.string,
+    target: PropTypes.string,
+    amStyle: PropTypes.string,
+    amSize: PropTypes.string,
+    hollow: PropTypes.bool,
+    block: PropTypes.bool,
+    active: PropTypes.bool,
+    disabled: PropTypes.bool,
+    // radius: PropTypes.bool,
+    // rounded: PropTypes.bool,
   },
 
   getDefaultProps() {

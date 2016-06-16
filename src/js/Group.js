@@ -1,4 +1,6 @@
-import React from 'react';
+import React, {
+  PropTypes,
+} from 'react';
 import classNames from 'classnames';
 import ClassNameMixin from './mixins/ClassNameMixin';
 
@@ -6,11 +8,11 @@ let Group = React.createClass({
   mixins: [ClassNameMixin],
 
   propTypes: {
-    classPrefix: React.PropTypes.string.isRequired,
-    component: React.PropTypes.node.isRequired,
-    header: React.PropTypes.node,
-    footer: React.PropTypes.node,
-    noPadded: React.PropTypes.bool,
+    classPrefix: PropTypes.string.isRequired,
+    component: PropTypes.node.isRequired,
+    header: PropTypes.node,
+    footer: PropTypes.node,
+    noPadded: PropTypes.bool,
   },
 
   getDefaultProps() {
@@ -38,6 +40,7 @@ let Group = React.createClass({
       ...props,
     } = this.props;
     let classSet = this.getClassSet();
+
     classSet[this.prefixClass('no-padded')] = noPadded;
 
     let bodyClasses = {

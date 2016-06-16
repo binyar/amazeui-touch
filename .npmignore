@@ -8,6 +8,8 @@ node_modules
 /docs
 /www
 
+*.log*
+
 .editorconfig
 .eslintignore
 .eslintrc
@@ -16,3 +18,4 @@ node_modules
 .travis.yml
 gulpfile.babel.js
 webpack.config.js
+bower.json

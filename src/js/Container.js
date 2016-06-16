@@ -1,7 +1,9 @@
 // @see https://github.com/JedWatson/react-container
 // @license MIT Copyright (c) 2015 Jed Watson
 
-import React from 'react';
+import React, {
+  PropTypes,
+} from 'react';
 import CSSTransitionGroup from 'react-addons-css-transition-group';
 import classNames from 'classnames';
 import ClassNameMixin from './mixins/ClassNameMixin';
@@ -35,18 +37,18 @@ function initScrollable(defaultPos) {
 
   let pos;
   let scrollable = {
-    reset () {
+    reset() {
       pos = {left: defaultPos.left || 0, top: defaultPos.top || 0};
     },
-    getPos () {
+    getPos() {
       return {left: pos.left, top: pos.top};
     },
-    mount (element) {
+    mount(element) {
       let node = React.findDOMNode(element);
       node.scrollLeft = pos.left;
       node.scrollTop = pos.top;
     },
-    unmount (element) {
+    unmount(element) {
       let node = React.findDOMNode(element);
       pos.left = node.scrollLeft;
       pos.top = node.scrollTop;
@@ -64,21 +66,21 @@ let Container = React.createClass({
   mixins: [ClassNameMixin],
 
   propTypes: {
-    classPrefix: React.PropTypes.string,
-    component: React.PropTypes.node,
-    align: React.PropTypes.oneOf(['end', 'center', 'start']),
-    direction: React.PropTypes.oneOf(['column', 'row']),
-    fill: React.PropTypes.bool,
-    grow: React.PropTypes.bool,
-    justify: React.PropTypes.oneOfType([
-      React.PropTypes.bool,
-      React.PropTypes.oneOf(['end', 'center', 'start'])
+    classPrefix: PropTypes.string,
+    component: PropTypes.node,
+    align: PropTypes.oneOf(['end', 'center', 'start']),
+    direction: PropTypes.oneOf(['column', 'row']),
+    fill: PropTypes.bool,
+    grow: PropTypes.bool,
+    justify: PropTypes.oneOfType([
+      PropTypes.bool,
+      PropTypes.oneOf(['end', 'center', 'start'])
     ]),
-    scrollable: React.PropTypes.oneOfType([
-      React.PropTypes.bool,
-      React.PropTypes.object
+    scrollable: PropTypes.oneOfType([
+      PropTypes.bool,
+      PropTypes.object
     ]),
-    transition: React.PropTypes.string,
+    transition: PropTypes.string,
   },
 
   getDefaultProps() {

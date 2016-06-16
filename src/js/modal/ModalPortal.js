@@ -1,4 +1,7 @@
-import React, {createClass} from 'react';
+import React, {
+  createClass,
+  PropTypes,
+} from 'react';
 import ReactDOM, {
   unmountComponentAtNode,
   unstable_renderSubtreeIntoContainer as renderSubtreeIntoContainer
@@ -12,7 +15,7 @@ const bodyClassName = 'has-modal-open';
 
 const ModalPortal = createClass({
   propTypes: {
-    isOpen: React.PropTypes.bool.isRequired,
+    isOpen: PropTypes.bool.isRequired,
   },
 
   getDefaultProps() {

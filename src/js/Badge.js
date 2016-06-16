@@ -1,4 +1,6 @@
-import React from 'react';
+import React, {
+  PropTypes,
+} from 'react';
 import classNames from 'classnames';
 import ClassNameMixin from './mixins/ClassNameMixin';
 
@@ -6,12 +8,12 @@ const Badge = React.createClass({
   mixins: [ClassNameMixin],
 
   propTypes: {
-    classPrefix: React.PropTypes.string.isRequired,
-    component: React.PropTypes.node.isRequired,
-    href: React.PropTypes.string,
-    amStyle: React.PropTypes.string,
-    // radius: React.PropTypes.bool,
-    rounded: React.PropTypes.bool,
+    classPrefix: PropTypes.string.isRequired,
+    component: PropTypes.node.isRequired,
+    href: PropTypes.string,
+    amStyle: PropTypes.string,
+    // radius: PropTypes.bool,
+    rounded: PropTypes.bool,
   },
 
   getDefaultProps() {

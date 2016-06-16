@@ -37,7 +37,7 @@ const Grid = React.createClass({
 
     // .g-collapse
     classSet[this.prefixClass('collapse')] = collapse;
-    
+
     // .g-wrap
     classSet[this.prefixClass(wrap)] = wrap;
 

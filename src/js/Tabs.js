@@ -1,4 +1,6 @@
-import React from 'react';
+import React, {
+  PropTypes,
+} from 'react';
 import classNames from 'classnames';
 import ClassNameMixin from './mixins/ClassNameMixin';
 import Button from './Button';
@@ -8,9 +10,9 @@ const Tabs = React.createClass({
   mixins: [ClassNameMixin],
 
   propTypes: {
-    classPrefix: React.PropTypes.string,
-    defaultActiveKey: React.PropTypes.any,
-    onAction: React.PropTypes.func,
+    classPrefix: PropTypes.string,
+    defaultActiveKey: PropTypes.any,
+    onAction: PropTypes.func,
   },
 
   getDefaultProps() {
@@ -170,14 +172,14 @@ Tabs.Item = React.createClass({
   mixins: [ClassNameMixin],
 
   propTypes: {
-    classPrefix: React.PropTypes.string,
-    title: React.PropTypes.node,
-    eventKey: React.PropTypes.any,
-    disabled: React.PropTypes.bool,
-    active: React.PropTypes.bool,
-    noPadded: React.PropTypes.bool,
-    navSize: React.PropTypes.string,
-    navStyle: React.PropTypes.string,
+    classPrefix: PropTypes.string,
+    title: PropTypes.node,
+    eventKey: PropTypes.any,
+    disabled: PropTypes.bool,
+    active: PropTypes.bool,
+    noPadded: PropTypes.bool,
+    navSize: PropTypes.string,
+    navStyle: PropTypes.string,
   },
 
   getDefaultProps() {

@@ -1,4 +1,6 @@
-import React from 'react';
+import React, {
+  PropTypes,
+} from 'react';
 import classNames from 'classnames';
 import ClassNameMixin from './mixins/ClassNameMixin';
 import BackdropMixin from './mixins/BackdropMixin';
@@ -7,14 +9,14 @@ const Popover = React.createClass({
   mixins: [ClassNameMixin, BackdropMixin],
 
   propTypes: {
-    classPrefix: React.PropTypes.string,
-    placement: React.PropTypes.oneOf(['top', 'bottom', 'horizontal']),
-    positionLeft: React.PropTypes.number,
-    positionTop: React.PropTypes.number,
-    angleLeft: React.PropTypes.number,
-    angleTop: React.PropTypes.number,
-    anglePosition: React.PropTypes.string,
-    onDismiss: React.PropTypes.func,
+    classPrefix: PropTypes.string,
+    placement: PropTypes.oneOf(['top', 'bottom', 'horizontal']),
+    positionLeft: PropTypes.number,
+    positionTop: PropTypes.number,
+    angleLeft: PropTypes.number,
+    angleTop: PropTypes.number,
+    anglePosition: PropTypes.string,
+    onDismiss: PropTypes.func,
   },
 
   getDefaultProps() {

@@ -1,4 +1,6 @@
-import React from 'react';
+import React, {
+  PropTypes,
+} from 'react';
 import classNames from 'classnames';
 import ClassNameMixin from './mixins/ClassNameMixin';
 import Icon from './Icon';
@@ -7,8 +9,8 @@ const List = React.createClass({
   mixins: [ClassNameMixin],
 
   propTypes: {
-    classPrefix: React.PropTypes.string.isRequired,
-    inset: React.PropTypes.bool,
+    classPrefix: PropTypes.string.isRequired,
+    inset: PropTypes.bool,
   },
 
   getDefaultProps() {
@@ -42,18 +44,18 @@ List.Item = React.createClass({
   mixins: [ClassNameMixin],
 
   propTypes: {
-    classPrefix: React.PropTypes.string.isRequired,
-    role: React.PropTypes.oneOf(['header', 'item']),
-    title: React.PropTypes.string,
-    subTitle: React.PropTypes.string,
-    href: React.PropTypes.string,
-    linked: React.PropTypes.bool, // linked flag for custom href like route Link
-    linkComponent: React.PropTypes.any,
-    linkProps: React.PropTypes.object,
-    media: React.PropTypes.node,
-    after: React.PropTypes.node,
-    desc: React.PropTypes.node,
-    nested: React.PropTypes.oneOf(['input', 'radio', 'checkbox']), // nested field
+    classPrefix: PropTypes.string.isRequired,
+    role: PropTypes.oneOf(['header', 'item']),
+    title: PropTypes.string,
+    subTitle: PropTypes.string,
+    href: PropTypes.string,
+    linked: PropTypes.bool, // linked flag for custom href like route Link
+    linkComponent: PropTypes.any,
+    linkProps: PropTypes.object,
+    media: PropTypes.node,
+    after: PropTypes.node,
+    desc: PropTypes.node,
+    nested: PropTypes.oneOf(['input', 'radio', 'checkbox']), // nested field
   },
 
   getDefaultProps() {

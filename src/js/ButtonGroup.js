@@ -1,4 +1,7 @@
-import React, {cloneElement} from 'react';
+import React, {
+  cloneElement,
+  PropTypes,
+} from 'react';
 import classNames from 'classnames';
 import ClassNameMixin from './mixins/ClassNameMixin';
 
@@ -6,12 +9,12 @@ const ButtonGroup = React.createClass({
   mixins: [ClassNameMixin],
 
   propTypes: {
-    classPrefix: React.PropTypes.string.isRequired,
-    amStyle: React.PropTypes.string,
-    amSize: React.PropTypes.string,
-    hollow: React.PropTypes.bool,
-    justify: React.PropTypes.bool,
-    stacked: React.PropTypes.bool,
+    classPrefix: PropTypes.string.isRequired,
+    amStyle: PropTypes.string,
+    amSize: PropTypes.string,
+    hollow: PropTypes.bool,
+    justify: PropTypes.bool,
+    stacked: PropTypes.bool,
   },
 
   getDefaultProps() {

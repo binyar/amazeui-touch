@@ -2,7 +2,9 @@
  * @see https://github.com/react-bootstrap/react-bootstrap/blob/master/src/Carousel.js
  */
 
-import React from 'react';
+import React, {
+  PropTypes,
+} from 'react';
 import ReactDOM from 'react-dom';
 import classNames from 'classnames';
 import ClassNameMixin from './mixins/ClassNameMixin';
@@ -14,26 +16,26 @@ const Slider = React.createClass({
   mixins: [ClassNameMixin],
 
   propTypes: {
-    classPrefix: React.PropTypes.string,
+    classPrefix: PropTypes.string,
 
-    controls: React.PropTypes.bool,   // prev/next icon
-    pager: React.PropTypes.bool,      // indicators or thumbs
+    controls: PropTypes.bool,   // prev/next icon
+    pager: PropTypes.bool,      // indicators or thumbs
 
-    slide: React.PropTypes.bool,      // what is this?
-    interval: React.PropTypes.number, // interval
-    autoPlay: React.PropTypes.bool,
-    loop: React.PropTypes.bool,       // loop slide
+    slide: PropTypes.bool,      // what is this?
+    interval: PropTypes.number, // interval
+    autoPlay: PropTypes.bool,
+    loop: PropTypes.bool,       // loop slide
 
-    pauseOnHover: React.PropTypes.bool,
-    // touch: React.PropTypes.bool,
+    pauseOnHover: PropTypes.bool,
+    // touch: PropTypes.bool,
 
-    onAction: React.PropTypes.func,
-    onSlideEnd: React.PropTypes.func,
-    activeIndex: React.PropTypes.number,
-    defaultActiveIndex: React.PropTypes.number,
-    direction: React.PropTypes.oneOf(['prev', 'next']),
-    prevIcon: React.PropTypes.node,
-    nextIcon: React.PropTypes.node,
+    onAction: PropTypes.func,
+    onSlideEnd: PropTypes.func,
+    activeIndex: PropTypes.number,
+    defaultActiveIndex: PropTypes.number,
+    direction: PropTypes.oneOf(['prev', 'next']),
+    prevIcon: PropTypes.node,
+    nextIcon: PropTypes.node,
   },
 
   getDefaultProps() {
@@ -319,14 +321,14 @@ const Slider = React.createClass({
 
 Slider.Item = React.createClass({
   propTypes: {
-    direction: React.PropTypes.oneOf(['prev', 'next']),
-    onAnimateOutEnd: React.PropTypes.func,
-    active: React.PropTypes.bool,
-    animateIn: React.PropTypes.bool,
-    animateOut: React.PropTypes.bool,
-    caption: React.PropTypes.node,
-    index: React.PropTypes.number,
-    thumbnail: React.PropTypes.string,
+    direction: PropTypes.oneOf(['prev', 'next']),
+    onAnimateOutEnd: PropTypes.func,
+    active: PropTypes.bool,
+    animateIn: PropTypes.bool,
+    animateOut: PropTypes.bool,
+    caption: PropTypes.node,
+    index: PropTypes.number,
+    thumbnail: PropTypes.string,
   },
 
   getInitialState() {

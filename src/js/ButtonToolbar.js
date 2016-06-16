@@ -1,4 +1,7 @@
-import React, {cloneElement} from 'react';
+import React, {
+  cloneElement,
+  PropTypes,
+} from 'react';
 import classNames from 'classnames';
 import ClassNameMixin from './mixins/ClassNameMixin';
 
@@ -6,7 +9,7 @@ const ButtonToolbar = React.createClass({
   mixins: [ClassNameMixin],
 
   propTypes: {
-    classPrefix: React.PropTypes.string.isRequired,
+    classPrefix: PropTypes.string.isRequired,
   },
 
   getDefaultProps() {

@@ -1,4 +1,6 @@
-import React from 'react';
+import React, {
+  PropTypes,
+} from 'react';
 import classNames from 'classnames';
 import ClassNameMixin from './mixins/ClassNameMixin';
 import Button from './Button';
@@ -8,13 +10,13 @@ const Field = React.createClass({
   mixins: [ClassNameMixin],
 
   propTypes: {
-    classPrefix: React.PropTypes.string.isRequired,
-    type: React.PropTypes.string,
-    label: React.PropTypes.node,
-    btnBefore: React.PropTypes.node,
-    btnAfter: React.PropTypes.node,
-    labelBefore: React.PropTypes.node,
-    labelAfter: React.PropTypes.node,
+    classPrefix: PropTypes.string.isRequired,
+    type: PropTypes.string,
+    label: PropTypes.node,
+    btnBefore: PropTypes.node,
+    btnAfter: PropTypes.node,
+    labelBefore: PropTypes.node,
+    labelAfter: PropTypes.node,
   },
 
   getDefaultProps() {
