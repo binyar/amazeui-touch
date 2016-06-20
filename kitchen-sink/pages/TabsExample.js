@@ -3,6 +3,7 @@ import {
   Container,
   Tabs,
   Card,
+  Button,
 } from 'amazeui-touch';
 
 const albums = [
@@ -29,11 +30,39 @@ const albums = [
 ];
 
 const TabsExample = React.createClass({
+  getInitialState() {
+    return {
+      activeTab: 2,
+    };
+  },
+
+  handleAction(key) {
+    this.setState({
+      activeTab: key
+    });
+  },
+
+  changeTab(e) {
+    e.preventDefault();
+
+    if (this.state.activeTab !== 1) {
+      this.setState({
+        activeTab: 1,
+      });
+    } else {
+      console.warn('已经激活第二个 Tab 了!');
+    }
+  },
+
   render() {
     return (
       <Container {...this.props}>
         <h3>Default</h3>
-        <Tabs defaultActiveKey={1}>
+
+        <Tabs
+          activeKey={this.state.activeTab}
+          onAction={this.handleAction}
+        >
           {albums.map((ablum, i) => {
             return (
               <Tabs.Item
@@ -46,6 +75,15 @@ const TabsExample = React.createClass({
             )
           })}
         </Tabs>
+        <div className="padding">
+          <Button
+            amStyle="primary"
+            amSize="sm"
+            onClick={this.changeTab}
+          >
+            切换到第二个 Tab
+          </Button>
+        </div>
 
         <h3>Inset</h3>
         <Tabs inset>

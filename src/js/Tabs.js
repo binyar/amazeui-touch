@@ -11,6 +11,7 @@ const Tabs = React.createClass({
 
   propTypes: {
     classPrefix: PropTypes.string,
+    activeKey: PropTypes.any,
     defaultActiveKey: PropTypes.any,
     onAction: PropTypes.func,
   },
@@ -22,27 +23,30 @@ const Tabs = React.createClass({
   },
 
   getInitialState() {
-    let defaultActiveKey = this.props.defaultActiveKey != null ?
-      this.props.defaultActiveKey :
-      this.getDefaultActiveKey(this.props.children);
-
     return {
-      activeKey: defaultActiveKey,
+      activeKey: this.getDefaultActiveKey(),
       previousActiveKey: null
     };
   },
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.activeKey != null &&
-      nextProps.activeKey !== this.props.activeKey) {
+    let nextActiveKey = nextProps.activeKey;
+
+    // update controlled Tabs' state
+    if (nextActiveKey != null && nextActiveKey !== this.props.activeKey) {
       this.setState({
+        activeKey: nextActiveKey,
         previousActiveKey: this.props.activeKey
       });
     }
   },
 
   getDefaultActiveKey(children) {
-    let defaultActiveKey = null;
+    let defaultActiveKey = this.props.defaultActiveKey;
+
+    if (defaultActiveKey != null) {
+      return defaultActiveKey;
+    }
 
     React.Children.forEach(children, function(child) {
       if (defaultActiveKey == null) {
@@ -50,7 +54,12 @@ const Tabs = React.createClass({
       }
     });
 
-    return defaultActiveKey !== undefined ? defaultActiveKey : 0;
+    return defaultActiveKey != null ? defaultActiveKey : 0;
+  },
+
+  getActiveKey() {
+    return this.props.activeKey != null ?
+      this.props.activeKey : this.state.activeKey;
   },
 
   handleClick(key, disabled, e) {
@@ -58,14 +67,15 @@ const Tabs = React.createClass({
     let activeKey = this.state.activeKey;
 
     if (disabled) {
-      return null;
+      return;
     }
 
     if (this.props.onAction) {
       this.props.onAction(key);
     }
 
-    if (activeKey !== key) {
+    // uncontrolled
+    if (this.props.activeKey == null && activeKey !== key) {
       this.setState({
         activeKey: key,
         previousActiveKey: activeKey
@@ -74,7 +84,7 @@ const Tabs = React.createClass({
   },
 
   renderNav() {
-    let activeKey = this.state.activeKey;
+    let activeKey = this.getActiveKey();
 
     let navs = React.Children.map(this.props.children, (child, index) => {
       let {
@@ -116,7 +126,7 @@ const Tabs = React.createClass({
   },
 
   renderTabPanels() {
-    let activeKey = this.state.activeKey;
+    let activeKey = this.getActiveKey();
     let panels = React.Children.map(this.props.children, (child, index) => {
       let {
         eventKey,
