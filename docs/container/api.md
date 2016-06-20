@@ -41,7 +41,9 @@ Flex box 方向，设置该属性后，容器会应用 `display: flex` 样式。
 
 > PropType: `string`
 
-转场动画名称。内置的动画效果：
+转场动画名称，**如不设置则没有转场动画**。
+
+内置的动画效果包括：
 
 - `sfl`: show from left
 - `sfr`: show from right
