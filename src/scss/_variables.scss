@@ -261,10 +261,24 @@ $group-header-color: #6d6d72 !default;
 $group-header-font-size: $font-size-sm !default;
 
 
-  // Icon Variables
+// Icon Variables
 // -----------------------------------------------------------------------------
-$icon-prefix: #{$namespace}icon;
-$icon-path: 'fonts/';
+// font list: (font-family, font-weight, font-style, src)
+$icon-prefix: #{$namespace}icon !default;
+$ratchicons-path: 'fonts/';
+$icon-fonts: (
+  Ratchicons: (
+    weight: normal,
+    style: normal,
+    src: unquote(
+        'url("#{$ratchicons-path}ratchicons.woff") format("woff"),
+        url("#{$ratchicons-path}ratchicons.ttf") format("truetype"),
+        url("#{$ratchicons-path}ratchicons.svg#svgFontName") format("svg");'
+    )
+  ),
+) !default;
+// $icon-font-family: Ratchicons, sans-serif !default;
+$icon-font-size: 24px !default;
 $icons: (
   back: \e80a,
   bars: \e80e,

@@ -6,19 +6,24 @@
 
 // Output
 // -----------------------------------------------------------------------------
-@font-face {
-  font-family: Ratchicons;
-  font-weight: normal;
-  font-style: normal;
-  src: url('#{$icon-path}ratchicons.woff') format('woff'),
-  url('#{$icon-path}ratchicons.ttf') format('truetype'),
-  url('#{$icon-path}ratchicons.svg#svgFontName') format('svg');
+@each $family, $map in $icon-fonts {
+  @font-face {
+    font-family: $family;
+    font-weight: map_get($map, weight);
+    font-style: map_get($map, style);
+    src: map_get($map, src);
+  }
 }
 
 %font-icon {
+  $font-family: '';
+  @each $family, $map in $icon-fonts {
+    $font-family: unquote('#{$font-family}#{$family}, ');
+  }
+
   display: inline-block;
-  font-family: Ratchicons, sans-serif;
-  font-size: 24px;
+  font-family: unquote('#{$font-family}sans-serif');
+  font-size: $icon-font-size;
   line-height: 1;
   text-decoration: none;
   -webkit-font-smoothing: antialiased;
