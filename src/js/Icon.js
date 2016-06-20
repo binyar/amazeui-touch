@@ -29,11 +29,10 @@ const Icon = React.createClass({
     let {
       component: Component,
       className,
-      href,
       name,
       ...props
     } = this.props;
-    Component = href ? 'a' : Component;
+    Component = props.href ? 'a' : Component;
 
     // icon-[iconName]
     classSet[this.prefixClass(name)] = true;
