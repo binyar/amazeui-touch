@@ -1,5 +1,8 @@
 import React from 'react';
 import {
+  Link,
+} from 'react-router';
+import {
   Container,
   Group,
   Grid,
@@ -173,6 +176,14 @@ const GridExample = React.createClass({
             <Col cols={2}>cols: 2</Col>
             <Col cols={2}>cols: 2</Col>
           </Grid>
+        </Group>
+
+        <h2>网格边框</h2>
+        <Group
+          header="bordered 属性"
+        >
+          <p>在 Grid 上添加 <code>bordered</code> 结合 <code>avg</code> 属性可以实现九宫格效果。</p>
+          <p><Link to="/icon">九宫格演示</Link></p>
         </Group>
       </Container>
     );

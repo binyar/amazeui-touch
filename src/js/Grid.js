@@ -14,6 +14,7 @@ const Grid = React.createClass({
     avg: PropTypes.number,
     align: PropTypes.oneOf(['right', 'center', 'between', 'around']),
     wrap: PropTypes.oneOf(['wrap', 'wrap-reverse']),
+    bordered: PropTypes.bool,
   },
 
   getDefaultProps() {
@@ -28,6 +29,7 @@ const Grid = React.createClass({
     let {
       component: Component,
       collapse,
+      bordered,
       className,
       avg,
       align,
@@ -37,6 +39,9 @@ const Grid = React.createClass({
 
     // .g-collapse
     classSet[this.prefixClass('collapse')] = collapse;
+
+    // .g-bordered
+    classSet[this.prefixClass('bordered')] = bordered;
 
     // .g-wrap
     classSet[this.prefixClass(wrap)] = wrap;

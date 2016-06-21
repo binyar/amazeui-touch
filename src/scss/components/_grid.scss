@@ -1,6 +1,8 @@
 // Amaze UI Mobile: Grid
 // =============================================================================
 
+$avg-col-selectors: '> .#{$col-prefix}, > li, > div';
+
 // Mixins
 // -----------------------------------------------------------------------------
 
@@ -59,19 +61,39 @@
   }
 }
 
-// average children
-@mixin grid-average($cols) {
+// average grid base
+@mixin grid-average-base() {
   flex-wrap: wrap;
   overflow: visible;
   list-style: none;
 
+  > .#{$col-prefix},
   > li,
   > div {
-    padding: 0 $grid-padding $grid-padding;
+    padding: $grid-padding;
+
+    // FUCK Android UC
+    // AVG Grid flex-wrap fallback
+    .#{$legacy-android-uc} & {
+      display: inline-block;
+    }
+  }
+}
+
+// average cols
+@mixin grid-average($cols) {
+  #{$avg-col-selectors} {
+    // padding: 0 $grid-padding $grid-padding;
     flex: 0 0 percentage(1 / $cols);
     max-width: percentage(1 / $cols);
 
     @include flex-basis-fallback(percentage(1 / $cols));
+  }
+
+  &.#{$grid-prefix}-bordered #{$avg-col-selectors} {
+    &:nth-of-type(#{$cols}n) {
+      @include retina-line-remove(before);
+    }
   }
 }
 //@see https://css-tricks.com/filling-space-last-row-flexbox/
@@ -97,6 +119,10 @@
       @include grid-collapse();
     }
   }
+}
+
+[class*="#{$grid-prefix}-avg-"] {
+  @include grid-average-base();
 }
 
 // grid modifiers: flex container wrap
@@ -130,29 +156,42 @@
     @include grid-offset($i);
   }
 
-  // average children
-  .#{$grid-prefix}-avg-#{$i} {
-    @include grid-average($i);
-  }
-
   // flex child order
   .#{$namespace}order-#{$i} {
     @include grid-order($i);
   }
-}
 
-// FUCK Android UC
-// AVG Grid flex-wrap fallback
-.#{$legacy-android-uc} {
-  [class*="#{$grid-prefix}-avg-"] {
-    > li,
-    > div {
-      display: inline-block;
-    }
+  // average children
+  .#{$grid-prefix}-avg-#{$i} {
+    @include grid-average($i);
   }
 }
 
 // modifier: col shrink
 .#{$col-prefix}-shrink {
   @include grid-size(shrink);
+}
+
+// modifier: g-bordered
+// -----------------------------------------------------------------------------
+%retina-line-top-before {
+  @include retina-line(top, before);
+}
+
+%retina-line-bottom-after {
+  @include retina-line(bottom, after);
+}
+
+%retina-line-right-before {
+  @include retina-line(right, before);
+}
+
+.#{$grid-prefix}-bordered {
+  @extend %retina-line-top-before;
+  // @extend %retina-line-bottom-after;
+
+  > .#{$col-prefix} {
+    @extend %retina-line-bottom-after;
+    @extend %retina-line-right-before;
+  }
 }

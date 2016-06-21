@@ -94,52 +94,104 @@
 }
 
 
-// Retina borders
+// Retina hairline
 // @see https://gist.github.com/w0rm/c0dd4b7aed71acc03900
 // @see http://dieulot.net/css-retina-hairline
 // -----------------------------------------------------------------------------
-@mixin retina-border-top($color: #c4c4c4) {
-  position: relative;
+$rl-pseudo-element: (
+  top: before,
+  right: after,
+  bottom: after,
+  left: before,
+);
 
-  &::before {
-    content: "";
-    top: 0;
-    left: 0;
-    position: absolute;
-    display: block;
+@mixin rl-get-size($position) {
+  @if ($position == top or $position == bottom) {
     @include size(100%, 1px);
-    background-color: $color;
-  }
-
-  // simulate a 1px border on retina screens
-  @media (-webkit-min-device-pixel-ratio: 2) {
-    &::before {
-      transform: scaleY(0.5);
-      transform-origin: 50% 0;
-    }
+  } @else {
+    @include size(1px, 100%);
   }
 }
 
-@mixin retina-border-bottom($color: #c4c4c4) {
+// simulate a 1px border on retina screens
+%retina-line-v-scale {
+  @media (-webkit-min-device-pixel-ratio: 2) {
+    transform: scaleY(0.5);
+  }
+  @media (-webkit-min-device-pixel-ratio: 3) {
+    transform: scaleY(.33);
+  }
+}
+
+%retina-line-h-scale {
+  @media (-webkit-min-device-pixel-ratio: 2) {
+    transform: scaleX(0.5);
+  }
+  @media (-webkit-min-device-pixel-ratio: 3) {
+    transform: scaleX(.33);
+  }
+}
+
+@mixin rl-get-scale($position) {
+  @if ($position == top or $position == bottom) {
+    @extend %retina-line-v-scale;
+  } @else {
+    @extend %retina-line-h-scale;
+  }
+}
+
+// @param {top|right|bottom|left} $position - line position
+// @param {before|after} $element - pseudo element
+// @param {String} $color - border color
+@mixin retina-line($position: top, $element: before, $color: #d9d9d9) {
+  $transform-origin-map: (
+    top: 50% 0,
+    right: 100% 50%,
+    bottom: 50% 100%,
+    left: 0 50%,
+  );
+
   position: relative;
 
-  &::after {
+  &:#{$element} {
     content: "";
-    bottom: 0;
-    left: 0;
     position: absolute;
-    display: block;
-    @include size(100%, 1px);
-    background-color: $color;
-    backface-visibility: hidden;
-  }
 
-  // simulate a 1px border on retina screens
-  @media (-webkit-min-device-pixel-ratio: 2) {
-    &::after {
-      transform: scaleY(0.5);
-      transform-origin: 50% 100%;
+    @if ($position == top or $position == left) {
+      top: 0;
+      left: 0;
+      bottom: auto;
+      right: auto;
+    } @else if ($position == right) {
+      top: 0;
+      right: 0;
+      bottom: auto;
+      left: auto;
+    } @else if ($position == bottom) {
+      top: auto;
+      right: auto;
+      bottom: 0;
+      left: 0;
     }
+
+    z-index: 15;
+    display: block;
+    background-color: $color;
+    @include rl-get-size($position);
+    transform-origin: map_get($transform-origin-map, $position);
+    @include rl-get-scale($position);
+  }
+}
+
+@mixin retina-line-color($element, $color) {
+  &:#{$element} {
+    background-color: $color;
+  }
+}
+
+@mixin retina-line-remove($element) {
+  &:#{$element} {
+    display: none;
   }
 }
 

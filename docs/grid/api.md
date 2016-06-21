@@ -34,6 +34,12 @@
 
 行中列宽度总和不足 6 时的对齐方式，不同值的含义参见 [justify-content](https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content)。
 
+##### `bordered`
+
+> PropType: `bool`
+
+网格是否显示边框，边框可用于制作九宫格效果。
+
 
 ### Col
 
