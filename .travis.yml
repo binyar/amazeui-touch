@@ -10,7 +10,7 @@ node_js:
 env:
   global:
     - NODE_ENV=travisci
-  - CXX=g++-4.8
+    - CXX=g++-4.8
 
 before_script:
   - npm install -g gulp
