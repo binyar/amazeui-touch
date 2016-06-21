@@ -1,6 +1,6 @@
-/** Amaze UI Touch v1.0.0-beta.3 | by Amaze UI Team
+/** Amaze UI Touch v1.0.0-beta.4 | by Amaze UI Team
   * (c) 2016 AllMobilize, Inc., Licensed under MIT
-  * 2016-06-01T15:39:45+0800
+  * 2016-06-21T16:53:03+0800
   */
   (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -63,7 +63,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.View = exports.Touchable = exports.Tabs = exports.TabBar = exports.Switch = exports.Slider = exports.PopoverTrigger = exports.Popover = exports.OffCanvasTrigger = exports.OffCanvas = exports.Notification = exports.NavBar = exports.Modal = exports.Loader = exports.List = exports.Field = exports.Icon = exports.Card = exports.ButtonToolbar = exports.ButtonGroup = exports.Button = exports.Badge = exports.Accordion = exports.Group = exports.Col = exports.Grid = exports.Container = exports.VERSION = undefined;
 
 	var _Container = __webpack_require__(1);
 
@@ -320,22 +319,26 @@ return /******/ (function(modules) { // webpackBootstrap
 	  });
 	});
 
-	__webpack_require__(48);
+	var _fallback = __webpack_require__(48);
+
+	Object.defineProperty(exports, 'fallback', {
+	  enumerable: true,
+	  get: function get() {
+	    return _interopRequireDefault(_fallback).default;
+	  }
+	});
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	// @see http://jamesknelson.com/re-exporting-es6-modules/
 	// @see http://exploringjs.com/es6/ch_modules.html#sec_all-exporting-styles
 
-	var VERSION = exports.VERSION = '1.0.0-beta.3';
+	var VERSION = exports.VERSION = '1.0.0-beta.4';
 
 	// Layout
 
 
 	// Mixins
-
-
-	// Compatibility fallback
 
 /***/ },
 /* 1 */
@@ -432,15 +435,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	  mixins: [_ClassNameMixin2.default],
 
 	  propTypes: {
-	    classPrefix: _react2.default.PropTypes.string,
-	    component: _react2.default.PropTypes.node,
-	    align: _react2.default.PropTypes.oneOf(['end', 'center', 'start']),
-	    direction: _react2.default.PropTypes.oneOf(['column', 'row']),
-	    fill: _react2.default.PropTypes.bool,
-	    grow: _react2.default.PropTypes.bool,
-	    justify: _react2.default.PropTypes.oneOfType([_react2.default.PropTypes.bool, _react2.default.PropTypes.oneOf(['end', 'center', 'start'])]),
-	    scrollable: _react2.default.PropTypes.oneOfType([_react2.default.PropTypes.bool, _react2.default.PropTypes.object]),
-	    transition: _react2.default.PropTypes.string
+	    classPrefix: _react.PropTypes.string,
+	    component: _react.PropTypes.node,
+	    align: _react.PropTypes.oneOf(['end', 'center', 'start']),
+	    direction: _react.PropTypes.oneOf(['column', 'row']),
+	    fill: _react.PropTypes.bool,
+	    grow: _react.PropTypes.bool,
+	    justify: _react.PropTypes.oneOfType([_react.PropTypes.bool, _react.PropTypes.oneOf(['end', 'center', 'start'])]),
+	    scrollable: _react.PropTypes.oneOfType([_react.PropTypes.bool, _react.PropTypes.object]),
+	    transition: _react.PropTypes.string
 	  },
 
 	  getDefaultProps: function getDefaultProps() {
@@ -735,7 +738,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	    collapse: _react.PropTypes.bool,
 	    avg: _react.PropTypes.number,
 	    align: _react.PropTypes.oneOf(['right', 'center', 'between', 'around']),
-	    wrap: _react.PropTypes.oneOf(['wrap', 'wrap-reverse'])
+	    wrap: _react.PropTypes.oneOf(['wrap', 'wrap-reverse']),
+	    bordered: _react.PropTypes.bool
 	  },
 
 	  getDefaultProps: function getDefaultProps() {
@@ -751,17 +755,21 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var _props = this.props;
 	    var Component = _props.component;
 	    var collapse = _props.collapse;
+	    var bordered = _props.bordered;
 	    var className = _props.className;
 	    var avg = _props.avg;
 	    var align = _props.align;
 	    var wrap = _props.wrap;
 
-	    var props = _objectWithoutProperties(_props, ['component', 'collapse', 'className', 'avg', 'align', 'wrap']);
+	    var props = _objectWithoutProperties(_props, ['component', 'collapse', 'bordered', 'className', 'avg', 'align', 'wrap']);
 
 	    // .g-collapse
 
 
 	    classSet[this.prefixClass('collapse')] = collapse;
+
+	    // .g-bordered
+	    classSet[this.prefixClass('bordered')] = bordered;
 
 	    // .g-wrap
 	    classSet[this.prefixClass(wrap)] = wrap;
@@ -820,11 +828,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	  mixins: [_ClassNameMixin2.default],
 
 	  propTypes: {
-	    classPrefix: _react2.default.PropTypes.string.isRequired,
-	    component: _react2.default.PropTypes.node.isRequired,
-	    cols: _react2.default.PropTypes.number,
-	    offset: _react2.default.PropTypes.number,
-	    shrink: _react2.default.PropTypes.bool
+	    classPrefix: _react.PropTypes.string.isRequired,
+	    component: _react.PropTypes.node.isRequired,
+	    cols: _react.PropTypes.number,
+	    offset: _react.PropTypes.number,
+	    shrink: _react.PropTypes.bool
 	  },
 
 	  getDefaultProps: function getDefaultProps() {
@@ -903,11 +911,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	  mixins: [_ClassNameMixin2.default],
 
 	  propTypes: {
-	    classPrefix: _react2.default.PropTypes.string.isRequired,
-	    component: _react2.default.PropTypes.node.isRequired,
-	    header: _react2.default.PropTypes.node,
-	    footer: _react2.default.PropTypes.node,
-	    noPadded: _react2.default.PropTypes.bool
+	    classPrefix: _react.PropTypes.string.isRequired,
+	    component: _react.PropTypes.node.isRequired,
+	    header: _react.PropTypes.node,
+	    footer: _react.PropTypes.node,
+	    noPadded: _react.PropTypes.bool
 	  },
 
 	  getDefaultProps: function getDefaultProps() {
@@ -933,6 +941,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var props = _objectWithoutProperties(_props, ['component', 'className', 'header', 'footer', 'noPadded']);
 
 	    var classSet = this.getClassSet();
+
 	    classSet[this.prefixClass('no-padded')] = noPadded;
 
 	    var bodyClasses = _defineProperty({}, this.prefixClass('body'), true);
@@ -995,11 +1004,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	  mixins: [_ClassNameMixin2.default],
 
 	  propTypes: {
-	    classPrefix: _react2.default.PropTypes.string,
-	    activeKey: _react2.default.PropTypes.any,
-	    defaultActiveKey: _react2.default.PropTypes.any,
-	    inset: _react2.default.PropTypes.bool,
-	    onAction: _react2.default.PropTypes.func
+	    classPrefix: _react.PropTypes.string,
+	    activeKey: _react.PropTypes.any,
+	    defaultActiveKey: _react.PropTypes.any,
+	    inset: _react.PropTypes.bool,
+	    onAction: _react.PropTypes.func
 	  },
 
 	  getDefaultProps: function getDefaultProps() {
@@ -1609,15 +1618,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	  mixins: [_ClassNameMixin2.default],
 
 	  propTypes: {
-	    classPrefix: _react2.default.PropTypes.string.isRequired,
-	    component: _react2.default.PropTypes.node.isRequired,
-	    name: _react2.default.PropTypes.string.isRequired,
-	    href: _react2.default.PropTypes.string
+	    classPrefix: _react.PropTypes.string.isRequired,
+	    component: _react.PropTypes.node.isRequired,
+	    name: _react.PropTypes.string.isRequired,
+	    href: _react.PropTypes.string
 	  },
 
-	  // amStyle: React.PropTypes.string,
-	  // button: React.PropTypes.bool,
-	  // size: React.PropTypes.string,
+	  // amStyle: PropTypes.string,
+	  // button: PropTypes.bool,
+	  // size: PropTypes.string,
 	  getDefaultProps: function getDefaultProps() {
 	    return {
 	      classPrefix: 'icon',
@@ -1629,12 +1638,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var _props = this.props;
 	    var Component = _props.component;
 	    var className = _props.className;
-	    var href = _props.href;
 	    var name = _props.name;
 
-	    var props = _objectWithoutProperties(_props, ['component', 'className', 'href', 'name']);
+	    var props = _objectWithoutProperties(_props, ['component', 'className', 'name']);
 
-	    Component = href ? 'a' : Component;
+	    Component = props.href ? 'a' : Component;
 
 	    // icon-[iconName]
 	    classSet[this.prefixClass(name)] = true;
@@ -1685,12 +1693,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	  mixins: [_ClassNameMixin2.default],
 
 	  propTypes: {
-	    classPrefix: _react2.default.PropTypes.string.isRequired,
-	    component: _react2.default.PropTypes.node.isRequired,
-	    href: _react2.default.PropTypes.string,
-	    amStyle: _react2.default.PropTypes.string,
-	    // radius: React.PropTypes.bool,
-	    rounded: _react2.default.PropTypes.bool
+	    classPrefix: _react.PropTypes.string.isRequired,
+	    component: _react.PropTypes.node.isRequired,
+	    href: _react.PropTypes.string,
+	    amStyle: _react.PropTypes.string,
+	    // radius: PropTypes.bool,
+	    rounded: _react.PropTypes.bool
 	  },
 
 	  getDefaultProps: function getDefaultProps() {
@@ -1756,20 +1764,20 @@ return /******/ (function(modules) { // webpackBootstrap
 	  mixins: [_ClassNameMixin2.default],
 
 	  propTypes: {
-	    classPrefix: _react2.default.PropTypes.string.isRequired,
-	    component: _react2.default.PropTypes.node,
-	    href: _react2.default.PropTypes.string,
-	    target: _react2.default.PropTypes.string,
-	    amStyle: _react2.default.PropTypes.string,
-	    amSize: _react2.default.PropTypes.string,
-	    hollow: _react2.default.PropTypes.bool,
-	    block: _react2.default.PropTypes.bool,
-	    active: _react2.default.PropTypes.bool,
-	    disabled: _react2.default.PropTypes.bool
+	    classPrefix: _react.PropTypes.string.isRequired,
+	    component: _react.PropTypes.node,
+	    href: _react.PropTypes.string,
+	    target: _react.PropTypes.string,
+	    amStyle: _react.PropTypes.string,
+	    amSize: _react.PropTypes.string,
+	    hollow: _react.PropTypes.bool,
+	    block: _react.PropTypes.bool,
+	    active: _react.PropTypes.bool,
+	    disabled: _react.PropTypes.bool
 	  },
 
-	  // radius: React.PropTypes.bool,
-	  // rounded: React.PropTypes.bool,
+	  // radius: PropTypes.bool,
+	  // rounded: PropTypes.bool,
 	  getDefaultProps: function getDefaultProps() {
 	    return {
 	      classPrefix: 'btn'
@@ -1867,12 +1875,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	  mixins: [_ClassNameMixin2.default],
 
 	  propTypes: {
-	    classPrefix: _react2.default.PropTypes.string.isRequired,
-	    amStyle: _react2.default.PropTypes.string,
-	    amSize: _react2.default.PropTypes.string,
-	    hollow: _react2.default.PropTypes.bool,
-	    justify: _react2.default.PropTypes.bool,
-	    stacked: _react2.default.PropTypes.bool
+	    classPrefix: _react.PropTypes.string.isRequired,
+	    amStyle: _react.PropTypes.string,
+	    amSize: _react.PropTypes.string,
+	    hollow: _react.PropTypes.bool,
+	    justify: _react.PropTypes.bool,
+	    stacked: _react.PropTypes.bool
 	  },
 
 	  getDefaultProps: function getDefaultProps() {
@@ -1945,7 +1953,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  mixins: [_ClassNameMixin2.default],
 
 	  propTypes: {
-	    classPrefix: _react2.default.PropTypes.string.isRequired
+	    classPrefix: _react.PropTypes.string.isRequired
 	  },
 
 	  getDefaultProps: function getDefaultProps() {
@@ -2004,10 +2012,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	  mixins: [_ClassNameMixin2.default],
 
 	  propTypes: {
-	    classPrefix: _react2.default.PropTypes.string.isRequired,
-	    title: _react2.default.PropTypes.string,
-	    header: _react2.default.PropTypes.node,
-	    footer: _react2.default.PropTypes.node
+	    classPrefix: _react.PropTypes.string.isRequired,
+	    title: _react.PropTypes.string,
+	    header: _react.PropTypes.node,
+	    footer: _react.PropTypes.node
 	  },
 
 	  getDefaultProps: function getDefaultProps() {
@@ -2066,9 +2074,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	  mixins: [_ClassNameMixin2.default],
 
 	  propTypes: {
-	    classPrefix: _react2.default.PropTypes.string.isRequired,
-	    role: _react2.default.PropTypes.oneOf(['header', 'footer']),
-	    cover: _react2.default.PropTypes.string
+	    classPrefix: _react.PropTypes.string.isRequired,
+	    role: _react.PropTypes.oneOf(['header', 'footer']),
+	    cover: _react.PropTypes.string
 	  },
 
 	  getDefaultProps: function getDefaultProps() {
@@ -2153,13 +2161,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	  mixins: [_ClassNameMixin2.default],
 
 	  propTypes: {
-	    classPrefix: _react2.default.PropTypes.string.isRequired,
-	    type: _react2.default.PropTypes.string,
-	    label: _react2.default.PropTypes.node,
-	    btnBefore: _react2.default.PropTypes.node,
-	    btnAfter: _react2.default.PropTypes.node,
-	    labelBefore: _react2.default.PropTypes.node,
-	    labelAfter: _react2.default.PropTypes.node
+	    classPrefix: _react.PropTypes.string.isRequired,
+	    type: _react.PropTypes.string,
+	    label: _react.PropTypes.node,
+	    btnBefore: _react.PropTypes.node,
+	    btnAfter: _react.PropTypes.node,
+	    labelBefore: _react.PropTypes.node,
+	    labelAfter: _react.PropTypes.node
 	  },
 
 	  getDefaultProps: function getDefaultProps() {
@@ -2183,9 +2191,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 	  getSelectedOptions: function getSelectedOptions() {
 	    var values = [];
-	    var options = this.getFieldDOMNode().getElementsByTagName('option');
+	    // see http://www.w3schools.com/jsref/coll_select_options.asp
+	    var options = this.getFieldDOMNode().options;
 
-	    options.forEach(function (option) {
+	    Array.from(options).forEach(function (option) {
 	      if (option.selected) {
 	        var value = option.getAttribute('value') || option.innerHtml;
 
@@ -2201,26 +2210,54 @@ return /******/ (function(modules) { // webpackBootstrap
 	  isFile: function isFile() {
 	    return this.props.type === 'file';
 	  },
+
+
+	  // convert `value`/`defaultValue` to `checked`/`defaultChecked` when `type` is `radio`/checkbox``
+	  convertValueToChecked: function convertValueToChecked() {
+	    var _this = this;
+
+	    var checkedProps = {};
+
+	    if (this.isCheckboxOrRadio()) {
+	      (function () {
+	        var propsMap = {
+	          checked: 'value',
+	          defaultChecked: 'defaultValue'
+	        };
+
+	        Object.keys(propsMap).forEach(function (checked) {
+	          var value = propsMap[checked];
+
+	          if (!_this.props[checked] && _this.props[value]) {
+	            checkedProps[checked] = value;
+	          }
+	        });
+	      })();
+	    }
+
+	    return checkedProps;
+	  },
 	  renderField: function renderField() {
 	    var field = null;
 	    var fieldClassName = this.isCheckboxOrRadio() || this.isFile() ? '' : this.getClassSet();
 	    var classes = (0, _classnames2.default)(this.props.className, fieldClassName);
-	    var props = {
+	    var commonProps = {
 	      ref: 'field',
 	      key: 'formField',
 	      className: classes
 	    };
+	    var assignedProps = _extends({}, this.props, commonProps);
 
 	    switch (this.props.type) {
 	      case 'select':
 	        field = _react2.default.createElement(
 	          'select',
-	          _extends({}, this.props, props),
+	          assignedProps,
 	          this.props.children
 	        );
 	        break;
 	      case 'textarea':
-	        field = _react2.default.createElement('textarea', _extends({}, this.props, props));
+	        field = _react2.default.createElement('textarea', assignedProps);
 	        break;
 	      case 'submit':
 	      case 'reset':
@@ -2229,14 +2266,14 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	        var others = _objectWithoutProperties(_props, ['classPrefix']);
 
-	        field = _react2.default.createElement(_Button2.default, _extends({}, props, {
+	        field = _react2.default.createElement(_Button2.default, _extends({}, commonProps, {
 	          className: null
 	        }, others, {
 	          component: 'input'
 	        }));
 	        break;
 	      default:
-	        field = _react2.default.createElement('input', _extends({}, this.props, props));
+	        field = _react2.default.createElement('input', _extends({}, assignedProps, this.convertValueToChecked()));
 	    }
 
 	    return field;
@@ -2262,7 +2299,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    ) : children;
 	  },
 	  renderFieldGroup: function renderFieldGroup(children) {
-	    var _this = this;
+	    var _this2 = this;
 
 	    var groupPrefix = this.setClassNS('field-group');
 	    var labelClassName = groupPrefix + '-label';
@@ -2275,13 +2312,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var props = _objectWithoutProperties(_props2, ['labelBefore', 'labelAfter', 'btnBefore', 'btnAfter']);
 
 	    var renderFiledLabel = function renderFiledLabel(type) {
-	      return _this.props[type] ? _react2.default.createElement(
+	      return _this2.props[type] ? _react2.default.createElement(
 	        'span',
 	        {
 	          className: labelClassName,
 	          key: type
 	        },
-	        _this.props[type]
+	        _this2.props[type]
 	      ) : null;
 	    };
 
@@ -2349,8 +2386,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	  mixins: [_ClassNameMixin2.default],
 
 	  propTypes: {
-	    classPrefix: _react2.default.PropTypes.string.isRequired,
-	    inset: _react2.default.PropTypes.bool
+	    classPrefix: _react.PropTypes.string.isRequired,
+	    inset: _react.PropTypes.bool
 	  },
 
 	  getDefaultProps: function getDefaultProps() {
@@ -2381,18 +2418,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	  mixins: [_ClassNameMixin2.default],
 
 	  propTypes: {
-	    classPrefix: _react2.default.PropTypes.string.isRequired,
-	    role: _react2.default.PropTypes.oneOf(['header', 'item']),
-	    title: _react2.default.PropTypes.string,
-	    subTitle: _react2.default.PropTypes.string,
-	    href: _react2.default.PropTypes.string,
-	    linked: _react2.default.PropTypes.bool, // linked flag for custom href like route Link
-	    linkComponent: _react2.default.PropTypes.any,
-	    linkProps: _react2.default.PropTypes.object,
-	    media: _react2.default.PropTypes.node,
-	    after: _react2.default.PropTypes.node,
-	    desc: _react2.default.PropTypes.node,
-	    nested: _react2.default.PropTypes.oneOf(['input', 'radio', 'checkbox']) },
+	    classPrefix: _react.PropTypes.string.isRequired,
+	    role: _react.PropTypes.oneOf(['header', 'item']),
+	    title: _react.PropTypes.string,
+	    subTitle: _react.PropTypes.string,
+	    href: _react.PropTypes.string,
+	    linked: _react.PropTypes.bool, // linked flag for custom href like route Link
+	    linkComponent: _react.PropTypes.any,
+	    linkProps: _react.PropTypes.object,
+	    media: _react.PropTypes.node,
+	    after: _react.PropTypes.node,
+	    desc: _react.PropTypes.node,
+	    nested: _react.PropTypes.oneOf(['input', 'radio', 'checkbox']) },
 
 	  // nested field
 	  getDefaultProps: function getDefaultProps() {
@@ -2562,10 +2599,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	  mixins: [_ClassNameMixin2.default],
 
 	  propTypes: {
-	    classPrefix: _react2.default.PropTypes.string,
-	    component: _react2.default.PropTypes.node,
-	    amStyle: _react2.default.PropTypes.string,
-	    rounded: _react2.default.PropTypes.bool
+	    classPrefix: _react.PropTypes.string,
+	    component: _react.PropTypes.node,
+	    amStyle: _react.PropTypes.string,
+	    rounded: _react.PropTypes.bool
 	  },
 
 	  getDefaultProps: function getDefaultProps() {
@@ -2649,7 +2686,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var ModalPortal = (0, _react.createClass)({
 	  propTypes: {
-	    isOpen: _react2.default.PropTypes.bool.isRequired
+	    isOpen: _react.PropTypes.bool.isRequired
 	  },
 
 	  getDefaultProps: function getDefaultProps() {
@@ -2993,37 +3030,39 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var confirmText = _props4.confirmText;
 	    var cancelText = _props4.cancelText;
 
+	    (function () {
 
-	    switch (role) {
-	      case 'alert':
-	        buttons = _react2.default.createElement(
-	          'span',
-	          {
-	            key: 'modalBtn',
-	            onClick: this.handleAction.bind(this, null),
-	            className: btnClass
-	          },
-	          confirmText
-	        );
-	        break;
-	      case 'confirm':
-	      case 'prompt':
-	        var cancel = role === 'prompt' ? null : false;
-	        buttons = [cancelText, confirmText].map(function (text, i) {
-	          return _react2.default.createElement(
+	      switch (role) {
+	        case 'alert':
+	          buttons = _react2.default.createElement(
 	            'span',
 	            {
-	              key: 'modalBtn' + i,
-	              onClick: _this.handleAction.bind(_this, i === 0 ? cancel : true),
+	              key: 'modalBtn',
+	              onClick: _this.handleAction.bind(_this, null),
 	              className: btnClass
 	            },
-	            text
+	            confirmText
 	          );
-	        });
-	        break;
-	      default:
-	        buttons = null;
-	    }
+	          break;
+	        case 'confirm':
+	        case 'prompt':
+	          var cancel = role === 'prompt' ? null : false;
+	          buttons = [cancelText, confirmText].map(function (text, i) {
+	            return _react2.default.createElement(
+	              'span',
+	              {
+	                key: 'modalBtn' + i,
+	                onClick: _this.handleAction.bind(_this, i === 0 ? cancel : true),
+	                className: btnClass
+	              },
+	              text
+	            );
+	          });
+	          break;
+	        default:
+	          buttons = null;
+	      }
+	    })();
 
 	    return buttons ? _react2.default.createElement(
 	      'div',
@@ -3213,12 +3252,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	  mixins: [_ClassNameMixin2.default],
 
 	  propTypes: {
-	    classPrefix: _react2.default.PropTypes.string,
-	    title: _react2.default.PropTypes.node,
-	    leftNav: _react2.default.PropTypes.array,
-	    rightNav: _react2.default.PropTypes.array,
-	    titleOnLeft: _react2.default.PropTypes.bool,
-	    onAction: _react2.default.PropTypes.func
+	    classPrefix: _react.PropTypes.string,
+	    title: _react.PropTypes.node,
+	    leftNav: _react.PropTypes.array,
+	    rightNav: _react.PropTypes.array,
+	    titleOnLeft: _react.PropTypes.bool,
+	    onAction: _react.PropTypes.func
 	  },
 
 	  getDefaultProps: function getDefaultProps() {
@@ -3405,13 +3444,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	  mixins: [_ClassNameMixin2.default],
 
 	  propTypes: {
-	    classPrefix: _react2.default.PropTypes.string.isRequired,
-	    title: _react2.default.PropTypes.string,
-	    amStyle: _react2.default.PropTypes.string,
-	    closeBtn: _react2.default.PropTypes.bool,
-	    animated: _react2.default.PropTypes.bool,
-	    visible: _react2.default.PropTypes.bool,
-	    onDismiss: _react2.default.PropTypes.func
+	    classPrefix: _react.PropTypes.string.isRequired,
+	    title: _react.PropTypes.string,
+	    amStyle: _react.PropTypes.string,
+	    closeBtn: _react.PropTypes.bool,
+	    animated: _react.PropTypes.bool,
+	    visible: _react.PropTypes.bool,
+	    onDismiss: _react.PropTypes.func
 	  },
 
 	  getDefaultProps: function getDefaultProps() {
@@ -3479,7 +3518,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  displayName: 'NotificationPortal',
 
 	  propTypes: {
-	    visible: _react2.default.PropTypes.bool.isRequired
+	    visible: _react.PropTypes.bool.isRequired
 	  },
 
 	  getDefaultProps: function getDefaultProps() {
@@ -3492,12 +3531,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	      this.node = document.createElement('div');
 	      this.node.className = '__notification-portal';
 	      body.appendChild(this.node);
-	      this.renderModal(this.props);
+	      this.renderNotification(this.props);
 	    }
 	  },
 	  componentWillReceiveProps: function componentWillReceiveProps(nextProps) {
 	    if (!this.isStatic()) {
-	      this.renderModal(nextProps);
+	      this.renderNotification(nextProps);
 	    }
 	  },
 	  componentWillUnmount: function componentWillUnmount() {
@@ -3509,7 +3548,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  isStatic: function isStatic() {
 	    return this.props.static;
 	  },
-	  renderModal: function renderModal(props) {
+	  renderNotification: function renderNotification(props) {
 	    this.portal = (0, _reactDom.unstable_renderSubtreeIntoContainer)(this, _react2.default.createElement(Notification, props), this.node);
 	  },
 	  render: function render() {
@@ -4027,14 +4066,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	  mixins: [_ClassNameMixin2.default, _BackdropMixin2.default],
 
 	  propTypes: {
-	    classPrefix: _react2.default.PropTypes.string,
-	    placement: _react2.default.PropTypes.oneOf(['top', 'bottom', 'horizontal']),
-	    positionLeft: _react2.default.PropTypes.number,
-	    positionTop: _react2.default.PropTypes.number,
-	    angleLeft: _react2.default.PropTypes.number,
-	    angleTop: _react2.default.PropTypes.number,
-	    anglePosition: _react2.default.PropTypes.string,
-	    onDismiss: _react2.default.PropTypes.func
+	    classPrefix: _react.PropTypes.string,
+	    placement: _react.PropTypes.oneOf(['top', 'bottom', 'horizontal']),
+	    positionLeft: _react.PropTypes.number,
+	    positionTop: _react.PropTypes.number,
+	    angleLeft: _react.PropTypes.number,
+	    angleTop: _react.PropTypes.number,
+	    anglePosition: _react.PropTypes.string,
+	    onDismiss: _react.PropTypes.func
 	  },
 
 	  getDefaultProps: function getDefaultProps() {
@@ -4145,10 +4184,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	  mixins: [_OverlayMixin2.default],
 
 	  propTypes: {
-	    defaultPopoverActive: _react2.default.PropTypes.bool,
-	    popover: _react2.default.PropTypes.node.isRequired,
-	    onOpen: _react2.default.PropTypes.func,
-	    onClosed: _react2.default.PropTypes.func
+	    defaultPopoverActive: _react.PropTypes.bool,
+	    popover: _react.PropTypes.node.isRequired,
+	    onOpen: _react.PropTypes.func,
+	    onClosed: _react.PropTypes.func
 	  },
 
 	  getDefaultProps: function getDefaultProps() {
@@ -4526,26 +4565,26 @@ return /******/ (function(modules) { // webpackBootstrap
 	  mixins: [_ClassNameMixin2.default],
 
 	  propTypes: {
-	    classPrefix: _react2.default.PropTypes.string,
+	    classPrefix: _react.PropTypes.string,
 
-	    controls: _react2.default.PropTypes.bool, // prev/next icon
-	    pager: _react2.default.PropTypes.bool, // indicators or thumbs
+	    controls: _react.PropTypes.bool, // prev/next icon
+	    pager: _react.PropTypes.bool, // indicators or thumbs
 
-	    slide: _react2.default.PropTypes.bool, // what is this?
-	    interval: _react2.default.PropTypes.number, // interval
-	    autoPlay: _react2.default.PropTypes.bool,
-	    loop: _react2.default.PropTypes.bool, // loop slide
+	    slide: _react.PropTypes.bool, // what is this?
+	    interval: _react.PropTypes.number, // interval
+	    autoPlay: _react.PropTypes.bool,
+	    loop: _react.PropTypes.bool, // loop slide
 
-	    pauseOnHover: _react2.default.PropTypes.bool,
-	    // touch: React.PropTypes.bool,
+	    pauseOnHover: _react.PropTypes.bool,
+	    // touch: PropTypes.bool,
 
-	    onAction: _react2.default.PropTypes.func,
-	    onSlideEnd: _react2.default.PropTypes.func,
-	    activeIndex: _react2.default.PropTypes.number,
-	    defaultActiveIndex: _react2.default.PropTypes.number,
-	    direction: _react2.default.PropTypes.oneOf(['prev', 'next']),
-	    prevIcon: _react2.default.PropTypes.node,
-	    nextIcon: _react2.default.PropTypes.node
+	    onAction: _react.PropTypes.func,
+	    onSlideEnd: _react.PropTypes.func,
+	    activeIndex: _react.PropTypes.number,
+	    defaultActiveIndex: _react.PropTypes.number,
+	    direction: _react.PropTypes.oneOf(['prev', 'next']),
+	    prevIcon: _react.PropTypes.node,
+	    nextIcon: _react.PropTypes.node
 	  },
 
 	  getDefaultProps: function getDefaultProps() {
@@ -4818,14 +4857,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	  displayName: 'Item',
 
 	  propTypes: {
-	    direction: _react2.default.PropTypes.oneOf(['prev', 'next']),
-	    onAnimateOutEnd: _react2.default.PropTypes.func,
-	    active: _react2.default.PropTypes.bool,
-	    animateIn: _react2.default.PropTypes.bool,
-	    animateOut: _react2.default.PropTypes.bool,
-	    caption: _react2.default.PropTypes.node,
-	    index: _react2.default.PropTypes.number,
-	    thumbnail: _react2.default.PropTypes.string
+	    direction: _react.PropTypes.oneOf(['prev', 'next']),
+	    onAnimateOutEnd: _react.PropTypes.func,
+	    active: _react.PropTypes.bool,
+	    animateIn: _react.PropTypes.bool,
+	    animateOut: _react.PropTypes.bool,
+	    caption: _react.PropTypes.node,
+	    index: _react.PropTypes.number,
+	    thumbnail: _react.PropTypes.string
 	  },
 
 	  getInitialState: function getInitialState() {
@@ -4948,7 +4987,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  mixins: [_TouchableMixin2.default],
 
 	  propTypes: {
-	    component: _react2.default.PropTypes.any
+	    component: _react.PropTypes.any
 	  },
 
 	  getDefaultProps: function getDefaultProps() {
@@ -5604,9 +5643,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	  mixins: [_ClassNameMixin2.default],
 
 	  propTypes: {
-	    classPrefix: _react2.default.PropTypes.string,
-	    defaultActiveKey: _react2.default.PropTypes.any,
-	    onAction: _react2.default.PropTypes.func
+	    classPrefix: _react.PropTypes.string,
+	    activeKey: _react.PropTypes.any,
+	    defaultActiveKey: _react.PropTypes.any,
+	    onAction: _react.PropTypes.func
 	  },
 
 	  getDefaultProps: function getDefaultProps() {
@@ -5615,22 +5655,28 @@ return /******/ (function(modules) { // webpackBootstrap
 	    };
 	  },
 	  getInitialState: function getInitialState() {
-	    var defaultActiveKey = this.props.defaultActiveKey != null ? this.props.defaultActiveKey : this.getDefaultActiveKey(this.props.children);
-
 	    return {
-	      activeKey: defaultActiveKey,
+	      activeKey: this.getDefaultActiveKey(),
 	      previousActiveKey: null
 	    };
 	  },
 	  componentWillReceiveProps: function componentWillReceiveProps(nextProps) {
-	    if (nextProps.activeKey != null && nextProps.activeKey !== this.props.activeKey) {
+	    var nextActiveKey = nextProps.activeKey;
+
+	    // update controlled Tabs' state
+	    if (nextActiveKey != null && nextActiveKey !== this.props.activeKey) {
 	      this.setState({
+	        activeKey: nextActiveKey,
 	        previousActiveKey: this.props.activeKey
 	      });
 	    }
 	  },
 	  getDefaultActiveKey: function getDefaultActiveKey(children) {
-	    var defaultActiveKey = null;
+	    var defaultActiveKey = this.props.defaultActiveKey;
+
+	    if (defaultActiveKey != null) {
+	      return defaultActiveKey;
+	    }
 
 	    _react2.default.Children.forEach(children, function (child) {
 	      if (defaultActiveKey == null) {
@@ -5638,21 +5684,25 @@ return /******/ (function(modules) { // webpackBootstrap
 	      }
 	    });
 
-	    return defaultActiveKey !== undefined ? defaultActiveKey : 0;
+	    return defaultActiveKey != null ? defaultActiveKey : 0;
+	  },
+	  getActiveKey: function getActiveKey() {
+	    return this.props.activeKey != null ? this.props.activeKey : this.state.activeKey;
 	  },
 	  handleClick: function handleClick(key, disabled, e) {
 	    e.preventDefault();
 	    var activeKey = this.state.activeKey;
 
 	    if (disabled) {
-	      return null;
+	      return;
 	    }
 
 	    if (this.props.onAction) {
 	      this.props.onAction(key);
 	    }
 
-	    if (activeKey !== key) {
+	    // uncontrolled
+	    if (this.props.activeKey == null && activeKey !== key) {
 	      this.setState({
 	        activeKey: key,
 	        previousActiveKey: activeKey
@@ -5662,7 +5712,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  renderNav: function renderNav() {
 	    var _this = this;
 
-	    var activeKey = this.state.activeKey;
+	    var activeKey = this.getActiveKey();
 
 	    var navs = _react2.default.Children.map(this.props.children, function (child, index) {
 	      var _child$props = child.props;
@@ -5703,7 +5753,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    );
 	  },
 	  renderTabPanels: function renderTabPanels() {
-	    var activeKey = this.state.activeKey;
+	    var activeKey = this.getActiveKey();
 	    var panels = _react2.default.Children.map(this.props.children, function (child, index) {
 	      var _child$props2 = child.props;
 	      var eventKey = _child$props2.eventKey;
@@ -5758,14 +5808,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	  mixins: [_ClassNameMixin2.default],
 
 	  propTypes: {
-	    classPrefix: _react2.default.PropTypes.string,
-	    title: _react2.default.PropTypes.node,
-	    eventKey: _react2.default.PropTypes.any,
-	    disabled: _react2.default.PropTypes.bool,
-	    active: _react2.default.PropTypes.bool,
-	    noPadded: _react2.default.PropTypes.bool,
-	    navSize: _react2.default.PropTypes.string,
-	    navStyle: _react2.default.PropTypes.string
+	    classPrefix: _react.PropTypes.string,
+	    title: _react.PropTypes.node,
+	    eventKey: _react.PropTypes.any,
+	    disabled: _react.PropTypes.bool,
+	    active: _react.PropTypes.bool,
+	    noPadded: _react.PropTypes.bool,
+	    navSize: _react.PropTypes.string,
+	    navStyle: _react.PropTypes.string
 	  },
 
 	  getDefaultProps: function getDefaultProps() {
@@ -5835,8 +5885,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	  mixins: [_ClassNameMixin2.default],
 
 	  propTypes: {
-	    classPrefix: _react2.default.PropTypes.string.isRequired,
-	    component: _react2.default.PropTypes.node.isRequired
+	    classPrefix: _react.PropTypes.string.isRequired,
+	    component: _react.PropTypes.node.isRequired
 	  },
 
 	  getDefaultProps: function getDefaultProps() {
@@ -5905,16 +5955,38 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	// Android browsers legacy flexbox fallback
-	try {
-	  var ua = navigator.userAgent;
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	var fallback = {
+	  detectionRegex: {
+	    uc: /ucbrowser/i,
+	    zuoku: /zuoku build/i
+	  },
 
-	  // TODO:
-	  // - add version detecting when UC supports flexbox
-	  if (/android/i.test(ua) && /ucbrowser/i.test(ua)) {
-	    document.documentElement.className += ' ua-stupid-uc';
+	  addHook: function addHook() {
+	    // Android browsers legacy flexbox fallback
+	    try {
+	      (function () {
+	        var ua = navigator.userAgent;
+	        var fbNeeded = false;
+
+	        // TODO: - add version detecting when UC supports flexbox
+	        if (/android/i.test(ua)) {
+	          Object.keys(fallback.detectionRegex).forEach(function (key) {
+	            !fbNeeded && (fbNeeded = fallback.detectionRegex[key].test(ua));
+	          });
+
+	          fbNeeded && (document.documentElement.className += ' fb-legacy-flexbox');
+	        }
+	      })();
+	    } catch (e) {}
 	  }
-	} catch (e) {}
+	};
+
+	fallback.addHook();
+
+	exports.default = fallback;
 
 /***/ }
 /******/ ])

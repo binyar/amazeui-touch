@@ -1,7 +1,7 @@
 {
   "name": "amazeui-touch",
   "title": "Amaze UI Touch",
-  "version": "1.0.0-beta.3",
+  "version": "1.0.0-beta.4",
   "description": "Web Components for Mobile UI based on React.js",
   "main": "lib/index.js",
   "scripts": {
