@@ -38,4 +38,4 @@ export {default as View} from './View';
 export * from './mixins';
 
 // Compatibility fallback
-import './utils/fallback';
+export {default as fallback} from './utils/fallback';

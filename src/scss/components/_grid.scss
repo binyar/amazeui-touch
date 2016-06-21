@@ -74,7 +74,7 @@ $avg-col-selectors: '> .#{$col-prefix}, > li, > div';
 
     // FUCK Android UC
     // AVG Grid flex-wrap fallback
-    .#{$legacy-android-uc} & {
+    .#{$android-legacy-flexbox} & {
       display: inline-block;
     }
   }
