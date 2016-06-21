@@ -1,5 +1,16 @@
 ## Change Log
 
+### v1.0.0-beta.4 (2016/06/21)
+
+- `Changed` [aa2455d](https://github.com/amazeui/amazeui-touch/commit/aa2455dbf604c44d5e265f9a777b067286d07bd5) 升级 normalize.css 至 v4.1.1
+- `New` [6057ffc](https://github.com/amazeui/amazeui-touch/commit/6057ffc9865ea73479a42707031b72ee7793f17e) 暴露旧版 Flexbox 回退 API
+- `New` [fd536bc](https://github.com/amazeui/amazeui-touch/commit/fd536bca68582cc0106a74d181639a5fe3885d78) Grid 添加边框样式（用于宫格制作等）
+- `New` [0ed43e7](https://github.com/amazeui/amazeui-touch/commit/0ed43e71a052c3eb4804a0d6616c10c74cec9a2e) 调整图标变量，方便用户使用自定义图标
+- `Fixed` [37eacd0](https://github.com/amazeui/amazeui-touch/commit/37eacd077360f169b052ceac8252ed9b486927bc) #62 修复 Tabs `activeKey` 控制问题
+- `Fixed` [d85beb8](https://github.com/amazeui/amazeui-touch/commit/d85beb8c7a3086841f4295b40e95fb00c153a284) #60 Icon 组件 `href` 遗漏问题 (@minwe)
+- `Improved` [e07d9d2](https://github.com/amazeui/amazeui-touch/commit/e07d9d2d952820ee6eb5177f9ad21c3ab738aada) #13 统一 date/datetime-local 与其他类型 input 高度
+- `Fixed` [9f6eb37](https://github.com/amazeui/amazeui-touch/commit/9f6eb374dd18735146b53cf6da328781c0478941) 修复多选 select `getValue()` 错误
+
 ### v1.0.0-beta.3 (2016/06/01 15:40 +08:00)
 
 - `Fixed` [99369b5](https://github.com/amazeui/amazeui-touch/commit/99369b5e42ced90789813a26ae0f3c1e8eebaabe) 修复 CSSTransitionGroup 在全局模式时的引用错误
