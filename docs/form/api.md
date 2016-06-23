@@ -88,6 +88,30 @@
 
 组建输入框组时输入框**后面**的文字。
 
+##### `containerClassName`
+
+> PropType: `string`
+
+输入框容器 className，设置 `label`/`btnAfter`/`btnBefore`/`labelAfter`/`labelBefore` 中任意属性后应用在包裹输入框的容器上。
+
+如：
+
+```html
+<Field
+  label="Your Name"
+  containerClassName="my-label"
+  placeholder="What's your name."
+/>
+```
+
+渲染为：
+
+```html
+<label class="field-container my-label">
+  <span class="field-label">Your Name</span>
+  <input type="text" placeholder="What's your name." class="field">
+</label>
+```
 
 #### 方法
 

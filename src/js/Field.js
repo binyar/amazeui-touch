@@ -17,6 +17,7 @@ const Field = React.createClass({
     btnAfter: PropTypes.node,
     labelBefore: PropTypes.node,
     labelAfter: PropTypes.node,
+    containerClassName: PropTypes.string,
   },
 
   getDefaultProps() {
@@ -68,7 +69,7 @@ const Field = React.createClass({
 
   // convert `value`/`defaultValue` to `checked`/`defaultChecked` when `type` is `radio`/checkbox``
   convertValueToChecked() {
-    var checkedProps = {};
+    let checkedProps = {};
 
     if (this.isCheckboxOrRadio()) {
       const propsMap = {
@@ -148,14 +149,19 @@ const Field = React.createClass({
   },
 
   renderContainer(children) {
-    return this.props.label ? (
+    const {
+      id,
+      label,
+      containerClassName,
+    } = this.props;
+    return label ? (
       <label
-        htmlFor={this.props.id}
-        className={this.prefixClass('container')}
+        htmlFor={id}
+        className={classNames(this.prefixClass('container'), containerClassName)}
         key="label"
       >
         <span className={this.prefixClass('label')}>
-          {this.props.label}
+          {label}
         </span>
         {children}
         {this.isCheckboxOrRadio() ? (
@@ -176,7 +182,7 @@ const Field = React.createClass({
       labelAfter,
       btnBefore,
       btnAfter,
-      ...props
+      containerClassName,
     } = this.props;
     let renderFiledLabel = (type) => {
       return this.props[type] ? (
@@ -191,7 +197,7 @@ const Field = React.createClass({
 
     return labelBefore || labelAfter || btnBefore || btnAfter ? (
       <div
-        className={groupPrefix}
+        className={classNames(groupPrefix, containerClassName)}
         key="fieldGroup"
       >
         {renderFiledLabel('labelBefore')}

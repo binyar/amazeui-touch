@@ -51,8 +51,8 @@ const FormExample = React.createClass({
         >
           <Field
             label="Your Name"
+            containerClassName="my-label"
             placeholder="What's your name."
-            defaultValue="hello"
           />
 
           <Field
@@ -148,6 +148,7 @@ const FormExample = React.createClass({
             placeholder="You domain."
             labelBefore="www."
             labelAfter=".com"
+            containerClassName="my-group"
           />
 
           <Field
