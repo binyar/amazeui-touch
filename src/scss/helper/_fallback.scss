@@ -13,7 +13,7 @@ $android-legacy-flexbox: 'fb-legacy-flexbox';
 
 // flex-basis fallback
 @mixin flex-basis-fallback($width) {
-  @if $legacyFlexBoxSupport {
+  @if $legacy-flexbox-support {
     .#{$android-legacy-flexbox} & {
       width: $width;
     }
@@ -25,7 +25,7 @@ $android-legacy-flexbox: 'fb-legacy-flexbox';
 // - 测试环境：MI4 / Android 6.0.1 / MIUI 7 6.4.14 开发版
 // - 负面影响: 产生左侧的链接 icon 和 tile 顺序不对（`order` 失效）问题 -> JS 中已调整顺序
 @mixin navbar-item-android-uc-fallback() {
-  @if $legacyFlexBoxSupport {
+  @if $legacy-flexbox-support {
     .#{$android-legacy-flexbox} & {
       display: inline-block;
     }

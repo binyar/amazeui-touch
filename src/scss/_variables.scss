@@ -120,7 +120,7 @@ $z-index-popover: $z-index-base + 30 !default;
 // Compatibility
 // - set NavBar & Col width for browsers which don't support flex-basis
 // -----------------------------------------------------------------------------
-$legacyFlexBoxSupport: true !default;
+$legacy-flexbox-support: true !default;
 
 // Base
 // -----------------------------------------------------------------------------
