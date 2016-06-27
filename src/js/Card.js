@@ -90,7 +90,6 @@ Card.Child = React.createClass({
       ...props
     } = this.props;
     let classSet = {
-      className,
       [this.prefixClass(role)]: true,
       [this.prefixClass('cover')]: cover,
     };
@@ -105,7 +104,8 @@ Card.Child = React.createClass({
     return (
       <div
         {...props}
-        className={classNames(classSet)}
+        className={classNames(className, classSet)}
+        role={`card-${role}`}
         style={style}
       >
         {this.props.children}
