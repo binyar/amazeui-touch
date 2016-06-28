@@ -114,24 +114,6 @@ $rl-pseudo-element: (
 }
 
 // simulate a 1px border on retina screens
-%retina-line-v-scale {
-  @media (-webkit-min-device-pixel-ratio: 2) {
-    transform: scaleY(0.5);
-  }
-  @media (-webkit-min-device-pixel-ratio: 3) {
-    transform: scaleY(.33);
-  }
-}
-
-%retina-line-h-scale {
-  @media (-webkit-min-device-pixel-ratio: 2) {
-    transform: scaleX(0.5);
-  }
-  @media (-webkit-min-device-pixel-ratio: 3) {
-    transform: scaleX(.33);
-  }
-}
-
 @mixin rl-get-scale($position) {
   @if ($position == top or $position == bottom) {
     @extend %retina-line-v-scale;
@@ -202,8 +184,4 @@ $rl-pseudo-element: (
   transform: translateZ(0);
   backface-visibility: hidden;
   perspective: 1000;
-}
-
-%force-hardware-acceleration {
-  @include force-hardware-acceleration();
 }

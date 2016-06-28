@@ -11,7 +11,7 @@
 // Float
 // -----------------------------------------------------------------------------
 .#{$namespace}cf {
-  @include clearfix;
+  @extend %clearfix;
 }
 
 @each $s, $float in (

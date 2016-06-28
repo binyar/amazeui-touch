@@ -174,17 +174,6 @@ $avg-col-selectors: '> .#{$col-prefix}, > li, > div';
 
 // modifier: g-bordered
 // -----------------------------------------------------------------------------
-%retina-line-top-before {
-  @include retina-line(top, before);
-}
-
-%retina-line-bottom-after {
-  @include retina-line(bottom, after);
-}
-
-%retina-line-right-before {
-  @include retina-line(right, before);
-}
 
 .#{$grid-prefix}-bordered {
   @extend %retina-line-top-before;

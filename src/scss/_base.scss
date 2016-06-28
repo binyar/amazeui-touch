@@ -1,6 +1,28 @@
 // Amaze UI Mobile: Base Styles
 // =============================================================================
 
+
+// Functions
+@import "helper/functions";
+
+// Variables
+@import "variables";
+
+// User Custom variables
+@import "user";
+
+// Mixins
+@import "helper/mixins";
+
+// Normalize styles
+@import "vendor/normalize";
+
+// placeholder
+@import "helper/placeholder";
+
+// compatibility fallback
+@import "helper/fallback";
+
 // Make extra sure we're using the whole window
 // @see http://mir.aculo.us/2011/07/29/prevent-rubber-band-scrolling-for-single-page-apps-in-safari-5-1/
 // @see http://www.luster.io/blog/9-29-14-mobile-web-checklist.html
