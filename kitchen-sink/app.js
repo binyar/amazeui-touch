@@ -8,6 +8,8 @@ import {
   IndexRoute,
 } from 'react-router';
 
+import './style.scss';
+
 import {
   Container,
   Group,

@@ -14,51 +14,13 @@
   <meta name="apple-mobile-web-app-title" content="AMUI Touch">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <style>
-    body {
-      background: #000;
-    }
-    .sk-demos {
-      padding-top: 20px;
-    }
-
-    .sk-demos > h2,
-    .sk-demos > h3 {
-      padding-left: 15px;
-      padding-right: 15px;
-      color: #555;
-      font-size: 16px;
-    }
-
-    .sk-icons .col:active {
-      background-color: #d9d9d9;
-    }
-
-    .sk-icon-name {
-      color: #888;
-    }
-
-    .ks-grid .g {
-      margin: 5px 5px 0;
-      border: 1px dashed red;
-      padding: 5px;
-    }
-
-    .ks-grid .g .g {
-      margin: 5px 0;
-      border-color: cornflowerblue;
-    }
-
-    .ks-grid .col {
-      border: 1px solid #ddd;
-      min-height: 20px;
-      background: #fff;
-    }
-
-  </style>
+  <link rel="stylesheet" href="http://cdn.amazeui.org/amazeui/2.7.0/css/amazeui.min.css">
 </head>
 <body>
-  <div id="sk-root" style="height: 100%; width: 100%; overflow: hidden;">
+  <div id="root">
   </div>
+  <% if (htmlWebpackPlugin.prod) { %>
+  <script>var _hmt=_hmt||[];!function(){var t=document.createElement("script");t.src="//hm.baidu.com/hm.js?b424d39312c46404f15e22574a531fbb",(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(t)}();</script><div style="display:none"><script type="text/javascript">var cnzz_protocol="https:"==document.location.protocol?" https://":" http://";document.write(unescape("%3Cspan id='cnzz_stat_icon_1256061744'%3E%3C/span%3E%3Cscript src='"+cnzz_protocol+"s95.cnzz.com/z_stat.php%3Fid%3D1256061744%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script></div>
+  <% } %>
 </body>
 </html>

@@ -88,7 +88,9 @@ ES2015/JSX 编译参见 [Amaze UI Touch Starter Kit](https://github.com/amazeui/
 
 
 
-## 文档及演示
+## 开发及演示
+
+### 文档及演示
 
 1. 全局安装 gulp.js：
 
@@ -109,15 +111,21 @@ ES2015/JSX 编译参见 [Amaze UI Touch Starter Kit](https://github.com/amazeui/
    npm install
    ```
 
-2. 执行 gulp：
+2. 启动开发服务：
 
    ``` bash
-   gulp
+   npm start
    ```
 
    相关文件构建完成后会自动打开浏览器，可查看文档及组件演示。
 
-   ​
+### 构建
+   
+```bash
+npm run build
+```
+
+打包后的文件位于 `dist` 目录下。
 
 ### [反馈建议](https://github.com/amazeui/amazeui-touch/issues)
 

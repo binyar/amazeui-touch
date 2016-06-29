@@ -35,15 +35,7 @@ export default {
         test: /\.js$/,
         exclude: /node_modules/,
         loader: 'babel',
-        // move to package.json
-        query: {
-          // stage: 0,
-          // loose: "all",
-          // optional: ['es7.objectRestSpread'],
-          // plugins: ['object-assign'],
-        }
       }
     ]
   },
-  watch: false,
 };
