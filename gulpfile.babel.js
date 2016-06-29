@@ -61,7 +61,8 @@ gulp.task('build:clean', () => {
 gulp.task('style:scss', () => {
   return gulp.src(paths.scss)
     .pipe($.sass({
-      outputStyle: 'expanded'
+      outputStyle: 'expanded',
+      // importer: require('node-sass-import-once')
     }).on('error', $.sass.logError))
     .pipe($.autoprefixer(autoprefixerOptions))
     .pipe(addBanner())

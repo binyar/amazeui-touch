@@ -1,7 +1,12 @@
-// Amaze UI Mobile
+// Amaze UI Touch
 
 // Base Styles
 @import "base";
+
+// TODO: only import once in modular scss
+// - all component style should import `base` for modular usage, how to prevent duplicated imports
+// - @see https://github.com/wilsonpage/sass-import-once
+// - @see https://github.com/jtangelder/sass-loader/issues/145
 
 // Components
 @import "components/typography";
