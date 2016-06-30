@@ -125,7 +125,8 @@ import {
 ReactDOM.render(<Button>Hello World</Button>, document.getElementById('root'));
 ```
 
-**全局方式引用**
+
+### 全局方式引用
 
 如果基于使用公共 CDN 或者维护方便等原因考虑，不想把 Amaze UI Touch 打包到项目文件中，可以以全局方式引用，即在 HTML 中引入 `amazeui.touch.min.js` 文件，然后以 **`AMUITouch`** 这个全局变量访问组件。
 
@@ -137,7 +138,8 @@ externals: {
   'react': 'React',
   'react-dom': 'ReactDOM',
   'amazeui-touch': 'AMUITouch',
-  'react-addons-css-transition-group': ['React', 'addons', 'CSSTransitionGroup']
+  'react-addons-css-transition-group':
+    ['React', 'addons', 'CSSTransitionGroup']
 }
 // ...
 ```
@@ -150,6 +152,6 @@ externals: {
 
 ### 进阶使用
 
-进阶使用可参见 kitchen-sink 源码。
+进阶使用细节可参考 [kitchen-sink 源码](https://github.com/amazeui/amazeui-touch/tree/master/kitchen-sink)以及 [Amaze UI Touch Starter Kit](https://github.com/amazeui/amt-starter-kit)。
 
 [debug]: http://www.zhihu.com/question/37361845

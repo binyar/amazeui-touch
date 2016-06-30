@@ -2,9 +2,6 @@ import React from 'react';
 import {
   Link,
 } from 'react-router';
-import {
-  Container,
-} from '../../js';
 
 const components = [
   {
@@ -138,7 +135,17 @@ const Sidebar = React.createClass({
         >
           开始使用
         </Link>
-      </li>)
+      </li>),
+      (
+        <li key="modular">
+          <Link
+            activeClassName="active"
+            to="/docs/advanced"
+          >
+            进阶使用
+          </Link>
+        </li>
+      )
     ];
 
     components.forEach((category, i) => {

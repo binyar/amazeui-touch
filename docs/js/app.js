@@ -10,9 +10,7 @@ import {
 
 import '../style/app.scss';
 
-import {
-  Container,
-} from '../../js';
+import Container from '../../js/Container';
 
 import ComponentDoc from './ComponentDoc';
 import Index from './Index';
@@ -65,7 +63,7 @@ const Header = React.createClass({
 
         <div className={`am-collapse am-topbar-collapse ${active}`}>
           <ul className="am-nav am-nav-pills am-topbar-nav am-topbar-left">
-            {this.renderLink('docs', '开发文档')}
+            {this.renderLink('docs/getting-started', '开发文档')}
             <li><a href="http://amazeui.org/" target="_blank">Amaze UI Web</a></li>
           </ul>
         </div>

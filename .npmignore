@@ -7,7 +7,7 @@ js
 /kitchen-sink
 /docs
 /www
-/scripts
+#/scripts
 
 *.log*
 

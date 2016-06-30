@@ -1,7 +1,5 @@
 import React from 'react';
-import {
-  Container,
-} from '../../js';
+import Container from '../../js/Container';
 import Sidebar from './Sidebar';
 import * as docs from '../components';
 
