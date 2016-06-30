@@ -2,11 +2,12 @@ node_modules
 .sass-cache
 /.git
 /.idea
-/src/fonts
-/src/js
+# /fonts
+js
 /kitchen-sink
 /docs
 /www
+/scripts
 
 *.log*
 

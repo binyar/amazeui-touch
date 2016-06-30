@@ -4,7 +4,7 @@ import {
 } from 'react-router';
 import {
   Container,
-} from '../../src/js';
+} from '../../js';
 import {
   QRCode,
 } from '../utils';

@@ -7,4 +7,4 @@ export let amStyles = [
   'Dark'
 ];
 
-export * from '../src/js';
+export * from '../js';

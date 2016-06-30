@@ -12,7 +12,7 @@ const NormalizeDoc = React.createClass({
       <Doc>
         <Markdown>{require('./api.md')}</Markdown>
         <Highlight language="sass">
-          {fs.readFileSync(`${__dirname}/../../../src/scss/vendor/_normalize.scss`, 'utf-8')}
+          {fs.readFileSync(`${__dirname}/../../../scss/vendor/_normalize.scss`, 'utf-8')}
         </Highlight>
       </Doc>
     );

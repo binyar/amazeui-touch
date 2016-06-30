@@ -12,7 +12,7 @@ import '../style/app.scss';
 
 import {
   Container,
-} from '../../src/js';
+} from '../../js';
 
 import ComponentDoc from './ComponentDoc';
 import Index from './Index';

@@ -1,7 +1,7 @@
 import React from 'react';
 import {
   Container,
-} from '../../src/js';
+} from '../../js';
 import Sidebar from './Sidebar';
 import * as docs from '../components';
 

@@ -137,6 +137,7 @@ externals: {
   'react': 'React',
   'react-dom': 'ReactDOM',
   'amazeui-touch': 'AMUITouch',
+  'react-addons-css-transition-group': ['React', 'addons', 'CSSTransitionGroup']
 }
 // ...
 ```

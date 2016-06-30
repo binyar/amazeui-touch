@@ -26,10 +26,10 @@ const banner = `/** ${pkg.title} v${pkg.version} | by Amaze UI Team
   `;
 
 const paths = {
-  scss: 'src/scss/amazeui.touch.scss',
-  scssModules: 'src/scss/**/*.scss',
-  fonts: 'src/fonts/*',
-  jsEntry: 'src/js/index.js',
+  scss: 'scss/amazeui.touch.scss',
+  scssModules: 'scss/**/*.scss',
+  fonts: 'fonts/*',
+  jsEntry: 'js/index.js',
   dist: 'dist',
   docsDist: 'www',
 };
@@ -62,7 +62,7 @@ gulp.task('style:scss', () => {
   return gulp.src(paths.scss)
     .pipe($.sass({
       outputStyle: 'expanded',
-      // importer: require('node-sass-import-once')
+      importer: require('node-sass-import-once'),
     }).on('error', $.sass.logError))
     .pipe($.autoprefixer(autoprefixerOptions))
     .pipe(addBanner())
@@ -82,7 +82,7 @@ gulp.task('style', ['style:scss', 'style:fonts']);
 
 // transform ES6 & JSX
 gulp.task('build:babel', () => {
-  return gulp.src('src/js/**/*')
+  return gulp.src('js/**/*')
     .pipe(replaceVersion())
     .pipe($.babel())
     .pipe(gulp.dest('lib'));

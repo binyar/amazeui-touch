@@ -1,4 +1,7 @@
 // @see https://github.com/jtangelder/sass-loader#problems-with-url
 $ratchicons-path: '../src/fonts/';
 
-@import "../src/scss/amazeui.touch";
+// @import "../src/scss/amazeui.touch";
+@import "../scss/base";
+@import "../scss/components/typography";
+@import "../scss/components/utilities";

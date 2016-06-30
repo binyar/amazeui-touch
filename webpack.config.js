@@ -1,3 +1,5 @@
+import path from 'path';
+
 export default {
   output: {
     library: 'AMUITouch',
@@ -29,12 +31,21 @@ export default {
       }
     }
   ],
+  resolveLoader: {
+    alias: {
+      'ignore-loader': path.resolve(__dirname, 'scripts/ignore-loader'),
+    }
+  },
   module: {
     loaders: [
       {
         test: /\.js$/,
         exclude: /node_modules/,
         loader: 'babel',
+      },
+      {
+        test: /\.scss$/,
+        loader: 'ignore-loader',
       }
     ]
   },
