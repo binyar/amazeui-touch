@@ -4,38 +4,38 @@
 export const VERSION = '__VERSION__';
 
 // Layout
-export {default as Container} from './Container';
-export {default as Grid} from './Grid';
-export {default as Col} from './Col';
-export {default as Group} from './Group';
+export Container from './Container';
+export Grid from './Grid';
+export Col from './Col';
+export Group from './Group';
 
 // Components
-export {default as Accordion} from './Accordion';
-export {default as Badge} from './Badge';
-export {default as Button} from './Button';
-export {default as ButtonGroup} from './ButtonGroup';
-export {default as ButtonToolbar} from './ButtonToolbar';
-export {default as Card} from './Card';
-export {default as Icon} from './Icon';
-export {default as Field} from './Field';
-export {default as List} from './List';
-export {default as Loader} from './Loader';
-export {default as Modal} from './Modal';
-export {default as NavBar} from './NavBar';
-export {default as Notification} from './Notification';
-export {default as OffCanvas} from './OffCanvas';
-export {default as OffCanvasTrigger} from './OffCanvasTrigger';
-export {default as Popover} from './Popover';
-export {default as PopoverTrigger} from './PopoverTrigger';
-export {default as Slider} from './Slider';
-export {default as Switch} from './Switch';
-export {default as TabBar} from './TabBar';
-export {default as Tabs} from './Tabs';
-export {default as Touchable} from './Touchable';
-export {default as View} from './View';
+export Accordion from './Accordion';
+export Badge from './Badge';
+export Button from './Button';
+export ButtonGroup from './ButtonGroup';
+export ButtonToolbar from './ButtonToolbar';
+export Card from './Card';
+export Icon from './Icon';
+export Field from './Field';
+export List from './List';
+export Loader from './Loader';
+export Modal from './Modal';
+export NavBar from './NavBar';
+export Notification from './Notification';
+export OffCanvas from './OffCanvas';
+export OffCanvasTrigger from './OffCanvasTrigger';
+export Popover from './Popover';
+export PopoverTrigger from './PopoverTrigger';
+export Slider from './Slider';
+export Switch from './Switch';
+export TabBar from './TabBar';
+export Tabs from './Tabs';
+export Touchable from './Touchable';
+export View from './View';
 
 // Mixins
 export * from './mixins';
 
 // Compatibility fallback
-export {default as fallback} from './utils/fallback';
+export fallback from './utils/fallback';

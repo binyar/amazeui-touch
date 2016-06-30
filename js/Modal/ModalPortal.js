@@ -4,7 +4,7 @@ import React, {
 } from 'react';
 import ReactDOM, {
   unmountComponentAtNode,
-  unstable_renderSubtreeIntoContainer as renderSubtreeIntoContainer
+  unstable_renderSubtreeIntoContainer as renderSubtreeIntoContainer,
 } from 'react-dom';
 import CSSCore from '../utils/CSSCore';
 import Modal from './Modal';
