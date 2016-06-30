@@ -9,19 +9,19 @@
 // -----------------------------------------------------------------------------
 %retina-line-v-scale {
   @media (-webkit-min-device-pixel-ratio: 2) {
-    transform: scaleY(0.5);
+    transform: scaleY(0.5) translateZ(0);
   }
   @media (-webkit-min-device-pixel-ratio: 3) {
-    transform: scaleY(.33);
+    transform: scaleY(.33) translateZ(0);
   }
 }
 
 %retina-line-h-scale {
   @media (-webkit-min-device-pixel-ratio: 2) {
-    transform: scaleX(0.5);
+    transform: scaleX(0.5) translateZ(0);
   }
   @media (-webkit-min-device-pixel-ratio: 3) {
-    transform: scaleX(.33);
+    transform: scaleX(.33) translateZ(0);
   }
 }
 
