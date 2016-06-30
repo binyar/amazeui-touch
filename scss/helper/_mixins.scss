@@ -170,7 +170,7 @@ $rl-pseudo-element: (
 
 @mixin retina-line-color($element, $color) {
   &:#{$element} {
-    background-color: $color;
+    border-color: $color;
   }
 }
 

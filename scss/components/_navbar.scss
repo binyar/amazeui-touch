@@ -13,7 +13,8 @@
 ) {
   background: $background;
   color: $color;
-  border-bottom: 1px solid darken($background, 5);
+  @include retina-line-color(after, darken($background, 5));
+  // border-bottom: 1px solid darken($background, 5);
 
 
   @if $item-style {
@@ -34,7 +35,7 @@
   line-height: $navbar-line-height;
 
   @include navbar-colors($navbar-background, $navbar-color, false);
-  // @include retina-border-bottom(darken($navbar-background, 8));
+  @extend %retina-line-bottom-after;
 }
 
 .#{$navbar-prefix} {
