@@ -112,6 +112,10 @@ gulp.task('build', (callback) => {
   );
 });
 
+gulp.task('watch', () => {
+  gulp.watch('js/**/*.js', ['build:babel']);
+});
+
 /**
  * Dev server
  */

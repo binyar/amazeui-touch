@@ -15,7 +15,7 @@ const hotEntry =  [
   'webpack-hot-middleware/client?reload=true',
 ];
 const docsEntry = './docs/js/app.js';
-const ksEntry = './kitchen-sink/app.js';
+const ksEntry = './kitchen-sink/entry.js';
 
 let minify = prod ? {
   removeComments: true,
@@ -38,6 +38,7 @@ let plugins = [
   }),
   new webpack.DefinePlugin({
     __VERSION__: JSON.stringify(pkg.version),
+    SERVER_RENDING: false,
     'process.env': {
       'NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
     },

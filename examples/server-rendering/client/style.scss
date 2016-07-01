@@ -1,0 +1,60 @@
+// @see https://github.com/jtangelder/sass-loader#problems-with-url
+$ratchicons-path: '../../../fonts/';
+
+@import "../../../scss/amazeui.touch";
+
+body {
+  background: #000;
+}
+
+#root {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.sk-demos {
+  padding-top: 20px;
+}
+
+.sk-demos > h2,
+.sk-demos > h3 {
+  padding-left: 15px;
+  padding-right: 15px;
+  color: #555;
+  font-size: 16px;
+}
+
+.sk-icons .col {
+  cursor: pointer;
+
+  &:active {
+    background-color: #d9d9d9;
+  }
+}
+
+.sk-icon-name {
+  color: #888;
+}
+
+.ks-grid .g {
+  margin: 5px 5px 0;
+  border: 1px dashed red;
+  padding: 5px;
+}
+
+.ks-grid .g .g {
+  margin: 5px 0;
+  border-color: cornflowerblue;
+}
+
+.ks-grid .col {
+  border: 1px solid #ddd;
+  min-height: 20px;
+  background: #fff;
+}
+
+.sk-icons .col,
+.sk-icon-name {
+  user-select: none;
+}
