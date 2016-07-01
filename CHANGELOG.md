@@ -1,5 +1,13 @@
 ## Change Log
 
+### v1.0.0-rc.1 (2016/07/01)
+
+- `[*]` [6af1392](https://github.com/amazeui/amazeui-touch/commit/6af1392fc54c3b439c13520ad4977eab8bf968d6) 调整 TabBar & NavBar 边框风格
+- `[√]` [4467120](https://github.com/amazeui/amazeui-touch/commit/4467120066894b441f9cfb7b926fa4861836ba24) #73 修复网格边框在 Android 浏览器中不显示或显示不完整问题
+- `[*]` [648fd17](https://github.com/amazeui/amazeui-touch/commit/648fd17099a794cc62d0fc6be0029673a286fb9c) #69 添加 CSS 依赖到组件文件中，以支持 CSS 按需打包
+- `[√]` [0346c36](https://github.com/amazeui/amazeui-touch/commit/0346c36bb39eedd8b69616fc49869bfcd6fc938c) #71 修复 `<Card.Child>` `className` 应用错误问题
+- `[+]` [4fbe23b](https://github.com/amazeui/amazeui-touch/commit/4fbe23be24eaf05b91e05b55fea3628117c7ff53) #70 Field 组件添加 `containerClassName` 属性，用于输入框包含标签或者前后内容时，给容器传递 className
+
 ### v1.0.0-beta.4 (2016/06/21)
 
 - `Changed` [aa2455d](https://github.com/amazeui/amazeui-touch/commit/aa2455dbf604c44d5e265f9a777b067286d07bd5) 升级 normalize.css 至 v4.1.1
