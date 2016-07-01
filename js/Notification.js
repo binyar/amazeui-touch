@@ -8,6 +8,10 @@ import ReactDOM, {
 import CSSTransitionGroup from 'react-addons-css-transition-group';
 import classNames from 'classnames';
 import ClassNameMixin from './mixins/ClassNameMixin';
+import {
+  canUseDOM,
+} from './utils/exenv';
+import bodyElement from './utils/bodyElement';
 import Icon from './Icon';
 
 import '../scss/components/_notification.scss';
@@ -95,9 +99,6 @@ const Notification = React.createClass({
   }
 });
 
-// const bodyElement = canUseDOM ? document.body : {appendChild: () => {}};
-const body = document.body;
-
 const NotificationPortal = React.createClass({
   propTypes: {
     visible: PropTypes.bool.isRequired,
@@ -113,7 +114,7 @@ const NotificationPortal = React.createClass({
     if (!this.isStatic()) {
       this.node = document.createElement('div');
       this.node.className = '__notification-portal';
-      body.appendChild(this.node);
+      bodyElement.appendChild(this.node);
       this.renderNotification(this.props);
     }
   },
@@ -127,7 +128,7 @@ const NotificationPortal = React.createClass({
   componentWillUnmount() {
     if (!this.isStatic()) {
       unmountComponentAtNode(this.node);
-      body.removeChild(this.node);
+      bodyElement.removeChild(this.node);
     }
   },
 

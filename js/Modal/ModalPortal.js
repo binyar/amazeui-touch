@@ -7,10 +7,12 @@ import ReactDOM, {
   unstable_renderSubtreeIntoContainer as renderSubtreeIntoContainer,
 } from 'react-dom';
 import CSSCore from '../utils/CSSCore';
+import {
+  canUseDOM,
+} from '../utils/exenv';
+import bodyElement from '../utils/bodyElement';
 import Modal from './Modal';
 
-// const bodyElement = canUseDOM ? document.body : {appendChild: () => {}};
-const body = document.body;
 const bodyClassName = 'has-modal-open';
 
 const ModalPortal = createClass({
@@ -27,7 +29,7 @@ const ModalPortal = createClass({
   componentDidMount() {
     this.node = document.createElement('div');
     this.node.className = '__modal-portal';
-    body.appendChild(this.node);
+    bodyElement.appendChild(this.node);
     this.renderModal(this.props);
   },
 
@@ -37,12 +39,12 @@ const ModalPortal = createClass({
 
   componentWillUnmount() {
     unmountComponentAtNode(this.node);
-    body.removeChild(this.node);
-    CSSCore.removeClass(body, bodyClassName);
+    bodyElement.removeChild(this.node);
+    CSSCore.removeClass(bodyElement, bodyClassName);
   },
 
   renderModal(props) {
-    CSSCore[(props.isOpen ? 'add' : 'remove') + 'Class'](body, bodyClassName);
+    CSSCore[(props.isOpen ? 'add' : 'remove') + 'Class'](bodyElement, bodyClassName);
     this.portal = renderSubtreeIntoContainer(
       this,
       <Modal {...props} />,

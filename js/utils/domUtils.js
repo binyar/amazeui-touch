@@ -6,7 +6,7 @@ import ReactDOM from 'react-dom';
  * @returns {HTMLDocument}
  */
 function ownerDocument(componentOrElement) {
-  var element = ReactDOM.findDOMNode(componentOrElement);
+  let element = ReactDOM.findDOMNode(componentOrElement);
 
   return (element && element.ownerDocument) || document;
 }
@@ -18,7 +18,7 @@ function ownerDocument(componentOrElement) {
  * @see https://github.com/jquery/jquery/blob/6df669f0fb87cd9975a18bf6bbe3c3548afa4fee/src/event.js#L294-L297
  */
 function ownerWindow(element) {
-  var doc = ownerDocument(element);
+  let doc = ownerDocument(element);
 
   return doc.defaultView || doc.parentWindow || window;
 }
@@ -33,7 +33,7 @@ export default {
       return;
     }
 
-    var hasScrollTop = 'scrollTop' in element;
+    let hasScrollTop = 'scrollTop' in element;
 
     if (value === undefined) {
       return (hasScrollTop ? element.scrollTop : element.pageYOffset);
@@ -45,12 +45,12 @@ export default {
 
   offset(element) {
     if (element) {
-      var rect = element.getBoundingClientRect();
-      var body = document.body;
-      var clientTop = element.clientTop || body.clientTop || 0;
-      var clientLeft = element.clientLeft || body.clientLeft || 0;
-      var scrollTop = window.pageYOffset || element.scrollTop;
-      var scrollLeft = window.pageXOffset || element.scrollLeft;
+      let rect = element.getBoundingClientRect();
+      let body = document.body;
+      let clientTop = element.clientTop || body.clientTop || 0;
+      let clientLeft = element.clientLeft || body.clientLeft || 0;
+      let scrollTop = window.pageYOffset || element.scrollTop;
+      let scrollLeft = window.pageXOffset || element.scrollLeft;
 
       return {
         top: rect.top + scrollTop - clientTop,

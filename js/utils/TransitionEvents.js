@@ -11,7 +11,9 @@
  */
 
 import CSSCore from './CSSCore';
-import canUseDOM from './canUseDOM';
+import {
+  canUseDOM,
+} from './exenv';
 
 /**
  * EVENT_NAME_MAP is used to determine which event fired when a

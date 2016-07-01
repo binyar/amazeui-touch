@@ -1,4 +1,6 @@
-import canUseDOM from './canUseDOM';
+import {
+  canUseDOM,
+} from './exenv';
 
 const noop = function() {};
 let Events = {
