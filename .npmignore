@@ -19,4 +19,5 @@ js
 .travis.yml
 gulpfile.babel.js
 webpack.config.js
+webpack.docs.babel.js
 bower.json

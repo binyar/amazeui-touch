@@ -1,7 +1,7 @@
 {
   "name": "amazeui-touch",
   "title": "Amaze UI Touch",
-  "version": "1.0.0-beta.4",
+  "version": "1.0.0-rc.1",
   "description": "Web Components for Mobile UI based on React.js",
   "main": "lib/index.js",
   "scripts": {
@@ -48,7 +48,7 @@
     "del": "^2.2.1",
     "eslint": "^2.12.0",
     "eslint-config-airbnb": "^9.0.1",
-    "eslint-plugin-import": "^1.9.2",
+    "eslint-plugin-import": "^1.10.0",
     "eslint-plugin-jsx-a11y": "^1.4.2",
     "eslint-plugin-react": "^5.1.1",
     "extract-text-webpack-plugin": "^1.0.1",
