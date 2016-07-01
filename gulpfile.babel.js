@@ -60,6 +60,8 @@ gulp.task('build:clean', () => {
 
 gulp.task('style:scss', () => {
   return gulp.src(paths.scss)
+    // inject fonts path
+    .pipe($.replace(/\/\/ INJECT_SASS_VAR/g, ''))
     .pipe($.sass({
       outputStyle: 'expanded',
       importer: require('node-sass-import-once'),
