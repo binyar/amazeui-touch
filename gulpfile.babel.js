@@ -86,8 +86,10 @@ gulp.task('style', ['style:scss', 'style:fonts']);
 gulp.task('build:babel', () => {
   return gulp.src('js/**/*')
     .pipe(replaceVersion())
-    .pipe($.replace(/(import '\.\.\/scss\/components)/g, '// $1'))
-    .pipe($.babel())
+    // .pipe($.replace(/(import '\.\.\/scss\/components)/g, '// $1'))
+    .pipe($.babel({
+      plugins: require('./scripts/babel-require-ignore'),
+    }))
     .pipe(gulp.dest('lib'));
 });
 

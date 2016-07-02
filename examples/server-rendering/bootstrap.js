@@ -3,15 +3,7 @@
 global.SERVER_RENDING = true;
 
 require('babel-register')({
-  plugins: [
-    [
-      // ignore scss require when running in Node env
-      'transform-require-ignore',
-      {
-        extensions: ['.scss']
-      }
-    ]
-  ]
+  plugins: require('../../scripts/babel-require-ignore'),
 });
 
 require('./server');

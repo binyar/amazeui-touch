@@ -42,11 +42,10 @@ export default {
         test: /\.js$/,
         exclude: /node_modules/,
         loader: 'babel',
+        query: {
+          plugins: require('./scripts/babel-require-ignore'),
+        }
       },
-      {
-        test: /\.scss$/,
-        loader: 'ignore-loader',
-      }
     ]
   },
 };
