@@ -111,12 +111,6 @@ export default {
     ]
   },
 
-  resolve: {
-    alias: {
-      'amazeui-touch': path.resolve(__dirname, 'kitchen-sink/amazeui-touch.js'),
-    }
-  },
-
   plugins: plugins,
 
   node: {

@@ -1,14 +1,21 @@
 // @see https://github.com/jtangelder/sass-loader#problems-with-url
-$ratchicons-path: '../src/fonts/';
+// $ratchicons-path: '../fonts/';
 
-// @import "../src/scss/amazeui.touch";
 @import "../scss/base";
 @import "../scss/components/typography";
 @import "../scss/components/utilities";
 
+
 body {
   background: #000;
 }
+
+#root {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
 .sk-demos {
   padding-top: 20px;
 }
