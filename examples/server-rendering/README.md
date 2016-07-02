@@ -7,7 +7,6 @@
 
     ```
     npm install
-    gulp build:babel 
     ```
 3. 切换到本示例目录，依次执行：
 
