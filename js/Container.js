@@ -119,6 +119,8 @@ let Container = React.createClass({
     } = this.props;
     let classSet = this.getClassSet();
 
+    delete props.classPrefix;
+
     // As view transition container
     if (transition) {
       return (

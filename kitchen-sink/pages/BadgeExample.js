@@ -21,7 +21,6 @@ const BadgeExample = React.createClass({
       <Container {...this.props}>
         <Group
           header="默认形状"
-          padded
         >
           {
             styles.map((amStyle, i) => {
@@ -39,7 +38,6 @@ const BadgeExample = React.createClass({
 
         <Group
           header="Rounded"
-          padded
         >
         {
           styles.map((amStyle, i) => {

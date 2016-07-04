@@ -60,6 +60,9 @@ const Popover = React.createClass({
       top: angleTop,
     };
 
+    delete props.classPrefix;
+    delete props.onDismiss;
+
     classSet[this.prefixClass('out')] = isClosing;
     classSet[this.prefixClass(placement)] = placement;
 

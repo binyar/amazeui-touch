@@ -30,14 +30,16 @@ const Grid = React.createClass({
     let classSet = this.getClassSet();
     let {
       component: Component,
+      className,
       collapse,
       bordered,
-      className,
       avg,
       align,
       wrap,
       ...props
     } = this.props;
+
+    delete props.classPrefix;
 
     // .g-collapse
     classSet[this.prefixClass('collapse')] = collapse;

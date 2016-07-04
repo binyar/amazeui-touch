@@ -34,6 +34,9 @@ const Icon = React.createClass({
       name,
       ...props
     } = this.props;
+
+    delete props.classPrefix;
+
     Component = props.href ? 'a' : Component;
 
     // icon-[iconName]

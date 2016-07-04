@@ -31,6 +31,10 @@ const Loader = React.createClass({
       ...props,
     } = this.props;
 
+    delete props.classPrefix;
+    delete props.amStyle;
+    delete props.rounded;
+
     return (
       <Component
         {...props}

@@ -29,9 +29,11 @@ const List = React.createClass({
       ...props
     } = this.props;
 
+    delete props.classPrefix;
+
     classSet[this.prefixClass('inset')] = inset;
 
-    // TODO: 使用 ul 可能不是太好的选择，再一些需要定义 component 的场合缺乏灵活性
+    // TODO: 使用 ul 可能不是太好的选择，在一些需要定义 component 的场合缺乏灵活性
     return (
       <ul
         {...props}
@@ -163,10 +165,8 @@ List.Item = React.createClass({
     let {
       className,
       role,
-      title,
       subTitle,
       href,
-      after,
       media,
       children,
       linkComponent,
@@ -174,6 +174,12 @@ List.Item = React.createClass({
       nested,
       ...props
     } = this.props;
+
+    delete props.classPrefix;
+    delete props.title;
+    delete props.after;
+    delete props.linkProps;
+
     let itemChildren = [
       this.renderAddon('media'),
       this.renderMain(),

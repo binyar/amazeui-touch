@@ -30,6 +30,17 @@ const Button = React.createClass({
     };
   },
 
+  removeUnknownProp(props) {
+    delete props.classPrefix;
+    delete props.amStyle;
+    delete props.amSize;
+    delete props.hollow;
+    delete props.block;
+    delete props.active;
+
+    return props;
+  },
+
   renderAnchor(classes) {
     let {
       href,
@@ -43,7 +54,7 @@ const Button = React.createClass({
 
     return (
       <Component
-        {...props}
+        {...this.removeUnknownProp(props)}
         href={href}
         className={classes}
         role="button"
@@ -63,7 +74,7 @@ const Button = React.createClass({
 
     return (
       <Component
-        {...props}
+        {...this.removeUnknownProp(props)}
         className={classes}
       >
         {children}

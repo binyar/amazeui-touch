@@ -65,7 +65,7 @@ const Slider = React.createClass({
   },
 
   componentWillReceiveProps(nextProps) {
-    var activeIndex = this.getActiveIndex();
+    let activeIndex = this.getActiveIndex();
 
     if (nextProps.activeIndex != null &&
       nextProps.activeIndex !== activeIndex) {
@@ -97,8 +97,8 @@ const Slider = React.createClass({
   next(e) {
     e && e.preventDefault();
 
-    var index = this.getActiveIndex() + 1;
-    var count = React.Children.count(this.props.children);
+    let index = this.getActiveIndex() + 1;
+    let count = React.Children.count(this.props.children);
 
     if (index > count - 1) {
       if (!this.props.loop) {
@@ -113,7 +113,7 @@ const Slider = React.createClass({
   prev(e) {
     e && e.preventDefault();
 
-    var index = this.getActiveIndex() - 1;
+    let index = this.getActiveIndex() - 1;
 
     if (index < 0) {
       if (!this.props.loop) {
@@ -298,6 +298,16 @@ const Slider = React.createClass({
       ...props
     } = this.props;
 
+    delete props.classPrefix;
+    delete props.onAction;
+    delete props.pager;
+    delete props.controls;
+    delete props.slide;
+    delete props.interval;
+    delete props.pauseOnHover;
+    delete props.prevIcon;
+    delete props.nextIcon;
+
     // TODO: 优化 swipe，左右方向阻止默认事件，垂直方向不阻止
     return (
       <Touchable
@@ -321,7 +331,7 @@ const Slider = React.createClass({
   }
 });
 
-Slider.Item = React.createClass({
+const SliderItem = React.createClass({
   propTypes: {
     direction: PropTypes.oneOf(['prev', 'next']),
     onAnimateOutEnd: PropTypes.func,
@@ -407,5 +417,7 @@ Slider.Item = React.createClass({
     );
   }
 });
+
+Slider.Item = SliderItem;
 
 export default Slider;

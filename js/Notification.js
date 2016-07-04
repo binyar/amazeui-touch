@@ -66,6 +66,12 @@ const Notification = React.createClass({
       ...props
     } = this.props;
 
+    delete props.classPrefix;
+    delete props.amStyle;
+    delete props.static;
+    delete props.closeBtn;
+    delete props.onDismiss;
+
     classSet[this.prefixClass('animated')] = animated;
 
     let notificationBar = visible ? (

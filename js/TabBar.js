@@ -1,4 +1,6 @@
-import React from 'react';
+import React, {
+  PropTypes,
+} from 'react';
 import classNames from 'classnames';
 import ClassNameMixin from './mixins/ClassNameMixin';
 import Icon from './Icon';
@@ -11,10 +13,10 @@ let TabBar = React.createClass({
   mixins: [ClassNameMixin],
 
   propTypes: {
-    classPrefix: React.PropTypes.string,
-    component: React.PropTypes.node,
-    amStyle: React.PropTypes.string,
-    onAction: React.PropTypes.func,
+    classPrefix: PropTypes.string,
+    component: PropTypes.node,
+    amStyle: PropTypes.string,
+    onAction: PropTypes.func,
   },
 
   getDefaultProps() {
@@ -34,6 +36,9 @@ let TabBar = React.createClass({
       onAction,
       ...props
     } = this.props;
+
+    delete props.classPrefix;
+    delete props.amStyle;
 
     return (
       <Component
@@ -68,31 +73,31 @@ let TabBar = React.createClass({
 //   Icon 应该支持用户自定义：
 //   React-native 采用 require('path/to/icon') 的形式，
 //   这里可能需要再添加一个属性
-TabBar.Item = React.createClass({
+const TabBarItem = React.createClass({
   mixins: [ClassNameMixin],
 
   propTypes: {
-    classPrefix: React.PropTypes.string,
-    component: React.PropTypes.any,
-    icon: React.PropTypes.string, // icon name
-    title: React.PropTypes.string,
-    href: React.PropTypes.string,
-    eventKey: React.PropTypes.any,
-    badge: React.PropTypes.oneOfType([
-      React.PropTypes.string,
-      React.PropTypes.number,
+    classPrefix: PropTypes.string,
+    component: PropTypes.any,
+    icon: PropTypes.string, // icon name
+    title: PropTypes.string,
+    href: PropTypes.string,
+    eventKey: PropTypes.any,
+    badge: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.number,
     ]),
-    badgeStyle: React.PropTypes.string,
-    selected: React.PropTypes.bool, // alias of `active`
-    selectedIcon: React.PropTypes.node, // not supported now
+    badgeStyle: PropTypes.string,
+    selected: PropTypes.bool, // alias of `active`
+    selectedIcon: PropTypes.node, // not supported now
+    onAction: PropTypes.func,
   },
 
   getDefaultProps() {
     return {
       classPrefix: 'tabbar',
       component: 'span',
-      onAction: function() {
-      }
+      onAction: () => {},
     };
   },
 
@@ -105,7 +110,8 @@ TabBar.Item = React.createClass({
     return badge ? (
       <Badge
         amStyle={badgeStyle || 'alert'}
-        rounded>
+        rounded
+      >
         {badge}
       </Badge>
     ) : null;
@@ -145,7 +151,15 @@ TabBar.Item = React.createClass({
       className,
       ...props
     } = this.props;
+
+    delete props.classPrefix;
+    delete props.badge;
+    delete props.badgeStyle;
+    delete props.eventKey;
+    delete props.onAction;
+
     Component = this.props.href ? 'a' : Component;
+
     // TODO: how to display badge when icon not set?
 
     return (
@@ -161,5 +175,7 @@ TabBar.Item = React.createClass({
     );
   }
 });
+
+TabBar.Item = TabBarItem;
 
 export default TabBar;

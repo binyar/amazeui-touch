@@ -48,6 +48,9 @@ const OffCanvas = React.createClass({
       ...props
     } = this.props;
 
+    delete props.classPrefix;
+    delete props.onDismiss;
+
     classSet[this.prefixClass('out')] = isClosing;
     classSet[this.prefixClass(placement)] = !!placement;
     classSet[this.prefixClass(animation)] = !!animation;

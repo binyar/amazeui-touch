@@ -44,6 +44,21 @@ const Touchable = React.createClass({
       props.onClick = createChainedFunction(props.onClick, onTap);
     }
 
+    delete props.moveThreshold;
+    delete props.tapDelay;
+    delete props.pressDelay;
+    delete props.preventDefault;
+    delete props.stopPropagation;
+    delete props.onSwipe;
+    delete props.onSwipeLeft;
+    delete props.onSwipeUp;
+    delete props.onSwipeRight;
+    delete props.onSwipeDown;
+    delete props.onTap;
+    delete props.onSingleTap;
+    delete props.onDoubleTap;
+    delete props.onPress;
+
     return (
       <Component
         {...props}

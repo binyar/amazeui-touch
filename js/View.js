@@ -28,6 +28,8 @@ const View = React.createClass({
       ...props,
     } = this.props;
 
+    delete props.classPrefix;
+
     return React.createElement(component, {
       ...props,
       className: classNames(className, this.getClassSet()),

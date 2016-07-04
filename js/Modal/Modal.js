@@ -166,6 +166,20 @@ const Modal = createClass({
     this.props.onClosed();
   },
 
+  removeUnknownProp(props) {
+    delete props.isOpen;
+    delete props.onDismiss;
+    delete props.onOpen;
+    delete props.onClosed;
+    delete props.onAction;
+    delete props.classPrefix;
+    delete props.confirmText;
+    delete props.cancelText;
+    delete props.closeBtn;
+
+    return props;
+  },
+
   renderActions(classSet) {
     classSet[this.props.classPrefix] = false;
 
@@ -201,7 +215,7 @@ const Modal = createClass({
 
     return (
       <div
-        {...props}
+        {...this.removeUnknownProp(props)}
         className={classNames(className, classSet, this.setClassNS('popup'))}
         key="modalPopup"
         ref="modal"
@@ -401,7 +415,7 @@ const Modal = createClass({
 
       modal = (
         <div
-          {...props}
+          {...this.removeUnknownProp(props)}
           style={style}
           ref="modalContainer"
           className={classNames(classSet, className)}

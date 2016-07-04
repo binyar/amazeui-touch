@@ -12,6 +12,14 @@ const NavBar = React.createClass({
 
   propTypes: {
     classPrefix: PropTypes.string,
+    amStyle: PropTypes.oneOf([
+      'primary',
+      'secondary',
+      'success',
+      'warning',
+      'alert',
+      'dark',
+    ]),
     title: PropTypes.node,
     leftNav: PropTypes.array,
     rightNav: PropTypes.array,
@@ -143,10 +151,17 @@ const NavBar = React.createClass({
   render() {
     let classSet = this.getClassSet();
     let {
-      title,
       className,
       ...props
     } = this.props;
+
+    delete props.title;
+    delete props.classPrefix;
+    delete props.leftNav;
+    delete props.rightNav;
+    delete props.amStyle;
+    delete props.onAction;
+    delete props.titleOnLeft;
 
     return (
       <header

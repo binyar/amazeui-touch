@@ -36,12 +36,14 @@ let Group = React.createClass({
     let {
       component: Component,
       className,
-      header,
-      footer,
       noPadded,
       ...props,
     } = this.props;
     let classSet = this.getClassSet();
+
+    delete props.classPrefix;
+    delete props.header;
+    delete props.footer;
 
     classSet[this.prefixClass('no-padded')] = noPadded;
 

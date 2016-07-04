@@ -15,14 +15,12 @@ const ButtonExample = React.createClass({
         <h2>基本样式</h2>
         <Group
           header="默认样式"
-          padded
         >
           <Button>Default</Button>
         </Group>
 
         <Group
           header="颜色样式"
-          padded
         >
           <Button amStyle="primary">Primary</Button>
           <Button amStyle="secondary">Secondary</Button>
@@ -34,7 +32,6 @@ const ButtonExample = React.createClass({
 
         <Group
           header="块级显示"
-          padded
         >
           <Button block>Default Block</Button>
           <Button amStyle="primary" block>Primary Block</Button>
@@ -42,7 +39,6 @@ const ButtonExample = React.createClass({
 
         <Group
           header="按钮大小"
-          padded
         >
           <Button amSize="xs">Default xs</Button>
           <Button amSize="sm">Default sm</Button>

@@ -16,6 +16,7 @@ const Tabs = React.createClass({
     activeKey: PropTypes.any,
     defaultActiveKey: PropTypes.any,
     onAction: PropTypes.func,
+    inset: PropTypes.bool,
   },
 
   getDefaultProps() {
@@ -143,7 +144,7 @@ const Tabs = React.createClass({
       return (
         <Tabs.Item
           active={eventKey === activeKey}
-          enventKey={eventKey}
+          eventKey={eventKey}
           key={'tabPanel' + index}
           {...props}
         >
@@ -168,6 +169,12 @@ const Tabs = React.createClass({
       ...props
     } = this.props;
 
+    delete props.classPrefix;
+    delete props.activeKey;
+    delete props.defaultActiveKey;
+    delete props.inset;
+    delete props.onAction;
+
     return (
       <div
         {...props}
@@ -180,7 +187,7 @@ const Tabs = React.createClass({
   }
 });
 
-Tabs.Item = React.createClass({
+const TabsItem = React.createClass({
   mixins: [ClassNameMixin],
 
   propTypes: {
@@ -210,6 +217,13 @@ Tabs.Item = React.createClass({
     } = this.props;
     const elementName = 'panel';
 
+    delete props.classPrefix;
+    delete props.eventKey;
+    delete props.active;
+    delete props.noPadded;
+    delete props.navSize;
+    delete props.navStyle;
+
     classSet[this.prefixClass(elementName)] = true;
     classSet[this.prefixClass(`${elementName}-no-padded`)] = noPadded;
 
@@ -223,6 +237,8 @@ Tabs.Item = React.createClass({
     );
   }
 });
+
+Tabs.Item = TabsItem;
 
 export default Tabs;
 

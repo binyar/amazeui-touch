@@ -37,6 +37,8 @@ const ButtonGroup = React.createClass({
       ...props
     } = this.props;
 
+    delete props.classPrefix;
+
     classSet[this.prefixClass('stacked')] = stacked;
     classSet[this.prefixClass('justify')] = justify;
 

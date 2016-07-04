@@ -78,14 +78,24 @@ const Accordion = React.createClass({
   },
 
   render() {
+    let {
+      className,
+      inset,
+      ...props
+    } = this.props;
     let classSet = this.getClassSet();
 
-    classSet[this.prefixClass('inset')] = this.props.inset;
+    delete props.classPrefix;
+    delete props.activeKey;
+    delete props.defaultActiveKey;
+    delete props.onAction;
+
+    classSet[this.prefixClass('inset')] = inset;
 
     return (
       <section
-        {...this.props}
-        className={classNames(classSet, this.props.className)}
+        {...props}
+        className={classNames(classSet, className)}
       >
         {this.renderItems()}
       </section>
@@ -93,7 +103,7 @@ const Accordion = React.createClass({
   }
 });
 
-Accordion.Item = React.createClass({
+const AccordionItem = React.createClass({
   mixins: [ClassNameMixin, CollapseMixin],
 
   propTypes: {
@@ -164,5 +174,7 @@ Accordion.Item = React.createClass({
     );
   }
 });
+
+Accordion.Item = AccordionItem;
 
 export default Accordion;

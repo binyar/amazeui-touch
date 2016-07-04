@@ -106,6 +106,14 @@ const Field = React.createClass({
       ...commonProps,
     };
 
+    delete assignedProps.classPrefix;
+    delete assignedProps.containerClassName;
+    delete assignedProps.label;
+    delete assignedProps.btnBefore;
+    delete assignedProps.btnAfter;
+    delete assignedProps.labelBefore;
+    delete assignedProps.labelAfter;
+
     switch (this.props.type) {
       case 'select':
         field = (

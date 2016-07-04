@@ -86,7 +86,7 @@ const sliderCaption = (
 
 const sliderThumbs = (
   <Slider
-    directionNav={false}
+    controls={false}
   >
     {data.map(function(item, i) {
       return (

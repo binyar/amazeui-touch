@@ -33,6 +33,11 @@ const Badge = React.createClass({
       href,
       ...props
     } = this.props;
+
+    delete props.classPrefix;
+    delete props.amStyle;
+    delete props.rounded;
+
     Component = href ? 'a' : Component;
 
     return (

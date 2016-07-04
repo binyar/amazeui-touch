@@ -50,6 +50,8 @@ const Card = React.createClass({
       ...props
     } = this.props;
 
+    delete props.classPrefix;
+
     return (
       <div
         {...props}
@@ -68,7 +70,7 @@ const Card = React.createClass({
   }
 });
 
-Card.Child = React.createClass({
+const CardChild = React.createClass({
   mixins: [ClassNameMixin],
 
   propTypes: {
@@ -85,7 +87,7 @@ Card.Child = React.createClass({
   },
 
   render() {
-    const {
+    let {
       role,
       className,
       cover,
@@ -103,6 +105,8 @@ Card.Child = React.createClass({
       }
     }
 
+    delete props.classPrefix;
+
     return (
       <div
         {...props}
@@ -115,5 +119,7 @@ Card.Child = React.createClass({
     );
   }
 });
+
+Card.Child = CardChild;
 
 export default Card;

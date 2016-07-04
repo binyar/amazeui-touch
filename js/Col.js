@@ -26,14 +26,16 @@ const Col = React.createClass({
 
   render() {
     let {
+      component: Component,
       cols,
       offset,
       shrink,
-      component: Component,
       className,
       ...props,
     } = this.props;
     let classSet = this.getClassSet();
+
+    delete props.classPrefix;
 
     if (cols) {
       classSet[this.prefixClass(cols)] = true;

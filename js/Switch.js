@@ -40,6 +40,8 @@ const Switch = React.createClass({
       ...props
     } = this.props;
 
+    delete props.classPrefix;
+
     return (
       <label
         {...props}

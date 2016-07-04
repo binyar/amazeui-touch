@@ -1,5 +1,4 @@
 import React, {
-  cloneElement,
   PropTypes,
 } from 'react';
 import classNames from 'classnames';
@@ -22,13 +21,20 @@ const ButtonToolbar = React.createClass({
 
   render() {
     let classSet = this.getClassSet();
+    let {
+      className,
+      children,
+      ...props
+    } = this.props;
+
+    delete props.classPrefix;
 
     return (
       <div
-        {...this.props}
-        className={classNames(this.props.className, classSet)}
+        {...props}
+        className={classNames(className, classSet)}
       >
-        {this.props.children}
+        {children}
       </div>
     );
   }
