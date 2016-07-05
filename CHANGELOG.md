@@ -1,5 +1,14 @@
 ## Change Log
 
+### v1.0.0-rc.2 (2016/07/05 14:57 +08:00)
+
+- `[+]` [1f3ae5a](https://github.com/amazeui/amazeui-touch/commit/1f3ae5a6d1a0f853ebac9849371bdf0ea20b801b) 处理 React 15.2.0 `unknown-prop` 警告信息
+- `[+]` [a83a7b3](https://github.com/amazeui/amazeui-touch/commit/a83a7b3f891306ac7522882bb43a7fd9291839cc) 添加服务器端渲染示例
+- `[+]` [58c9b5d](https://github.com/amazeui/amazeui-touch/commit/58c9b5dbbc9e7f1df2c18b4fb5a9e5522656f520) #72 完善后端渲染支持
+- `[√]` [2c823c8](https://github.com/amazeui/amazeui-touch/commit/2c823c8ed33851c8fbd650eb85fdd2c8d3e38657) 修复遗漏 `import` Modal 样式问题
+- `[*]` [32c371e](https://github.com/amazeui/amazeui-touch/commit/32c371e0f5e222eaf8192ce58ad013d91074ee97) 允许用户引用 `amazeui.touch.scss` 时覆盖 `$ratchicons-path` 变量，以处理 Webpack 打包时[路径错误问题](https://github.com/jtangelder/sass-loader#problems-with-url)
+
+
 ### v1.0.0-rc.1 (2016/07/01)
 
 - `[*]` [6af1392](https://github.com/amazeui/amazeui-touch/commit/6af1392fc54c3b439c13520ad4977eab8bf968d6) 调整 TabBar & NavBar 边框风格
