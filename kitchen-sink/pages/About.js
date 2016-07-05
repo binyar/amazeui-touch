@@ -13,13 +13,13 @@ const About = React.createClass({
       year: new Date().getFullYear(),
     };
   },
-  
+
   render() {
     return (
       <Container {...this.props}>
         <Group
           header="关于 Amaze UI Touch"
-          footer="ver __VERSION__"
+          footer={`ver ${__VERSION__}`}
         >
           <p>Amaze UI Touch 是基于 React.js 的移动端 Web 组件库。</p>
         </Group>

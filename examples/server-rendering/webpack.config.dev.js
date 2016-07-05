@@ -2,6 +2,7 @@
 
 import path from 'path';
 import webpack  from 'webpack';
+import pkg from '../../package.json';
 
 export default {
   devtool: 'eval',
@@ -32,6 +33,7 @@ export default {
   plugins: [
     new webpack.DefinePlugin({
       SERVER_RENDING: true,
+      __VERSION__: JSON.stringify(pkg.version),
       'process.env': {
         'NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
       },

@@ -36,6 +36,7 @@ const Index = React.createClass({
             <div className="amt-intro">
               <h1>Amaze UI Touch</h1>
               <h2>基于 React.js 的移动端 Web 组件库</h2>
+              <p className="amt-version">当前版本：v{__VERSION__} <span>|</span> <a href="https://github.com/amazeui/amazeui-touch/blob/master/CHANGELOG.md" target="_blank">变更日志</a></p>
               <div className="amt-ghbtns">
                 <iframe
                   src="https://ghbtns.com/github-btn.html?user=amazeui&repo=amazeui-touch&type=star&count=true"
