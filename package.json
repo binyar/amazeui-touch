@@ -6,11 +6,11 @@
   "main": "lib/index.js",
   "scripts": {
     "start": "gulp",
-    "build": "NODE_ENV=production gulp build",
+    "build": "cross-env NODE_ENV=production gulp build",
     "test": "echo \"Error: no test specified\" && exit 1",
     "eslint": "./node_modules/.bin/eslint ./src/js/",
     "changelog": "github-changes -o amazeui -r amazeui-touch -a",
-    "docs": "rm -rf www && NODE_ENV=production webpack --config webpack.docs.babel.js --progress && browser-sync start --server www"
+    "docs": "rm -rf www && cross-env NODE_ENV=production webpack --config webpack.docs.babel.js --progress && browser-sync start --server www"
   },
   "repository": {
     "type": "git",
@@ -45,6 +45,7 @@
     "brfs": "^1.4.3",
     "browser-sync": "^2.13.0",
     "clipboard": "^1.5.12",
+    "cross-env": "^1.0.8",
     "css-loader": "^0.23.1",
     "del": "^2.2.1",
     "eslint": "^3.0.0",
