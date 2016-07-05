@@ -21,3 +21,4 @@ gulpfile.babel.js
 webpack.config.js
 webpack.docs.babel.js
 bower.json
+ISSUE_TEMPLATE.md
