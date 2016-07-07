@@ -23,10 +23,6 @@ export default {
     alias: {
       react: __dirname + '/node_modules/react',
       'react-dom': __dirname + '/node_modules/react-dom',
-      alias: {
-        sk: path.resolve(__dirname, 'kitchen-sink'),
-        'amazeui-touch': path.resolve(__dirname, 'kitchen-sink/amazeui-touch.js'),
-      }
     }
   },
 
