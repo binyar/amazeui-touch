@@ -156,7 +156,7 @@
   @extend %item-field;
 
   .#{$field-prefix}-label {
-    @include fixes-flexbox-for-andriod;
+    @include fixes-flexbox-for-android;
     width: 35%;
   }
 
@@ -187,7 +187,7 @@
   }
 
   .#{$field-prefix}-label {
-    @include fixes-flexbox-for-andriod;
+    @include fixes-flexbox-for-android;
     flex: 1;
     padding: unquote(get-side($form-padding, top) + rem-calc(1) + " " + 0);
     line-height: normal;

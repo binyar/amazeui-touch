@@ -52,7 +52,7 @@
   }
 
   .#{$accordion-prefix}-icon {
-    @include fixes-flexbox-for-andriod;
+    @include fixes-flexbox-for-android;
     font-size: rem-calc(20);
     color: rgba($gray-light, .45);
     transform: rotate(0deg);
