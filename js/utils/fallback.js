@@ -1,13 +1,14 @@
 const fallback = {
   detectionRegex: {
     uc: /ucbrowser/i,
-    zuoku: /zuoku build/i
+    zuoku: /zuoku build/i,
+    coolpad: /coolpad/i,
   },
 
   addHook: function () {
     // Android browsers legacy flexbox fallback
     try {
-      const ua = navigator.userAgent;
+      const ua = navigator.userAgent.toLowerCase();
       let fbNeeded = false;
 
       // TODO: - add version detecting when UC supports flexbox
