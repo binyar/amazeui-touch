@@ -98,8 +98,11 @@ $global-margin: 1rem !default;
 $global-spacing: rem-calc(15) !default;
 
 // Font-families
-$font-family-sans-serif: "Helvetica Neue", Helvetica, "Segoe UI", Arial, "Microsoft YaHei", FreeSans, Arimo, "Droid Sans","wenquanyi micro hei", sans-serif !default;
-$font-family-serif: Georgia, "Times New Roman", Times, SimSimSun, serif; //FangSong, STFangSong
+// @see https://www.smashingmagazine.com/2015/11/using-system-ui-fonts-practical-guide/
+$font-family-sans-serif: /* 1 */ -apple-system, BlinkMacSystemFont,
+  /* 2 */ "PingFang SC", "Hiragino Sans GB", "Segoe UI", "Microsoft YaHei", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "wenquanyi micro hei",
+  /* 3 */ "Helvetica Neue", Helvetica, Arial, sans-serif !default;
+$font-family-serif: Georgia, "Times New Roman", Times, SimSun, serif !default; // FangSong, STFangSong
 $font-family-monospace: Monaco, Menlo, Consolas, "Courier New", monospace !default;
 
 // Z-index
