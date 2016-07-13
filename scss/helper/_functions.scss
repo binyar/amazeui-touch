@@ -152,7 +152,7 @@
 }
 
 
-// Map keys to comma sepatated selector
+// Map keys to comma separated selector
 // @see http://miphe.com/articles/dry-selectors
 // @see http://roytomeij.com/blog/2012/using-each-in-sass-to-create-selectors.html
 @function keys-to-selector($map, $prefix: '') {
