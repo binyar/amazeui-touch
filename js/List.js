@@ -179,6 +179,7 @@ List.Item = React.createClass({
     delete props.title;
     delete props.after;
     delete props.linkProps;
+    delete props.desc;
 
     let itemChildren = [
       this.renderAddon('media'),
