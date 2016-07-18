@@ -14,7 +14,7 @@
 
 > PropType: `enum('top', 'bottom', 'horizontal')`
 
-Popover 位置。
+Popover 位置。**目前的实现是根据 `<PopoverTrigger>` 在窗口中的位置自动计算，暂不支持自定义。**
 
 ##### `onDismiss`
 
