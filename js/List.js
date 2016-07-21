@@ -44,14 +44,14 @@ const List = React.createClass({
   }
 });
 
-List.Item = React.createClass({
+const ListItem = React.createClass({
   mixins: [ClassNameMixin],
 
   propTypes: {
     classPrefix: PropTypes.string.isRequired,
     role: PropTypes.oneOf(['header', 'item']),
-    title: PropTypes.string,
-    subTitle: PropTypes.string,
+    title: PropTypes.node,
+    subTitle: PropTypes.node,
     href: PropTypes.string,
     linked: PropTypes.bool, // linked flag for custom href like route Link
     linkComponent: PropTypes.any,
@@ -203,6 +203,8 @@ List.Item = React.createClass({
     );
   }
 });
+
+List.Item = ListItem;
 
 export default List;
 
