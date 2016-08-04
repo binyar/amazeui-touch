@@ -33,18 +33,18 @@ const TabBarDemo = React.createClass({
       >
         <TabBar.Item
           eventKey="home"
-          active={this.state.selected === 'home'}
+          selected={this.state.selected === 'home'}
           icon="home"
           title="首页"
         />
         <TabBar.Item
-          active={this.state.selected === 'gear'}
+          selected={this.state.selected === 'gear'}
           eventKey="gear"
           icon="gear"
           title="设置"
         />
         <TabBar.Item
-          active={this.state.selected === 'info'}
+          selected={this.state.selected === 'info'}
           eventKey="info"
           icon="info"
           badge={5}
@@ -64,7 +64,7 @@ const TabBarExample = React.createClass({
         key={index}
       >
         <TabBar amStyle={amStyle.toLowerCase()}>
-          <TabBar.Item active icon="home" title="首页" />
+          <TabBar.Item selected icon="home" title="首页" />
           <TabBar.Item icon="gear" title="设置" />
           <TabBar.Item icon="info" badge={5} title="信息" />
         </TabBar>
@@ -80,7 +80,7 @@ const TabBarExample = React.createClass({
           noPadded
         >
           <TabBar>
-            <TabBar.Item active title="首页" />
+            <TabBar.Item selected title="首页" />
             <TabBar.Item title="设置" />
             <TabBar.Item title="关于" />
           </TabBar>
@@ -89,27 +89,31 @@ const TabBarExample = React.createClass({
         <Group
           header="图标"
           noPadded
-        ><TabBar>
-          <TabBar.Item active icon="home" />
-          <TabBar.Item icon="gear" />
-          <TabBar.Item icon="info" />
-        </TabBar></Group>
+        >
+          <TabBar>
+            <TabBar.Item selected icon="home" />
+            <TabBar.Item icon="gear" />
+            <TabBar.Item icon="info" />
+          </TabBar>
+        </Group>
 
         <Group
           header="图标 + Badge"
           noPadded
-        ><TabBar>
-          <TabBar.Item active icon="home" />
-          <TabBar.Item icon="gear" />
-          <TabBar.Item icon="info" badge={5} />
-        </TabBar></Group>
+        >
+          <TabBar>
+            <TabBar.Item selected icon="home" />
+            <TabBar.Item icon="gear" />
+            <TabBar.Item icon="info" badge={5} />
+          </TabBar>
+        </Group>
 
         <Group
           header="图标 + 文字"
           noPadded
         >
           <TabBar>
-            <TabBar.Item active icon="home" title="首页" />
+            <TabBar.Item selected icon="home" title="首页" />
             <TabBar.Item icon="gear" title="设置" />
             <TabBar.Item icon="info" badge={5} title="信息" />
           </TabBar>
