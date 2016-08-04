@@ -1,7 +1,7 @@
 import React, {
   PropTypes,
 } from 'react';
-import classNames from 'classnames';
+import cx from 'classnames';
 import ClassNameMixin from './mixins/ClassNameMixin';
 import BackdropMixin from './mixins/BackdropMixin';
 
@@ -71,14 +71,14 @@ const Popover = React.createClass({
         {...props}
         style={style}
         ref="overlay"
-        className={classNames(classSet, className)}
+        className={cx(classSet, className)}
       >
         <div className={this.prefixClass('inner')}>
           {children}
         </div>
         <div
           style={angleStyle}
-          className={classNames(this.prefixClass('angle'),
+          className={cx(this.prefixClass('angle'),
           anglePosition ? this.prefixClass('angle-' + anglePosition) : null
           )}
         />

@@ -5,7 +5,7 @@ import React, {
   PropTypes,
 } from 'react';
 import CSSTransitionGroup from 'react-addons-css-transition-group';
-import classNames from 'classnames';
+import cx from 'classnames';
 import ClassNameMixin from './mixins/ClassNameMixin';
 
 import '../scss/components/_container.scss';
@@ -126,7 +126,7 @@ let Container = React.createClass({
       return (
         <CSSTransitionGroup
           component="div"
-          className={classNames(this.setClassNS('views'), className)}
+          className={cx(this.setClassNS('views'), className)}
           transitionName={this.setClassNS(`view-transition-${transition}`)}
           transitionEnterTimeout={TRANSITION_TIMEOUT}
           transitionLeaveTimeout={TRANSITION_TIMEOUT}
@@ -163,7 +163,7 @@ let Container = React.createClass({
       align = 'end';
     }
 
-    let classes = classNames(classSet, className, {
+    let classes = cx(classSet, className, {
       [this.prefixClass('fill')]: fill,
       [this.prefixClass('column')]: direction === 'column',
       [this.prefixClass('row')]: direction === 'row',

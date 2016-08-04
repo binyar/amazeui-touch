@@ -1,7 +1,7 @@
 import React, {
   PropTypes,
 } from 'react';
-import classNames from 'classnames';
+import cx from 'classnames';
 import ClassNameMixin from './mixins/ClassNameMixin';
 
 import '../scss/components/_card.scss';
@@ -55,7 +55,7 @@ const Card = React.createClass({
     return (
       <div
         {...props}
-        className={classNames(classSet, className)}
+        className={cx(classSet, className)}
       >
         {title ?
           this.renderItem(this.renderTitle(title)) : this.renderItem(header)}
@@ -110,7 +110,7 @@ const CardChild = React.createClass({
     return (
       <div
         {...props}
-        className={classNames(className, classSet)}
+        className={cx(className, classSet)}
         role={`card-${role}`}
         style={style}
       >

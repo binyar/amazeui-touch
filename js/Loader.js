@@ -1,7 +1,7 @@
 import React, {
   PropTypes,
 } from 'react';
-import classNames from 'classnames';
+import cx from 'classnames';
 import ClassNameMixin from './mixins/ClassNameMixin';
 
 import '../scss/components/_loader.scss';
@@ -38,7 +38,7 @@ const Loader = React.createClass({
     return (
       <Component
         {...props}
-        className={classNames(classSet, className)}
+        className={cx(classSet, className)}
       >
         <div className={this.prefixClass('bounce1')} />
         <div className={this.prefixClass('bounce2')} />

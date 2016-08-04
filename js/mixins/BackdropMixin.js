@@ -1,5 +1,5 @@
 import React from 'react';
-import classNames from 'classnames';
+import cx from 'classnames';
 
 export default {
   renderBackdrop(children) {
@@ -15,7 +15,7 @@ export default {
         <div
           onClick={onClick}
           ref="backdrop"
-          className={classNames(classSet)}
+          className={cx(classSet)}
         ></div>
       </span>
     );

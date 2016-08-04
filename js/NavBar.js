@@ -1,7 +1,7 @@
 import React, {
   PropTypes,
 } from 'react';
-import classNames from 'classnames';
+import cx from 'classnames';
 import ClassNameMixin from './mixins/ClassNameMixin';
 import Icon from './Icon';
 
@@ -44,7 +44,7 @@ const NavBar = React.createClass({
 
     return title ? (
       <h2
-        className={classNames(this.prefixClass('title'), titlePosition)}
+        className={cx(this.prefixClass('title'), titlePosition)}
       >
         {title}
       </h2>
@@ -57,7 +57,7 @@ const NavBar = React.createClass({
 
     return nav && Array.isArray(nav) ? (
       <div
-        className={classNames(this.prefixClass('nav'),
+        className={cx(this.prefixClass('nav'),
         this.prefixClass(position))}
       >
         {nav.map(this.renderNavItem)}
@@ -77,7 +77,7 @@ const NavBar = React.createClass({
       ...otherProps,
     } = item;
     let children = [];
-    let itemClassName = classNames(this.prefixClass('nav-item'), className);
+    let itemClassName = cx(this.prefixClass('nav-item'), className);
     let itemProps = {
       key: 'navbarNavItem' + index,
       onClick: this.props.onAction.bind(this, item),
@@ -107,13 +107,13 @@ const NavBar = React.createClass({
     let navIcon = customIcon ? (
       <img
         src={customIcon}
-        className={classNames(iconClassName)}
+        className={cx(iconClassName)}
         alt={title || null}
         key={navIconKey}
       />
     ) : icon ? (
       <Icon
-        className={classNames(iconClassName)}
+        className={cx(iconClassName)}
         name={icon}
         key={navIconKey}
       />
@@ -166,7 +166,7 @@ const NavBar = React.createClass({
     return (
       <header
         {...props}
-        className={classNames(classSet, className)}
+        className={cx(classSet, className)}
       >
         {this.renderTitle()}
         {this.renderNav('left')}

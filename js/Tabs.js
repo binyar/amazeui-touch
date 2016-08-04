@@ -1,7 +1,7 @@
 import React, {
   PropTypes,
 } from 'react';
-import classNames from 'classnames';
+import cx from 'classnames';
 import ClassNameMixin from './mixins/ClassNameMixin';
 import Button from './Button';
 import ButtonGroup from './ButtonGroup';
@@ -178,7 +178,7 @@ const Tabs = React.createClass({
     return (
       <div
         {...props}
-        className={classNames(classSet, className)}
+        className={cx(classSet, className)}
       >
         {this.renderNav()}
         {this.renderTabPanels()}
@@ -230,7 +230,7 @@ const TabsItem = React.createClass({
     return (
       <div
         {...props}
-        className={classNames(classSet, className)}
+        className={cx(classSet, className)}
       >
         {children}
       </div>

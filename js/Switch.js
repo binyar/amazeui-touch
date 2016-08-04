@@ -1,7 +1,7 @@
 import React, {
   PropTypes,
 } from 'react';
-import classNames from 'classnames';
+import cx from 'classnames';
 import ClassNameMixin from './mixins/ClassNameMixin';
 
 import '../scss/components/_switch.scss';
@@ -45,7 +45,7 @@ const Switch = React.createClass({
     return (
       <label
         {...props}
-        className={classNames(classSet, className)}
+        className={cx(classSet, className)}
       >
         <input
           onChange={onValueChange.bind(this)}

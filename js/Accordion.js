@@ -1,7 +1,7 @@
 import React, {
   PropTypes,
 } from 'react';
-import classNames from 'classnames';
+import cx from 'classnames';
 import ClassNameMixin from './mixins/ClassNameMixin';
 import CollapseMixin from './mixins/CollapseMixin';
 import Icon from './Icon';
@@ -95,7 +95,7 @@ const Accordion = React.createClass({
     return (
       <section
         {...props}
-        className={classNames(classSet, className)}
+        className={cx(classSet, className)}
       >
         {this.renderItems()}
       </section>
@@ -146,7 +146,7 @@ const AccordionItem = React.createClass({
   render() {
     return (
       <dl
-        className={classNames(this.setClassNS('accordion-item'),
+        className={cx(this.setClassNS('accordion-item'),
         this.isExpanded() ? this.setClassNS('active') : null)}
       >
         <dt
@@ -160,7 +160,7 @@ const AccordionItem = React.createClass({
           />
         </dt>
         <dd
-          className={classNames(this.setClassNS('accordion-body'),
+          className={cx(this.setClassNS('accordion-body'),
             this.getCollapsibleClassSet())}
           ref="panel"
         >

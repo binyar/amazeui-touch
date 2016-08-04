@@ -1,7 +1,7 @@
 import React, {
   PropTypes,
 } from 'react';
-import classNames from 'classnames';
+import cx from 'classnames';
 import ClassNameMixin from './mixins/ClassNameMixin';
 import Icon from './Icon';
 import Badge from './Badge';
@@ -43,7 +43,7 @@ let TabBar = React.createClass({
     return (
       <Component
         {...props}
-        className={classNames(classSet, className)}
+        className={cx(classSet, className)}
       >
         {React.Children.map(children, (child, index) => {
           let {
@@ -165,7 +165,7 @@ const TabBarItem = React.createClass({
     return (
       <Component
         {...props}
-        className={classNames(classSet, className, this.prefixClass('item'))}
+        className={cx(classSet, className, this.prefixClass('item'))}
       >
         {[
           this.renderIcon(),

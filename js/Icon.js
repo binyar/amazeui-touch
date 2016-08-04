@@ -1,7 +1,7 @@
 import React, {
   PropTypes,
 } from 'react';
-import classNames from 'classnames';
+import cx from 'classnames';
 import ClassNameMixin from './mixins/ClassNameMixin';
 
 import '../scss/components/_icon.scss';
@@ -45,7 +45,7 @@ const Icon = React.createClass({
     return (
       <Component
         {...props}
-        className={classNames(classSet, className)}
+        className={cx(classSet, className)}
       >
         {this.props.children}
       </Component>

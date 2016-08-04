@@ -6,7 +6,7 @@ import ReactDOM, {
   unstable_renderSubtreeIntoContainer as renderSubtreeIntoContainer
 } from 'react-dom';
 import CSSTransitionGroup from 'react-addons-css-transition-group';
-import classNames from 'classnames';
+import cx from 'classnames';
 import ClassNameMixin from './mixins/ClassNameMixin';
 import {
   canUseDOM,
@@ -77,7 +77,7 @@ const Notification = React.createClass({
     let notificationBar = visible ? (
       <div
         {...props}
-        className={classNames(classSet, className)}
+        className={cx(classSet, className)}
         key="notification"
       >
         <div className={this.prefixClass('content')}>

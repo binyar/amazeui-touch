@@ -1,7 +1,7 @@
 import React, {
   PropTypes,
 } from 'react';
-import classNames from 'classnames';
+import cx from 'classnames';
 import ClassNameMixin from './mixins/ClassNameMixin';
 
 import '../scss/components/_group.scss';
@@ -54,10 +54,10 @@ let Group = React.createClass({
     return (
       <Component
         {...props}
-        className={classNames(className, classSet)}
+        className={cx(className, classSet)}
       >
         {this.renderAddon('header')}
-        <div className={classNames(bodyClasses)}>
+        <div className={cx(bodyClasses)}>
           {this.props.children}
         </div>
         {this.renderAddon('footer')}

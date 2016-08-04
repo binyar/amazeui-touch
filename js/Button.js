@@ -1,7 +1,7 @@
 import React, {
   PropTypes,
 } from 'react';
-import classNames from 'classnames';
+import cx from 'classnames';
 import ClassNameMixin from './mixins/ClassNameMixin';
 
 import '../scss/components/_button.scss';
@@ -95,7 +95,7 @@ const Button = React.createClass({
     // block button
     classSet[this.prefixClass('block')] = block;
 
-    return this[renderType](classNames(classSet, className));
+    return this[renderType](cx(classSet, className));
   }
 });
 

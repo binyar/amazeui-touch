@@ -1,7 +1,7 @@
 import React, {
   PropTypes,
 } from 'react';
-import classNames from 'classnames';
+import cx from 'classnames';
 import ClassNameMixin from './mixins/ClassNameMixin';
 
 import '../scss/components/_grid.scss';
@@ -50,7 +50,7 @@ const Col = React.createClass({
     return (
       <Component
         {...props}
-        className={classNames(className, classSet)}
+        className={cx(className, classSet)}
       >
         {this.props.children}
       </Component>

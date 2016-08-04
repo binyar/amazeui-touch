@@ -6,7 +6,7 @@ import React, {
   PropTypes,
 } from 'react';
 import ReactDOM from 'react-dom';
-import classNames from 'classnames';
+import cx from 'classnames';
 import ClassNameMixin from './mixins/ClassNameMixin';
 import TransitionEvents from './utils/TransitionEvents';
 import Icon from './Icon';
@@ -260,7 +260,7 @@ const Slider = React.createClass({
 
       return (
         <ol
-          className={classNames(this.prefixClass('pager'), pagerClassName)}
+          className={cx(this.prefixClass('pager'), pagerClassName)}
         >
           {children}
         </ol>
@@ -313,7 +313,7 @@ const Slider = React.createClass({
       <Touchable
         {...props}
         component="div"
-        className={classNames(classSet, className)}
+        className={cx(classSet, className)}
         onMouseOver={this.handleMouseOver}
         onMouseOut={this.handleMouseOut}
         onSwipeLeft={this.handleSwipeLeft}
@@ -410,7 +410,7 @@ const SliderItem = React.createClass({
 
     return (
       <li
-        className={classNames(className, classSet)}
+        className={cx(className, classSet)}
       >
         {this.props.children}
       </li>

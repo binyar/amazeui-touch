@@ -1,7 +1,7 @@
 import React, {
   PropTypes,
 } from 'react';
-import classNames from 'classnames';
+import cx from 'classnames';
 import ClassNameMixin from './mixins/ClassNameMixin';
 import Button from './Button';
 import Icon from './Icon';
@@ -95,7 +95,7 @@ const Field = React.createClass({
     let field = null;
     let fieldClassName = this.isCheckboxOrRadio() || this.isFile() ?
       '' : this.getClassSet();
-    let classes = classNames(this.props.className, fieldClassName);
+    let classes = cx(this.props.className, fieldClassName);
     let commonProps = {
       ref: 'field',
       key: 'formField',
@@ -167,7 +167,7 @@ const Field = React.createClass({
     return label ? (
       <label
         htmlFor={id}
-        className={classNames(this.prefixClass('container'), containerClassName)}
+        className={cx(this.prefixClass('container'), containerClassName)}
         key="label"
       >
         <span className={this.prefixClass('label')}>
@@ -207,7 +207,7 @@ const Field = React.createClass({
 
     return labelBefore || labelAfter || btnBefore || btnAfter ? (
       <div
-        className={classNames(groupPrefix, containerClassName)}
+        className={cx(groupPrefix, containerClassName)}
         key="fieldGroup"
       >
         {renderFiledLabel('labelBefore')}

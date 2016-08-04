@@ -7,7 +7,7 @@ import React, {
   createClass,
 } from 'react';
 import ReactDOM from 'react-dom';
-import classNames from 'classnames';
+import cx from 'classnames';
 import CSSTransitionGroup from 'react-addons-css-transition-group';
 import ClassNameMixin from '../mixins/ClassNameMixin';
 import TransitionEvents from '../utils/TransitionEvents';
@@ -185,7 +185,7 @@ const Modal = createClass({
 
     return (
       <div
-        className={classNames(this.props.className, classSet)}
+        className={cx(this.props.className, classSet)}
         key="modalActions"
         ref="modal"
       >
@@ -216,7 +216,7 @@ const Modal = createClass({
     return (
       <div
         {...this.removeUnknownProp(props)}
-        className={classNames(className, classSet, this.setClassNS('popup'))}
+        className={cx(className, classSet, this.setClassNS('popup'))}
         key="modalPopup"
         ref="modal"
       >
@@ -350,7 +350,7 @@ const Modal = createClass({
       <span>
         {children}
         <div
-          className={classNames(classSet)}
+          className={cx(classSet)}
           style={{height: window.innerHeight}}
           ref="backdrop"
           onClick={onClick}
@@ -418,7 +418,7 @@ const Modal = createClass({
           {...this.removeUnknownProp(props)}
           style={style}
           ref="modalContainer"
-          className={classNames(classSet, className)}
+          className={cx(classSet, className)}
         >
           <div
             className="modal-inner"

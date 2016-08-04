@@ -1,7 +1,7 @@
 import React, {
   PropTypes,
 } from 'react';
-import classNames from 'classnames';
+import cx from 'classnames';
 import ClassNameMixin from './mixins/ClassNameMixin';
 import Icon from './Icon';
 
@@ -37,7 +37,7 @@ const List = React.createClass({
     return (
       <ul
         {...props}
-        className={classNames(classSet, className)}
+        className={cx(classSet, className)}
       >
       </ul>
     );
@@ -195,7 +195,7 @@ const ListItem = React.createClass({
     return (
       <li
         {...props}
-        className={classNames(classSet, className)}
+        className={cx(classSet, className)}
       >
         {role === 'header' ? children :
           (href || linkComponent) ? this.wrapLink(itemChildren) : itemChildren}

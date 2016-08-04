@@ -1,7 +1,7 @@
 import React, {
   PropTypes,
 } from 'react';
-import classNames from 'classnames';
+import cx from 'classnames';
 import ClassNameMixin from './mixins/ClassNameMixin';
 
 import '../scss/components/_view.scss';
@@ -32,7 +32,7 @@ const View = React.createClass({
 
     return React.createElement(component, {
       ...props,
-      className: classNames(className, this.getClassSet()),
+      className: cx(className, this.getClassSet()),
     });
   },
 });
