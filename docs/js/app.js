@@ -32,12 +32,23 @@ const Header = React.createClass({
     });
   },
 
+  onMatchClick() {
+    if (global.matchMedia && global.matchMedia('(max-width: 640px)').matches) {
+      this.onClick();
+    }
+  },
+
   renderLink(route, title) {
     const pathName = `/${route}`;
 
     return (
       <li className={this.context.router.isActive(pathName) ? 'am-active' : ''}>
-        <Link to={pathName}>{title}</Link>
+        <Link
+          to={pathName}
+          onClick={this.onMatchClick}
+        >
+          {title}
+        </Link>
       </li>
     );
   },
@@ -58,13 +69,21 @@ const Header = React.createClass({
           className="am-show-sm-only am-topbar-toggle"
           onClick={this.onClick}
         >
-          <span className={`am-icon-${icon}`}></span>
+          <span className={`am-icon-${icon}`} />
         </a>
 
         <div className={`am-collapse am-topbar-collapse ${active}`}>
           <ul className="am-nav am-nav-pills am-topbar-nav am-topbar-left">
             {this.renderLink('docs/getting-started', '开发文档')}
-            <li><a href="http://amazeui.org/" target="_blank">Amaze UI Web</a></li>
+            <li>
+              <a
+                href="http://amazeui.org/"
+                target="_blank"
+                onClick={this.onMatchClick}
+              >
+                Amaze UI Web
+              </a>
+            </li>
           </ul>
         </div>
       </header>
