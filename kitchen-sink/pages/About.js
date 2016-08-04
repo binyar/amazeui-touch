@@ -15,8 +15,13 @@ const About = React.createClass({
   },
 
   render() {
+    const {
+      year,
+      ...props
+    } = this.props;
+
     return (
-      <Container {...this.props}>
+      <Container {...props}>
         <Group
           header="关于 Amaze UI Touch"
           footer={`ver ${__VERSION__}`}
@@ -41,7 +46,7 @@ const About = React.createClass({
         <Group
           header="版权"
         >
-          <p>MIT © 2015 - {this.props.year} AllMobilize Inc.</p>
+          <p>MIT © 2015 - {year} AllMobilize Inc.</p>
         </Group>
         <Group
           header="UA"
