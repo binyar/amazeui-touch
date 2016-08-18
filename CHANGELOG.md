@@ -1,5 +1,14 @@
 ## Change Log
 
+### v1.0.0 (2016/08/18 15:16 +08:00)
+
+- `[√]` [dc33733](https://github.com/amazeui/amazeui-touch/commit/dc33733a8a8e9c382ac13ed5606db074ecdc3e18)  修复文档在 Firefox 下不能滚动的问题
+- `[*]` [3d8900b](https://github.com/amazeui/amazeui-touch/commit/3d8900b35c59e1b0e26bcf08285da9410aac73ed)  #94 允许 ListItem `title`/`subTitle` 属性使用节点
+- `[√]` [eb414ef](https://github.com/amazeui/amazeui-touch/commit/eb414ef9328b89b502d392af17514df932694f6c) #87 从 List 中删除未知属性 `desc`
+- `[√]` [0c9e438](https://github.com/amazeui/amazeui-touch/commit/0c9e438043dee32850afa34c1cf238ea85ec7de6) #12 修复酷派手机上的 Icon 和 flexbox 显示问题
+- `[*]` [658a860](https://github.com/amazeui/amazeui-touch/commit/658a860ebabaa17c3ed4833219434a182ca23669)  加入 `-apple-system` 到默认的字体中
+- `[*]` [6c14708](https://github.com/amazeui/amazeui-touch/commit/6c14708e3a92e3dfd9a3b3f8a194a209a21fef13)  添加 `.woff2` 、移除 `.svg` 格式的图标字体，解决某些安卓手机上的兼容性问题
+
 ### v1.0.0-rc.2 (2016/07/05 14:57 +08:00)
 
 - `[+]` [1f3ae5a](https://github.com/amazeui/amazeui-touch/commit/1f3ae5a6d1a0f853ebac9849371bdf0ea20b801b) 处理 React 15.2.0 `unknown-prop` 警告信息
