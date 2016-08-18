@@ -1,6 +1,6 @@
-/** Amaze UI Touch v1.0.0-rc.2 | by Amaze UI Team
+/** Amaze UI Touch v1.0.0 | by Amaze UI Team
   * (c) 2016 AllMobilize, Inc., Licensed under MIT
-  * 2016-07-05T14:55:43+0800
+  * 2016-08-18T15:15:02+0800
   */
   (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -68,7 +68,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _mixins = __webpack_require__(1);
 
 	Object.keys(_mixins).forEach(function (key) {
-	  if (key === "default") return;
+	  if (key === "default" || key === "__esModule") return;
 	  Object.defineProperty(exports, key, {
 	    enumerable: true,
 	    get: function get() {
@@ -194,7 +194,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	// @see http://jamesknelson.com/re-exporting-es6-modules/
 	// @see http://exploringjs.com/es6/ch_modules.html#sec_all-exporting-styles
 
-	var VERSION = exports.VERSION = '1.0.0-rc.2';
+	var VERSION = exports.VERSION = '1.0.0';
 
 	// Layout
 	exports.Container = _Container3.default;
@@ -822,7 +822,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	   * @return {DOMElement} the element passed in
 	   * @see http://caniuse.com/#feat=classlist
 	   */
-
 	  addClass: function addClass(element, className) {
 	    if (className) {
 	      if (element.classList) {
@@ -1412,7 +1411,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	  },
 	  render: function render() {
-	    var _classNames;
+	    var _cx;
 
 	    var _props = this.props;
 	    var className = _props.className;
@@ -1472,7 +1471,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      align = 'end';
 	    }
 
-	    var classes = (0, _classnames2.default)(classSet, className, (_classNames = {}, _defineProperty(_classNames, this.prefixClass('fill'), fill), _defineProperty(_classNames, this.prefixClass('column'), direction === 'column'), _defineProperty(_classNames, this.prefixClass('row'), direction === 'row'), _defineProperty(_classNames, this.prefixClass('align-center'), align === 'center'), _defineProperty(_classNames, this.prefixClass('align-start'), align === 'start'), _defineProperty(_classNames, this.prefixClass('align-end'), align === 'end'), _defineProperty(_classNames, this.prefixClass('justify-center'), justify === 'center'), _defineProperty(_classNames, this.prefixClass('justify-start'), justify === 'start'), _defineProperty(_classNames, this.prefixClass('justify-end'), justify === 'end'), _defineProperty(_classNames, this.prefixClass('justified'), justify === true), _defineProperty(_classNames, this.prefixClass('scrollable'), scrollable), _classNames));
+	    var classes = (0, _classnames2.default)(classSet, className, (_cx = {}, _defineProperty(_cx, this.prefixClass('fill'), fill), _defineProperty(_cx, this.prefixClass('column'), direction === 'column'), _defineProperty(_cx, this.prefixClass('row'), direction === 'row'), _defineProperty(_cx, this.prefixClass('align-center'), align === 'center'), _defineProperty(_cx, this.prefixClass('align-start'), align === 'start'), _defineProperty(_cx, this.prefixClass('align-end'), align === 'end'), _defineProperty(_cx, this.prefixClass('justify-center'), justify === 'center'), _defineProperty(_cx, this.prefixClass('justify-start'), justify === 'start'), _defineProperty(_cx, this.prefixClass('justify-end'), justify === 'end'), _defineProperty(_cx, this.prefixClass('justified'), justify === true), _defineProperty(_cx, this.prefixClass('scrollable'), scrollable), _cx));
 
 	    return _react2.default.createElement(
 	      Component,
@@ -2855,16 +2854,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }
 	});
 
-	List.Item = _react2.default.createClass({
-	  displayName: 'Item',
+	var ListItem = _react2.default.createClass({
+	  displayName: 'ListItem',
 
 	  mixins: [_ClassNameMixin2.default],
 
 	  propTypes: {
 	    classPrefix: _react.PropTypes.string.isRequired,
 	    role: _react.PropTypes.oneOf(['header', 'item']),
-	    title: _react.PropTypes.string,
-	    subTitle: _react.PropTypes.string,
+	    title: _react.PropTypes.node,
+	    subTitle: _react.PropTypes.node,
 	    href: _react.PropTypes.string,
 	    linked: _react.PropTypes.bool, // linked flag for custom href like route Link
 	    linkComponent: _react.PropTypes.any,
@@ -2980,6 +2979,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    delete props.title;
 	    delete props.after;
 	    delete props.linkProps;
+	    delete props.desc;
 
 	    var itemChildren = [this.renderAddon('media'), this.renderMain()];
 	    var classSet = this.getClassSet();
@@ -2998,6 +2998,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	    );
 	  }
 	});
+
+	List.Item = ListItem;
 
 	exports.default = List;
 
@@ -6095,14 +6097,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	var fallback = {
 	  detectionRegex: {
 	    uc: /ucbrowser/i,
-	    zuoku: /zuoku build/i
+	    zuoku: /zuoku build/i,
+	    coolpad: /coolpad/i
 	  },
 
 	  addHook: function addHook() {
 	    // Android browsers legacy flexbox fallback
 	    try {
 	      (function () {
-	        var ua = navigator.userAgent;
+	        var ua = navigator.userAgent.toLowerCase();
 	        var fbNeeded = false;
 
 	        // TODO: - add version detecting when UC supports flexbox

@@ -1,6 +1,6 @@
-/** Amaze UI Touch v1.0.0-rc.2 | by Amaze UI Team
+/** Amaze UI Touch v1.0.0 | by Amaze UI Team
   * (c) 2016 AllMobilize, Inc., Licensed under MIT
-  * 2016-07-05T14:55:43+0800
+  * 2016-08-18T15:15:02+0800
   */
   /* Amaze UI Touch Base Styles */
 [class*="animation-"] {
@@ -575,7 +575,7 @@ body {
   color: #333333;
   padding: 0;
   margin: 0;
-  font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, "Microsoft YaHei", FreeSans, Arimo, "Droid Sans", "wenquanyi micro hei", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Segoe UI", "Microsoft YaHei", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "wenquanyi micro hei", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: normal;
   font-style: normal;
   line-height: 1.6;
@@ -774,7 +774,7 @@ dl dd {
 }
 
 blockquote {
-  font-family: Georgia, "Times New Roman", Times, SimSimSun, serif;
+  font-family: Georgia, "Times New Roman", Times, SimSun, serif;
   padding: 0.625rem 0.625rem 0.625rem 0.9375rem;
   border-left: 3px solid #ddd;
 }
@@ -2041,7 +2041,7 @@ hr {
   font-family: Ratchicons;
   font-weight: normal;
   font-style: normal;
-  src: url("fonts/ratchicons.woff") format("woff"), url("fonts/ratchicons.ttf") format("truetype"), url("fonts/ratchicons.svg#svgFontName") format("svg");;
+  src: url("fonts/ratchicons.woff2") format("woff2"), url("fonts/ratchicons.woff") format("woff"), url("fonts/ratchicons.ttf") format("truetype");;
 }
 
 .icon {
