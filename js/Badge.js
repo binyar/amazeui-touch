@@ -5,10 +5,9 @@ import cx from 'classnames';
 import ClassNameMixin from './mixins/ClassNameMixin';
 
 import '../scss/components/_badge.scss';
-
+const abc='abc'
 const Badge = React.createClass({
   mixins: [ClassNameMixin],
-
   propTypes: {
     classPrefix: PropTypes.string.isRequired,
     component: PropTypes.node.isRequired,
@@ -17,7 +16,6 @@ const Badge = React.createClass({
     // radius: PropTypes.bool,
     rounded: PropTypes.bool,
   },
-
   getDefaultProps() {
     return {
       classPrefix: 'badge',
