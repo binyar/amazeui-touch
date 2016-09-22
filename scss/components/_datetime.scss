@@ -1,0 +1,20 @@
+// Amaze UI Touch: Datetime
+// =============================================================================
+@import "../env";
+// Mixins
+// -----------------------------------------------------------------------------
+@mixin datetime(
+  $bottom: $datetime-bottom,
+  $left: $datetime-left,
+  $height:$datetime-height
+) {
+  position: fixed;
+  bottom: $bottom;
+  left: $left;
+  height: $height;
+  width: 100%;
+}
+
+.#{$datetime-prefix} {
+  @include datetime();
+}

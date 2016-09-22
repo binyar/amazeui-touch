@@ -505,3 +505,10 @@ $view-transition-timing-function: cubic-bezier(.36, .66, .04, 1) !default;
 
 // FUCK Android UC class namespace
 $android-legacy-flexbox: 'fb-legacy-flexbox';
+
+// Datetime Variables
+// -----------------------------------------------------------------------------
+$datetime-prefix: #{$namespace}datetime !default;
+$datetime-bottom: 0;
+$datetime-left: 0;
+$datetime-height: 15rem;
