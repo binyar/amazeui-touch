@@ -13,8 +13,94 @@
   left: $left;
   height: $height;
   width: 100%;
+  z-index: 9999;
+  background: $white;
+}
+
+@mixin header(
+  $height:$datetime-header-height
+) {
+  position: relative;
+  padding: 0 0.5rem;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: $height;
+  border-bottom: 1px solid $gray-lighter;
+}
+
+@mixin button(
+  $height:$datetime-header-height
+) {
+  display: inline-block;
+  border: 0;
+  text-align: center;
+  line-height: 1;
+  cursor: pointer;
+  -webkit-appearance: none;
+  -webkit-font-smoothing: antialiased;
+  vertical-align: middle;
+  float: right;
+  height: $height;
+  font-size: $font-size-default;
+  color: $global-primary;
+}
+
+@mixin col() {
+  font-size: $font-size-lg;
+  overflow: hidden;
+  height: 100%;
+  position: relative;
+}
+
+@mixin item() {
+  text-align: center;
+  user-select: none;
+  color: $gray-light;
+  &.active {
+    color: $black;
+  }
 }
 
 .#{$datetime-prefix} {
   @include datetime();
+  &-header {
+    @include header();
+    &-button {
+      @include button();
+    }
+  }
+  &-main {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+    height: 13.7rem;
+    &-col {
+      @include col();
+      &-wrapper {
+        transition: 0.3s;
+        &-item {
+          @include item();
+        }
+      }
+      &.divider {
+        color: #474b51;
+        display: flex;
+        align-items: center;
+      }
+    }
+    &-ighlight {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 100%;
+      height: 36px;
+      margin-top: -18px;
+      border-top: solid 1px #ddd;
+      border-bottom: solid 1px #ddd;
+      pointer-events: none;
+    }
+  }
 }
