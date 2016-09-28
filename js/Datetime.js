@@ -12,11 +12,47 @@ class Datetime extends Component {
   constructor(props, state) {
     super(props, state)
     this.state = {
-      top: 0,
       perItemHeight: 0,
-      count: 7,
+      count: 5,
       selectDate: new Date(),
-      yearTop: 0
+      year: {
+        top: 0,//距离顶部的位置
+        touchStartTop: 0,//开始触摸的Y轴位置，用于计算滑动了多少距离
+        beginTop: 0,//记录上次被触摸到的Y轴的位置，用于累加滑动的距离
+        hasDuration: false,//是否有滑动距离产生的延迟（主要用于滑动产生的效果不那么生硬，丝丝润滑，吹弹可破）
+        startYear: 1900,//最开始的年份
+        yearCount: 200//年份数量：比如开始年份是1900，数量是200，那么结束的年份就是1900+200=2100
+      },
+      month: {
+        top: 0,
+        touchStartTop: 0,
+        beginTop: 0,
+        hasDuration: false,
+      },
+      day: {
+        top: 0,
+        touchStartTop: 0,
+        beginTop: 0,
+        hasDuration: false,
+      },
+      hour: {
+        top: 0,
+        touchStartTop: 0,
+        beginTop: 0,
+        hasDuration: false,
+      },
+      minute: {
+        top: 0,
+        touchStartTop: 0,
+        beginTop: 0,
+        hasDuration: false,
+      },
+      second: {
+        top: 0,
+        touchStartTop: 0,
+        beginTop: 0,
+        hasDuration: false,
+      }
     }
   }
 
@@ -28,194 +64,385 @@ class Datetime extends Component {
 
   }
 
-  createYear() {
-    let lengths = new Array(200)
-    let beginYear = 1900
-    let years = []
+  createColItems(type, start, count, shouldFormat) {
+    let {perItemHeight, selectDate}=this.state
+    let lengths = new Array(count)
+    let items = [], targetValue, ext
+    switch (type) {
+      case 'year':
+        targetValue = selectDate.getFullYear()
+        ext = '年'
+        break;
+      case 'month':
+        targetValue = selectDate.getMonth() + 1
+        ext = '月'
+        break;
+      case 'day':
+        targetValue = selectDate.getDate()
+        ext = '日'
+        break;
+      case 'hour':
+        targetValue = selectDate.getHours()
+        ext = ''
+        break;
+      case 'minute':
+        targetValue = selectDate.getMinutes()
+        ext = ''
+        break;
+      case 'second':
+        targetValue = selectDate.getSeconds()
+        ext = ''
+        break;
+      default:
+        break
+    }
     for (let value of lengths) {
       let item = (
         <div
-          className="datetime-wrapper-main-col-item"
+          className={classnames({
+            "datetime-main-col-wrapper-item": true,
+            "active": targetValue === start
+          })}
           style={{
-            height: this.state.perItemHeight
+            height: perItemHeight
           }}
-          key={beginYear}
+          key={start}
         >
-          {beginYear}
+          {shouldFormat ? `${start < 10 ? '0' + start : start}` : `${start}${ext}`}
         </div>
       )
-      years.push(item)
-      beginYear++
+      items.push(item)
+      start++
     }
-    return years
+    return items
   }
 
-  createMonth() {
-    let monthes = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
-    return monthes.map((month)=> {
-      return (<div
-        className="datetime-wrapper-main-col-item"
-        style={{
-          height: this.state.perItemHeight
-        }}
-        key={month}
-      >
-        {month < 10 ? `0${month}` : month}
-      </div>)
-    })
-  }
-
-  createDay() {
-    let days = []
-    for (let i = 1; i <= getDaysInMonth(this.state.selectDate); i++) {
-      days.push(<div
-        className="datetime-wrapper-main-col-item"
-        style={{
-          height: this.state.perItemHeight
-        }}
-        key={i}
-      >
-        {i < 10 ? `0${i}` : i}
-      </div>)
-    }
-    return days
-  }
-
-  createHour() {
-    let hours = []
-    for (let i = 1; i < 24; i++) {
-      hours.push(<div
-        className="datetime-wrapper-main-col-item"
-        style={{
-          height: this.state.perItemHeight
-        }}
-        key={i}
-      >
-        {i}
-      </div>)
-    }
-    return hours
-  }
-
-  createMinute() {
-    let minutes = []
-    for (let i = 1; i < 60; i++) {
-      minutes.push(<div
-        className="datetime-wrapper-main-col-item"
-        style={{
-          height: this.state.perItemHeight
-        }}
-        key={i}
-      >
-        {i}
-      </div>)
-    }
-    return minutes
-  }
-
-  createSecond() {
-    let seconds = []
-    for (let i = 1; i < 60; i++) {
-      seconds.push(<div
-        className="datetime-wrapper-main-col-item"
-        style={{
-          height: this.state.perItemHeight
-        }}
-        key={i}
-      >
-        {i}
-      </div>)
-    }
-    return seconds
-  }
-
+  /**
+   * 处理日期控件被创建时的样式
+   */
   handleOpen() {
     const self = this
-    let {count}=this.state
+    let {count, selectDate, year, month, day, hour, minute, second}=this.state
+    let {startYear}=this.state.year
+    //每一个选项的高度
     let perItemHeight = (this.refs.main.offsetHeight - this.refs.header.offsetHeight) / count
     setTimeout(()=> {
+      //选择器的展开动画
+      this.refs.main.style.transform = 'scaleY(1)'
+      if (selectDate) {
+        year.top = -(selectDate.getFullYear() - startYear - 2) * perItemHeight
+        month.top = -(selectDate.getMonth() - 2) * perItemHeight
+        day.top = -(selectDate.getDate() - 3) * perItemHeight
+        hour.top = -(selectDate.getHours() - 3) * perItemHeight
+        minute.top = -(selectDate.getMinutes() - 3) * perItemHeight
+        second.top = -(selectDate.getSeconds() - 3) * perItemHeight
+      }
       self.setState({
         perItemHeight: perItemHeight,
-        top: 3 * perItemHeight
+        year: year,
+        month: month,
+        day: day,
+        hour: hour,
+        minute: minute,
+        second: second
       })
     }, 1)
   }
 
+  changeTarget(target, ret, selectDate) {
+    switch (target) {
+      case 'year':
+        this.setState({
+          year: ret,
+          selectDate: selectDate ? selectDate : this.state.selectDate
+        })
+        break
+      case 'month':
+        this.setState({
+          month: ret,
+          selectDate: selectDate ? selectDate : this.state.selectDate
+        })
+        break
+      case 'day':
+        this.setState({
+          day: ret,
+          selectDate: selectDate ? selectDate : this.state.selectDate
+        })
+        break
+      case 'hour':
+        this.setState({
+          hour: ret,
+          selectDate: selectDate ? selectDate : this.state.selectDate
+        })
+        break
+      case 'minute':
+        this.setState({
+          minute: ret,
+          selectDate: selectDate ? selectDate : this.state.selectDate
+        })
+        break
+      case 'second':
+        this.setState({
+          second: ret,
+          selectDate: selectDate ? selectDate : this.state.selectDate
+        })
+        break
+      default:
+        break
+    }
+  }
+
+  handleTouchStart(target, e) {
+    let ret = this.state[target]
+    ret.touchStartTop = e.touches[0].clientY
+    //开始累加滑动距离的Y轴位置
+    ret.beginTop = ret.top
+    ret.hasDuration = false
+    this.changeTarget(target, ret)
+  }
+
+  handleTouchMove(target, e) {
+    //滑动的距离
+    let distance = e.touches[0].clientY - this.state[target].touchStartTop
+    let ret = this.state[target]
+    ret.top = distance + ret.beginTop
+    //如果滑动距离的绝对值小于某个数（200），不触发滑动的延迟动画，滑动多少就“瞬间”移动多少
+    ret.hasDuration = Math.abs(distance) < 200
+    this.changeTarget(target, ret)
+  }
+
+  handleTouchEnd(target, negMaxTop) {
+    let top = Math.abs(this.state[target].top)
+    let perItemHeight = this.state.perItemHeight
+    let ret = this.state[target]
+    let targetTop = ret.top
+    let selectDate = this.state.selectDate
+    let maxTop = perItemHeight * 2//最大距离顶部的正值
+    /**
+     * 距离顶部的余数，用于计算舍入上一个位置或者是下一个位置
+     * @type {number}
+     */
+    let remainder = top % perItemHeight
+    //超出了最大的正值距离，直接让其为最大正值距离
+    if (targetTop > maxTop) {
+      targetTop = maxTop
+    }
+    //出处了最大负值距离，直接让其值为最大负值
+    else if (top > negMaxTop) {
+      targetTop = -negMaxTop
+    }
+    //两个最大值之间的处理
+    else {
+      //向下滚动出了“边界”
+      if (targetTop > 0) {
+        /**
+         * 如果余数小于每个Item的高度的一半的话，说明还没有进入下一个item，直接舍弃掉多余的余数；
+         * 否则加上“相差”的部分补全，进入下一个item
+         */
+        if (remainder > perItemHeight / 2) {
+          targetTop = targetTop + (perItemHeight - remainder)
+        } else {
+          targetTop = targetTop - remainder
+        }
+      }
+      //边界内正常滚动
+      else {
+        if (remainder > perItemHeight / 2) {
+          targetTop = targetTop - (perItemHeight - remainder)
+        } else {
+          targetTop = targetTop + remainder
+        }
+      }
+    }
+    /**
+     * 取值，高度大于0的话说明其超出了顶部的边界
+     */
+    switch (target) {
+      case 'year':
+        if (targetTop > 0) {
+          selectDate.setYear(ret.startYear - Math.round(Math.abs(targetTop) / perItemHeight) + 2)
+        } else {
+          selectDate.setYear(ret.startYear + Math.round(Math.abs(targetTop) / perItemHeight) + 2)
+        }
+        break
+      case 'month':
+        if (targetTop > 0) {
+          selectDate.setMonth(2 - Math.round(Math.abs(targetTop) / perItemHeight))
+        } else {
+          selectDate.setMonth(Math.round(Math.abs(targetTop) / perItemHeight) + 2)
+        }
+        break
+      case 'day':
+        if (targetTop > 0) {
+          selectDate.setDate(3 - Math.round(Math.abs(targetTop) / perItemHeight))
+        } else {
+          selectDate.setDate(Math.round(Math.abs(targetTop) / perItemHeight) + 3)
+        }
+        break
+      case 'hour':
+        if (targetTop > 0) {
+          selectDate.setHours(3 - Math.round(Math.abs(targetTop) / perItemHeight))
+        } else {
+          selectDate.setHours(Math.round(Math.abs(targetTop) / perItemHeight) + 3)
+        }
+        break
+      case 'minute':
+        if (targetTop > 0) {
+          selectDate.setMinutes(3 - Math.round(Math.abs(targetTop) / perItemHeight))
+        } else {
+          selectDate.setMinutes(Math.round(Math.abs(targetTop) / perItemHeight) + 3)
+        }
+        break
+      case 'second':
+        if (targetTop > 0) {
+          selectDate.setSeconds(3 - Math.round(Math.abs(targetTop) / perItemHeight))
+        } else {
+          selectDate.setSeconds(Math.round(Math.abs(targetTop) / perItemHeight) + 3)
+        }
+        break
+      default:
+        break
+    }
+    ret.hasDuration = false
+    ret.top = targetTop
+    this.changeTarget(target, ret, selectDate)
+  }
+
+  handleClose(e, func) {
+    this.refs.main.style.transform = 'scaleY(0)'
+    setTimeout(()=> {
+      func()
+    }, 300)
+  }
+
+  formatNumber(num) {
+    return num < 10 ? '0' + num : num
+  }
+
+  formatValue() {
+    let {selectDate}=this.state
+    return `${selectDate.getFullYear()}-${this.formatNumber(selectDate.getMonth() + 1)}-${this.formatNumber(selectDate.getDate())}
+${this.formatNumber(selectDate.getHours())}:${this.formatNumber(selectDate.getMinutes())}:${this.formatNumber(selectDate.getSeconds())}`
+    /* + '-' + (selectDate.getMonth() + 1) + '-' + selectDate.getDate()
+     + ' ' + (selectDate.getHours() < 10 ? 0 + selectDate.getHours() : selectDate.getHours()) +
+     ':' + (selectDate.getMinutes() < 10 ? 0 + selectDate.getMinutes() : selectDate.getMinutes()) +
+     ':' + (selectDate.getSeconds() < 10 ? 0 + selectDate.getSeconds() : selectDate.getSeconds())*/
+  }
+
   render() {
-    let {top, perItemHeight}=this.state
+    let {selectDate, year, month, day, hour, minute, second, perItemHeight}=this.state
     return (<div>
       <Trigger
         closeOnOutsideClick
-        openByClickOn={<div>Button</div>}
+        openByClickOn={<div className="datetime-result">{this.formatValue()}</div>}
         onOpen={this.handleOpen.bind(this)}
+        beforeClose={this.handleClose.bind(this)}
       >
         <div className="datetime" ref="main">
           <header className="datetime-header" ref="header">
-            <button className="datetime-header-button">{`确定`}</button>
+            <button className="datetime-header-button">{`今天`}</button>
           </header>
           <div className="datetime-main" ref="wrapper">
 
-            <div className="datetime-main-col">
-              <div className="datetime-main-col-wrapper">
-                {this.createYear()}
+            <div
+              className="datetime-main-col"
+              onTouchStart={this.handleTouchStart.bind(this, 'year')}
+              onTouchMove={this.handleTouchMove.bind(this, 'year')}
+              onTouchEnd={this.handleTouchEnd.bind(this, 'year',
+                perItemHeight * (year.yearCount - 3))}
+            >
+              <div className="datetime-main-col-wrapper" style={{
+                transform: 'translateY(' + year.top + 'px)',
+                transitionDuration: year.hasDuration ? '0ms' : ''
+              }}>
+                {this.createColItems('year', year.startYear, year.yearCount, false)}
               </div>
             </div>
 
-            <div className="datetime-main-col divider">
-              {`-`}
-            </div>
-
-
-            <div className="datetime-main-col">
-              <div className="datetime-main-col-wrapper">
-                {this.createMonth()}
-              </div>
-            </div>
-
-            <div className="datetime-main-col divider">
-              {`-`}
-            </div>
-
-            <div className="datetime-main-col">
-              <div className="datetime-main-col-wrapper">
-                {this.createDay()}
+            <div
+              className="datetime-main-col"
+              onTouchStart={this.handleTouchStart.bind(this, 'month')}
+              onTouchMove={this.handleTouchMove.bind(this, 'month')}
+              onTouchEnd={this.handleTouchEnd.bind(this, 'month',
+                perItemHeight * 9)}
+            >
+              <div className="datetime-main-col-wrapper" style={{
+                transform: 'translateY(' + month.top + 'px)',
+                transitionDuration: month.hasDuration ? '0ms' : ''
+              }}>
+                {this.createColItems('month', 1, 12, false)}
               </div>
             </div>
 
 
-            <div className="datetime-main-col divider">
-              {``}
-            </div>
-
-            <div className="datetime-main-col">
-              <div className="datetime-main-col-wrapper">
-                {this.createHour()}
+            <div
+              className="datetime-main-col"
+              onTouchStart={this.handleTouchStart.bind(this, 'day')}
+              onTouchMove={this.handleTouchMove.bind(this, 'day')}
+              onTouchEnd={this.handleTouchEnd.bind(this, 'day',
+                perItemHeight * (getDaysInMonth(selectDate) - 3))}
+            >
+              <div className="datetime-main-col-wrapper" style={{
+                transform: 'translateY(' + day.top + 'px)',
+                transitionDuration: day.hasDuration ? '0ms' : ''
+              }}>
+                {this.createColItems('day', 1, getDaysInMonth(selectDate), false)}
               </div>
             </div>
 
-            <div className="datetime-main-col divider">
+
+            <div
+              className="datetime-main-col"
+              onTouchStart={this.handleTouchStart.bind(this, 'hour')}
+              onTouchMove={this.handleTouchMove.bind(this, 'hour')}
+              onTouchEnd={this.handleTouchEnd.bind(this, 'hour',
+                perItemHeight * 20)}
+            >
+              <div className="datetime-main-col-wrapper" style={{
+                transform: 'translateY(' + hour.top + 'px)',
+                transitionDuration: hour.hasDuration ? '0ms' : ''
+              }}>
+                {this.createColItems('hour', 1, 23, true)}
+              </div>
+            </div>
+
+            <div className="datetime-main-divider">
               {`:`}
             </div>
 
-            <div className="datetime-main-col">
-              <div className="datetime-main-col-wrapper">
-                {this.createMinute()}
+            <div className="datetime-main-col"
+                 onTouchStart={this.handleTouchStart.bind(this, 'minute')}
+                 onTouchMove={this.handleTouchMove.bind(this, 'minute')}
+                 onTouchEnd={this.handleTouchEnd.bind(this, 'minute',
+                   perItemHeight * 56)}
+            >
+              <div className="datetime-main-col-wrapper" style={{
+                transform: 'translateY(' + minute.top + 'px)',
+                transitionDuration: minute.hasDuration ? '0ms' : ''
+              }}>
+                {this.createColItems('minute', 1, 59, true)}
               </div>
             </div>
 
-            <div className="datetime-main-col divider">
+            <div className="datetime-main-divider">
               {`:`}
             </div>
 
-            <div className="datetime-main-col">
-              <div className="datetime-main-col-wrapper">
-                {this.createSecond()}
+            <div className="datetime-main-col"
+                 onTouchStart={this.handleTouchStart.bind(this, 'second')}
+                 onTouchMove={this.handleTouchMove.bind(this, 'second')}
+                 onTouchEnd={this.handleTouchEnd.bind(this, 'second',
+                   perItemHeight * 56)}
+            >
+              <div className="datetime-main-col-wrapper" style={{
+                transform: 'translateY(' + second.top + 'px)',
+                transitionDuration: second.hasDuration ? '0ms' : ''
+              }}>
+                {this.createColItems('second', 1, 59, true)}
               </div>
             </div>
 
-            <div className="datetime-main-ighlight">
-
-            </div>
+            <div className="datetime-main-highlight"></div>
 
           </div>
 

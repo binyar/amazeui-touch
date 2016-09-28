@@ -15,6 +15,9 @@
   width: 100%;
   z-index: 9999;
   background: $white;
+  transition: transform 0.3s;
+  transform: scaleY(0);
+  transform-origin: 100% 100%;
 }
 
 @mixin header(
@@ -56,7 +59,15 @@
 @mixin item() {
   text-align: center;
   user-select: none;
-  color: $gray-light;
+  color: $gray-light-more;
+  position: relative;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 0 0.8rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
   &.active {
     color: $black;
   }
@@ -64,6 +75,13 @@
 
 .#{$datetime-prefix} {
   @include datetime();
+  &-result {
+    width: 100%;
+    border: 1px solid $gray-light-more;
+    padding: 0.75rem 0.5rem;
+    font-size: $font-size-default;
+    color: $black;
+  }
   &-header {
     @include header();
     &-button {
@@ -77,29 +95,31 @@
     text-align: center;
     overflow: hidden;
     height: 13.7rem;
+    -webkit-mask-box-image: -webkit-linear-gradient(bottom, transparent, transparent 5%, white 20%, white 80%, transparent 95%, transparent);
+    -webkit-mask-box-image: linear-gradient(to top, transparent, transparent 5%, white 20%, white 80%, transparent 95%, transparent);
     &-col {
       @include col();
       &-wrapper {
-        transition: 0.3s;
+        transition: 300ms;
         &-item {
           @include item();
         }
       }
-      &.divider {
-        color: #474b51;
-        display: flex;
-        align-items: center;
-      }
     }
-    &-ighlight {
+    &-divider {
+      color: $black;
+      display: flex;
+      align-items: center;
+    }
+    &-highlight {
       position: absolute;
       top: 50%;
       left: 0;
       width: 100%;
-      height: 36px;
-      margin-top: -18px;
-      border-top: solid 1px #ddd;
-      border-bottom: solid 1px #ddd;
+      height: 2rem;
+      margin-top: -1rem;
+      border-top: solid 1px $gray-light-more;
+      border-bottom: solid 1px $gray-light-more;
       pointer-events: none;
     }
   }
