@@ -351,7 +351,7 @@ ${this.formatNumber(selectDate.getHours())}:${this.formatNumber(selectDate.getMi
             >
               <div className="datetime-main-col-wrapper" style={{
                 transform: 'translate3d(0,' + year.top + 'px,0)',
-                transitionDuration: '0ms'
+                transitionDuration: year.hasDuration ? '0ms' : ''
               }}>
                 {this.createColItems('year', year.startYear, year.yearCount, false)}
               </div>
