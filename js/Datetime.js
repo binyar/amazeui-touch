@@ -11,6 +11,7 @@ import '../scss/components/_datetime.scss'
 class Datetime extends Component {
   constructor(props, state) {
     super(props, state)
+    this.moving = false
     this.state = {
       perItemHeight: 0,
       count: 5,
@@ -19,41 +20,39 @@ class Datetime extends Component {
         top: 0,//距离顶部的位置
         touchStartTop: 0,//开始触摸的Y轴位置，用于计算滑动了多少距离
         beginTop: 0,//记录上次被触摸到的Y轴的位置，用于累加滑动的距离
-        hasDuration: false,//是否有滑动距离产生的延迟（主要用于滑动产生的效果不那么生硬，丝丝润滑，吹弹可破）
         startYear: 1900,//最开始的年份
         yearCount: 200//年份数量：比如开始年份是1900，数量是200，那么结束的年份就是1900+200=2100
       },
       month: {
         top: 0,
         touchStartTop: 0,
-        beginTop: 0,
-        hasDuration: false,
+        beginTop: 0
       },
       day: {
         top: 0,
         touchStartTop: 0,
-        beginTop: 0,
-        hasDuration: false,
+        beginTop: 0
       },
       hour: {
         top: 0,
         touchStartTop: 0,
-        beginTop: 0,
-        hasDuration: false,
+        beginTop: 0
       },
       minute: {
         top: 0,
         touchStartTop: 0,
-        beginTop: 0,
-        hasDuration: false,
+        beginTop: 0
       },
       second: {
         top: 0,
         touchStartTop: 0,
-        beginTop: 0,
-        hasDuration: false,
+        beginTop: 0
       }
     }
+  }
+
+  shouldComponentUpdate() {
+    return !this.moving
   }
 
   componentDidMount() {
@@ -64,6 +63,14 @@ class Datetime extends Component {
 
   }
 
+  /**
+   * 创建某列数据的DOM
+   * @param type
+   * @param start
+   * @param count
+   * @param shouldFormat
+   * @returns {Array}
+   */
   createColItems(type, start, count, shouldFormat) {
     let {perItemHeight, selectDate}=this.state
     let lengths = new Array(count)
@@ -198,22 +205,27 @@ class Datetime extends Component {
     ret.touchStartTop = e.touches[0].clientY
     //开始累加滑动距离的Y轴位置
     ret.beginTop = ret.top
-    ret.hasDuration = false
+    this.moving = false
+    this.timing = +new Date()
     this.changeTarget(target, ret)
   }
 
   handleTouchMove(target, e) {
+    this.moving = true
     //滑动的距离
     e.preventDefault();
     let distance = e.targetTouches[0].clientY - this.state[target].touchStartTop
     let ret = this.state[target]
     ret.top = distance + ret.beginTop
     //如果滑动距离的绝对值小于某个数（200），不触发滑动的延迟动画，滑动多少就“瞬间”移动多少
-    ret.hasDuration = Math.abs(distance) < 200
+    let timing = Math.abs(distance) < 200 ? '0ms' : '300ms'
+    e.currentTarget.childNodes[0].style = 'transform:translate3d(0,' + ret.top + 'px,0);transition-duration:' + timing + ';'
     this.changeTarget(target, ret)
   }
 
-  handleTouchEnd(target, negMaxTop) {
+  handleTouchEnd(target, negMaxTop, e) {
+    this.moving = false
+    let timing = (+new Date()) - this.timing < 500 ? '0ms' : '200ms'
     let top = Math.abs(this.state[target].top)
     let perItemHeight = this.state.perItemHeight
     let ret = this.state[target]
@@ -305,9 +317,9 @@ class Datetime extends Component {
       default:
         break
     }
-    ret.hasDuration = false
     ret.top = targetTop
     this.changeTarget(target, ret, selectDate)
+    e.currentTarget.childNodes[0].style = 'transform:translate3d(0,' + ret.top + 'px,0);transition-duration:' + timing + ';'
   }
 
   handleClose(e, func) {
@@ -350,8 +362,7 @@ ${this.formatNumber(selectDate.getHours())}:${this.formatNumber(selectDate.getMi
                 perItemHeight * (year.yearCount - 3))}
             >
               <div className="datetime-main-col-wrapper" style={{
-                transform: 'translate3d(0,' + year.top + 'px,0)',
-                transitionDuration: year.hasDuration ? '0ms' : ''
+                transform: 'translate3d(0,' + year.top + 'px,0)'
               }}>
                 {this.createColItems('year', year.startYear, year.yearCount, false)}
               </div>
@@ -365,8 +376,7 @@ ${this.formatNumber(selectDate.getHours())}:${this.formatNumber(selectDate.getMi
                 perItemHeight * 9)}
             >
               <div className="datetime-main-col-wrapper" style={{
-                transform: 'translate3d(0,' + month.top + 'px,0)',
-                transitionDuration: month.hasDuration ? '0ms' : ''
+                transform: 'translate3d(0,' + month.top + 'px,0)'
               }}>
                 {this.createColItems('month', 1, 12, false)}
               </div>
@@ -381,8 +391,7 @@ ${this.formatNumber(selectDate.getHours())}:${this.formatNumber(selectDate.getMi
                 perItemHeight * (getDaysInMonth(selectDate) - 3))}
             >
               <div className="datetime-main-col-wrapper" style={{
-                transform: 'translateY(' + day.top + 'px)',
-                transitionDuration: day.hasDuration ? '0ms' : ''
+                transform: 'translateY(' + day.top + 'px)'
               }}>
                 {this.createColItems('day', 1, getDaysInMonth(selectDate), false)}
               </div>
@@ -397,8 +406,7 @@ ${this.formatNumber(selectDate.getHours())}:${this.formatNumber(selectDate.getMi
                 perItemHeight * 20)}
             >
               <div className="datetime-main-col-wrapper" style={{
-                transform: 'translateY(' + hour.top + 'px)',
-                transitionDuration: hour.hasDuration ? '0ms' : ''
+                transform: 'translateY(' + hour.top + 'px)'
               }}>
                 {this.createColItems('hour', 1, 23, true)}
               </div>
@@ -415,8 +423,7 @@ ${this.formatNumber(selectDate.getHours())}:${this.formatNumber(selectDate.getMi
                    perItemHeight * 56)}
             >
               <div className="datetime-main-col-wrapper" style={{
-                transform: 'translateY(' + minute.top + 'px)',
-                transitionDuration: minute.hasDuration ? '0ms' : ''
+                transform: 'translateY(' + minute.top + 'px)'
               }}>
                 {this.createColItems('minute', 1, 59, true)}
               </div>
@@ -433,8 +440,7 @@ ${this.formatNumber(selectDate.getHours())}:${this.formatNumber(selectDate.getMi
                    perItemHeight * 56)}
             >
               <div className="datetime-main-col-wrapper" style={{
-                transform: 'translateY(' + second.top + 'px)',
-                transitionDuration: second.hasDuration ? '0ms' : ''
+                transform: 'translateY(' + second.top + 'px)'
               }}>
                 {this.createColItems('second', 1, 59, true)}
               </div>

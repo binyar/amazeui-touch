@@ -507,10 +507,10 @@ $view-transition-timing-function: cubic-bezier(.36, .66, .04, 1) !default;
 // FUCK Android UC class namespace
 $android-legacy-flexbox: 'fb-legacy-flexbox';
 
-// Datetime Variables
+// Picker Variables
 // -----------------------------------------------------------------------------
-$datetime-prefix: #{$namespace}datetime !default;
-$datetime-bottom: 0;
-$datetime-left: 0;
-$datetime-height: 16rem;
-$datetime-header-height:2.3rem;
+$picker-prefix: #{$namespace}picker !default;
+$picker-bottom: 0;
+$picker-left: 0;
+$picker-height: 16rem;
+$picker-header-height:2.3rem;

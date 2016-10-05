@@ -20,4 +20,5 @@ export Slider from './SliderExample';
 export Tabbar from './TabBarExample';
 export Tabs from './TabsExample';
 export Typography from './TypographyExample';
-export Datetime from './DatetimeExample';
+export Datetime from './DatetimeExample'
+export Address from './AddressExample'
