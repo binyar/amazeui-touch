@@ -50,6 +50,7 @@ $gray-dark: lighten($black, 20%) !default;   // #333
 $gray: lighten($black, 33.5%) !default; // #555
 // $gray-light: lighten($black, 46.7%) !default; // #777
 $gray-light: lighten($black, 53.3%) !default; // #888
+$gray-light-more: lighten($black, 75%) !default; // #bfbfbf
 $gray-lighter: lighten($black, 93.5%) !default; // #eee
 // 87.5 => #dfdfdf
 
@@ -505,3 +506,11 @@ $view-transition-timing-function: cubic-bezier(.36, .66, .04, 1) !default;
 
 // FUCK Android UC class namespace
 $android-legacy-flexbox: 'fb-legacy-flexbox';
+
+// Picker Variables
+// -----------------------------------------------------------------------------
+$picker-prefix: #{$namespace}picker !default;
+$picker-bottom: 0;
+$picker-left: 0;
+$picker-height: 16rem;
+$picker-header-height:2.3rem;

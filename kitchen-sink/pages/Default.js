@@ -31,6 +31,8 @@ let pages = [
   'TabBar',
   'Tabs',
   'Typography',
+  'Datetime',
+  'Address'
 ];
 
 const Default = React.createClass({

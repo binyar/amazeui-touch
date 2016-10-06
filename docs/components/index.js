@@ -22,3 +22,5 @@ export typography from './typography';
 export utility from './utility';
 export gettingStarted from './getting-started';
 export advanced from './advanced';
+export datetime from './datetime';
+export address from './address';
