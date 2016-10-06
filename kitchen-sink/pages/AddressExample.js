@@ -1,15 +1,13 @@
-/**
- * Coder: fmd
- * Date: 2016/10/5
- * Time: 21:47
- */
 import React from 'react'
-import Picker from '../../js/Picker'
+import Address from '../../js/Address'
 const AddressExample = React.createClass({
   render() {
     return (
       <div>
-        <Picker content="content"/>
+        <label>{`省-市-区`}</label>
+        <Address />
+        <label>{`带默认值`}</label>
+        <Address province="江苏省" city="无锡市" district="锡山区"/>
       </div>
     )
   }

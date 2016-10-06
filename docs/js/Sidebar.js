@@ -108,6 +108,14 @@ const components = [
         name: 'Tabs',
         title: '选项卡'
       },
+      {
+        name: 'Datetime',
+        title: '日期时间'
+      },
+      {
+        name:'address',
+        title:'地址'
+      }
     ]
   },
 ];
@@ -128,14 +136,14 @@ const Sidebar = React.createClass({
   renderNav() {
     let cNav = [
       (
-      <li key="gettingStarted">
-        <Link
-          activeClassName="active"
-          to="/docs/getting-started"
-        >
-          开始使用
-        </Link>
-      </li>),
+        <li key="gettingStarted">
+          <Link
+            activeClassName="active"
+            to="/docs/getting-started"
+          >
+            开始使用
+          </Link>
+        </li>),
       (
         <li key="modular">
           <Link
@@ -152,12 +160,12 @@ const Sidebar = React.createClass({
       const {
         title: cTitle,
         components,
-        } = category;
+      } = category;
 
       cNav.push(
         <li
-        key={`c${i}`}
-        className="nav-header"
+          key={`c${i}`}
+          className="nav-header"
         >
           {cTitle}
         </li>
@@ -167,7 +175,7 @@ const Sidebar = React.createClass({
         const {
           title,
           name,
-          } = cpt;
+        } = cpt;
         let filter = this.state.filter;
         filter = typeof filter === 'string' ?
           filter.toLowerCase() : null;
@@ -208,9 +216,9 @@ const Sidebar = React.createClass({
             ref="filter"
             type="text"
             id="doc-filter"
-            placeholder="查找组件" />
+            placeholder="查找组件"/>
         </p>
-        <hr className="am-margin-vertical-sm" />
+        <hr className="am-margin-vertical-sm"/>
         <nav
           role="navigation"
         >

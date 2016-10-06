@@ -14,29 +14,7 @@ class Picker extends Component {
     this.state = {
       perItemHeight: 0,
       count: 5,
-      cols: [{
-        items: [{text: '2011', value: 2011}, {text: '2012', value: 2012}, {text: '2013', value: 2013}, {
-          text: '2014',
-          value: 2014
-        }, {text: '2015', value: 2015}],
-        value: 2013,
-        top: 0,
-        touchStartTop: 0,
-        beginTop: 0
-      },
-        {
-          divider: true,
-          content: ':'
-        }, {
-          items: [{text: '2011', value: 2011}, {text: '2012', value: 2012}, {text: '2013', value: 2013}, {
-            text: '2014',
-            value: 2014
-          }, {text: '2015', value: 2015}],
-          value: 2013,
-          top: 0,
-          touchStartTop: 0,
-          beginTop: 0
-        }]
+      cols: props.cols
     }
   }
 
@@ -44,12 +22,25 @@ class Picker extends Component {
     return !this.moving
   }
 
-  componentDidMount() {
-
-  }
-
-  handleClick() {
-
+  componentWillReceiveProps(nextProps) {
+    let {cols, perItemHeight}=this.state
+    cols = cols.map((col, index)=> {
+      if (!col.divider) {
+        col.items = nextProps.cols[index].items.slice(0)
+        col.value = nextProps.cols[index].value
+        let targetIndex = 0
+        col.items.map((item, index)=> {
+          if (item.value === col.value) {
+            targetIndex = index
+          }
+        })
+        col.top = -(targetIndex - 2) * perItemHeight
+      }
+      return col
+    })
+    this.setState({
+      cols: cols
+    })
   }
 
   /**
@@ -195,6 +186,8 @@ class Picker extends Component {
     cols[index] = ret
     this.setState({
       cols: cols
+    }, ()=> {
+      this.props.onChange(index, ret.value)
     })
     e.currentTarget.childNodes[0].style = 'transform:translate3d(0,' + ret.top + 'px,0);transition-duration:' + timing + ';'
   }
@@ -204,6 +197,10 @@ class Picker extends Component {
     setTimeout(()=> {
       func()
     }, 300)
+  }
+
+  reset() {
+    this.props.reset()
   }
 
   render() {
@@ -217,7 +214,9 @@ class Picker extends Component {
       >
         <div className="picker" ref="main">
           <header className="picker-header" ref="header">
-            <button className="picker-header-button">{`清空`}</button>
+            <button className="picker-header-button"
+                    onClick={this.reset.bind(this)}
+            >{this.props.btn4Right}</button>
           </header>
           <div className="picker-main" ref="wrapper">
             {
@@ -229,11 +228,15 @@ class Picker extends Component {
                     {col.content}
                   </div>)
                 } else {
-                  return (<div className="picker-main-col"
-                               onTouchStart={this.handleTouchStart.bind(this, index)}
-                               onTouchMove={this.handleTouchMove.bind(this, index)}
-                               onTouchEnd={this.handleTouchEnd.bind(this, index)}
-                               key={index}
+                  return (<div
+                    style={{
+                      width: col.width + 'rem'
+                    }}
+                    className="picker-main-col"
+                    onTouchStart={this.handleTouchStart.bind(this, index)}
+                    onTouchMove={this.handleTouchMove.bind(this, index)}
+                    onTouchEnd={this.handleTouchEnd.bind(this, index)}
+                    key={index}
                   >
                     <div className="picker-main-col-wrapper" style={{
                       transform: 'translateY(' + col.top + 'px)'
