@@ -1,5 +1,12 @@
 # Amaze UI Touch
 
+基于妹纸UI开发，补充了两个控件：日期时间选择器和地址（省-市-区）选择器（不知道为啥，GIF录制出来颜色都变了，而且看起来有点卡顿，但是实际上并不是这样的）
+
+![](http://p1.bqimg.com/567571/5e22ca377317e80a.gif)
+
+![](http://p1.bqimg.com/567571/0f475c0fa08338a6.gif)
+
+
 基于 React.js 的移动端 Web UI 组件库。
 
 [![NPM version](https://img.shields.io/npm/v/amazeui-touch.svg?style=flat-square)](https://www.npmjs.com/package/amazeui-touch)
